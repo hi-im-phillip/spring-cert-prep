@@ -1,0 +1,286 @@
+1. What does RESt stand for?
+
+REST stands for Representational State Transfer
+
+Most implementation of REST services are using HTTP as the application protocol, and JSON as format that moves data between caller and callee. However REST is not necessarily tied to HTTP or JSON
+
+URI versioning
+- /api/v1/products
+Query string versioning
+- /api/products?version=1
+Header versioning
+- /api/products
+- Header - accepts-version 1.0
+Media type content negoation version
+- /api/products
+Header - Accept: aplication/vnd.my-app.v1+json
+
+
+2. What is resource?
+
+Resource is a named information available via URI. It can be a document, image, video, text file, etc. Rest uses different form of presentation of resources, and client can specify format in which Resource should be made available, for example JSON, XML, Text, Html..
+
+Rest usually provides set of methods that can be used to manipulate resources like http get, post, put, delete
+
+
+3. What does CRUD mean?
+
+Create, read, update, delete.
+
+create - post, put
+read - get
+update - put, patch
+delete - delete
+
+
+4. Is RESt secure? What can you do to secure it?
+
+Rest as an architectural style of developing distributed applications, does not enforce any security rules or solutions on its own, so by default rest is not secured.
+
+To secure RESt api you can do following:
+
+- protect in-transit traffic by using https protocol
+- use some form of authentication (basic, json tokens)
+- use some form of authorization (spring roles)
+
+
+5. Is rest scalable and or interoperable?
+
+Scalability of Restful service is a result of developing software with following characteristics in mind:
+
+- statelessness - each request to the system should be design in a way for example, we want to avoid keeping information in http session related to user conversation with the system, this way we can delegate request to any backend node that can process the request without having to introduce share state between nodes
+- layered approach - layered approach to the system design means that we can introduce new parts of the system in a way for it to be transparent to the client, resulting in ability to change system without having to modify client, example of this can be introduction of application load balancer, api gateway, security layers, web application firewall without having to change client at all
+- cacheability - allows to create response for repeatable requests, without having to process them on service side, caching is introduced to improve response time and to reduce load on the service
+
+rest service is interoperable because: 
+- access to rest service and resources available by uris is standardized and not coupled with any specific technology, allowing you to consume rest service in any technology of choice, like JavaScript, Python, Java, C++
+- data for the requested resource can be sent to client in different formats specified by the client, in case of http protocol this can be done with usage of accept header, for example accept: application/json or accept: applicaton/xml
+- all crud operations can be handled with standardized approach, in case of restful service implemented with http protocol, standardized http methods get, put, patch, post, delete are used
+
+
+6. Which Http methods does rest use?
+
+HTTP Get - used to implement read operations - fetch existing resource or list of resources
+HTTP Post - used to implement Create operations - adding new element
+HTTP put - used to implement create or update operations - bulk update or update existing resource
+HTTP patch - partial update of existing resource of the system, for example, when wanting to update only first name
+HTTP delete - delete existing resource
+
+
+7. What is an HttpMessageConverter?
+
+Its a interface used by Spring to convert data between different formats.
+
+Rest client can specify expected format in which data should be retrieved by usage of Accept Header (application/json). Client can also specify format in which data will be send by usage of Content-Type Header, for example Content-Type: application/xml
+
+Request mapping contains produces and consumes fields which can be used to specify MediaType which method can hanlde.
+
+
+8. Yes, Rest is normally stateless.
+
+Stateless basic constraint for RESTful architecture.
+
+If some kinf ostate is required for the request, client should send this state with each request, however this state should not be kept on server side, not be kept in HTTP session.
+
+
+9. What does @RequestMapping do?
+
+Allows to specify conditions that request has to match for a method to be used as request handler. @RequestMapping can be used at class or method level, when used at the class level, all method level mappings inherit this primary mapping, narrowing it to a specific handler method.
+
+- crietia for request:
+- path
+- method
+- params
+- headers
+- consumes
+- produces
+
+
+10. IS @Controller a stereotype? Is @RestController a stereotype? What is a stereotype annotation? What does that mean?
+
+@Controller annotation and @RestController are stereotypes.
+
+Stereotypes are annotations applied to classes to describe role which will be performed by this class.
+
+Types of stereotypes:
+- @Component - generic component in the system, root stereotype, candidate for autoscanning
+- @Service - class will contain buisness logic
+- @Repository - class is a data repository (used for data access objects, persistance)
+- @Controller - class is a controller, usually a web controller
+- @RestController - class is a controller that will implement REST service Endpoints, usually consuming and producing json
+
+
+11. What is the difference between @Controller and @RestController
+
+@Controller indicates that class will be assigned with Controller role of MVC pattern and usually it is expected from it to return Model and View that will be used to render response, with usage of configured template enginge (thymeleaf)
+
+@RestController indicates that class will be used to handle REST service endpoint request, it is expected from it to correctly handle requests input and produce outputs in acceptable format like JSON/XML etc. Serialized output is sent directly to the client.
+
+@RestController = @Controller + @ResponseBody
+
+@ResponseBody indicated that method return value should be bound to the web response body, it's return value will be serialized into response in requested format.
+
+
+12. When do you need @ResponseBody?
+
+@ResponseBody is needed whenever you want spring to return serialized response of controller method return value, instead of returning model and view that will be used by template engine to produce response. @ResponseBody bounds method return value to the web response body, produced by HttpMessageConverter
+
+
+13. What are the HTTP status return codes for a successful GET, POST, PUT Or DELETE operation?
+
+GET
+- 200 OK - when asked about existing resource for which content is returned
+POST
+- 201 (created) - when new resources was created
+- 200 OK - when some processing was executed but resources were not created
+- 204 No content - when some processing was executed, but no response is retrieved
+PUT
+- 201 Created - when new resource is created
+- 200 OK - when resources was updated, and updated content is returned
+- 204 No content - when resource was updated and no content is returned
+DELETE
+- 204 No content - when resource was sucessfully deleted
+
+In case of asynchronous operations, 202 (Accepted) may be returned with Location header indicating URI that can be used for pooling.
+
+
+14. When do you need @ResponseStatus?
+
+@ResponseStatus is required whenever you want to override default HTTP status returned from controller handler method.
+
+This can be achieved by applying @ResponseStatus to:
+- Controller class
+- Controller method
+- Exception being thrown from controller
+
+@ResponseStatus allows you to set:
+- Https status code
+- Reason message to be used in response in case of error
+
+
+15. Where do you need @ResponseBody? What about @RequestBody?
+
+@ResponseBody is needed whenever you want to return serialized response of controller handler method, instead of returning model and view that will be used by template engine to produce response. @ResponseBody will bind method return value to web response body and will use HttpMessageConverter.
+
+@RequestBody is needed whenever you want to bind web request body to controller parameter. HttpMessageConverter is used to convert of request body. Optionally can be used with @Valid to ivoke automatic bean validation.
+
+@ResponseBody can be used:
+- on top of class
+- on top of method
+- on top of other annotaitions
+
+@RequestBody can be used:
+- on top of controller method parameter
+
+
+16. If you saw example controller code, would you understand what it is doing? Could you tell if it was annotated correctly?
+
+Controller can be defined in one of following ways:
+- @controller
+- @restController
+
+Controller mapping can be defined with usage of one of following annotations:
+- @GetMapping
+- @PostMapping
+- @PutMapping
+- @PatchMapping
+- @DeleteMapping
+
+Request parameter body can be mapped with usage of:
+- @RequestBody
+ - additionaly @Valid can be added
+
+Response can be bound to web response by:
+- usage of @ResponseBody on top of @Controller or controller method
+- usage of @RestController
+
+Custom HTTP Status can be provided for controller methods and exception with usage of @ResponseStatus
+
+Request and URI parameters can be accessed with:
+- @RequestPAram - Servlet request parameters
+- @PathVariable - access ot URI template variables
+- @MatrixVariable - access to name-value pairs in URI path segments, allows mapping variables from request
+- @CookieValue - bind the value of an HTTP cookie to a method argument in a controller
+- @RequestHeader - access request header values or all header key and values when binding against map
+
+Calls to controller can be intercepted and custom exception handling can be implemented:
+- @ExceptionHandler - when applied at controller level method acts as controller level exception handler
+- @ControllerAdvice - used together with @ExceptionHandler - global exception handler for all controllers, acts as global annotation driven call interceptor
+
+
+17. Do you need Spring MVC in your classpath?
+
+Yes, you need Spring MVC on classpath for REST API to work correctly.
+
+Spring MVC is not required for compilation time, but is required during runtime.
+
+REST API in Spring is build with usage of annotations like:
+- RestController
+- RequestBody
+- RequestMapping
+- GetMapping
+
+All of those are available in spring-web module which is not dependent on spring-webmvc
+
+However for request to be mapped to RestController, DispatcherServlet has to be initialized which is part of spring-webmvc module.
+
+
+18. What Spring boot starter would you use for a Spring REST application?
+
+To create Spring REST application, use Spring Boot Web Starter.
+
+Spring boot web starter will automatically include:
+- spring-web
+- spring-webmvc
+- spring-boot-starter-json
+- spring-boot-starter-tomcat
+
+
+19. What are the advantages of the RestTemplate?
+
+RestTemplate is a synchronous HTTP client wrapper to perform HTTP requests. It exposes simple API over underlying HTTP client libraries:
+- JDK HttpURLConnection
+- Apache HttpComponents
+- OkHttp
+
+RestTemplate has following adantages:
+- Simplicity
+- Automatic Object Serialization/Deserialization
+- High-level API allows you to focus on business side of operations
+- provides support for common HTTP get,post,put, patch, head, options, delete operations
+- Flexibility - allows custom error management
+- Extendibility - allows to register custom HttpMessageConverter and to register custom ClientHttpRequestFactory
+- URI Templates support
+
+Because of it's simplicity, REST Template is often used in testing code, however it can be used as general purpose HTTP Client.
+
+
+20. If you saw an example using RestTemplate would you understand what it is doing?
+
+RestTemplate API allows you to receive answer from Service being called by returning:
+- Object that represents transferred data
+- ResponseEntity
+    - Status code
+    - HTTP Headers
+    - Response Body
+- HTTP Headers
+- URI of created/posted object
+- List of Allowed HttpMethods by using HTTP OPTIONS request
+
+RestTemplate API can be categorized by HTTP request type, below is a list of commonly used operations:
+- Generic
+    - exchange
+    - execute
+HTTP GET
+    - getForObject
+    - getForEntity
+HTTP HEAD
+    - headForHeaders
+HTTP POST
+    - postForLocation
+    - postForObject
+    - postForEntity
+HTTP PUT
+HTTP PATCH
+HTTP DELETE
+HTTP OPTIONS

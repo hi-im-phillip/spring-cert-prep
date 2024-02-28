@@ -1,0 +1,189 @@
+1. Which three types can be used as @Controller method arguments? (Choose three)
+
+Request, HttpSession, Locale
+
+2. Which statements is true?
+
+@ActiveProfiles is a class-level annotation that is used to declare which bean definition profiles should be active when loaded an ApplicationContext for an Integration test.
+
+3. Which three dependencies are provided by the spring-boot-starter-test?
+
+Hamcrest, Junit, EasyMock
+
+4. Which two statements are correct regarding Spring Boot auto-configuration?
+
+Auto-configuration could apply when a bean is present but not when bean is missing.
+
+Auto-configuration is applied before user-defined beans have been registered.
+
+5. Which two statements are true regarding bean creation?
+
+A Spring beqan can be explicitly created by annotating the class with @Autowired
+
+A Spring bean can be implicitly created by annotating the class with @Component and using the component-scanner to scan its package.
+
+
+6. Which statement describes the propagation behavior of Propagation.REQUIRES_NEW annotation?
+
+A starts a new transaction if an active transaction already exists, it is suspended.
+
+
+7. What is a Spring boot starter dependency?
+
+An easy way to include multiple coordinated dependencies related to a specific technology like web or JDBC
+
+
+8. Which following statements are true about Spring Data?
+
+Spring data is specifically desgined for JPA, JDBC and relational database access only.
+
+Spring Data can greatly reduce the amount of "boilerplate" code typically needed for data access.
+
+
+9. Which strategy is correct for configuring Spring Security to intercept particular URLs?
+
+The URLs can be specified via configuration (using authorizeRequest() and requst matchers), with the most specific rule first and the least specific last. 
+
+
+10. Given an ApplicationContext containing three bean definitions of type Foo with bean ids foo1, foo2, foo3, which three @Autowired scenarios are valid and will allow the ApplicationContext to initiliaze successfully?
+
+@Autowired
+public void SetFoo(Foo foo2){}
+
+@Autowired
+public void setFoo(Foo foo){}
+
+@Autowired private Foo foo;
+
+
+11. Which two options are REST principles?
+
+RESTful applications use a stateless architecture
+
+RESTful application use HTTP headers and status codes as a contract with the clients
+
+
+12. Which two statements are correct regarding the Health indicator status?
+
+Custom status values can be created.
+
+The built-in status values are DOWN, OUT_OF_SERVICE, UNKNOWN, and UP in decresing order of severity
+
+
+13. Which three types of objects can be returned from a JDBCTemplate query?
+
+User defined types
+
+Simple types (int, long, String)
+
+Properties
+
+
+14. In which three ways are Security filters used in Spring security?
+
+To drive authentication
+
+To enforce authorization (access control)
+
+To provide a logout capability
+
+
+15. What are the two reasons Spring be used to build a Java application?
+
+Spring automates a Java application build
+
+Spring provides a Dependency injection container
+
+
+16. Which two statements are correct regarding the Actuator info endpoint?
+
+It is not enabled by default
+
+It can be used to display arbitrary application information.
+
+
+17. Which two options will inject the value of the daily.limit system property?
+
+@Value("#{systeProperties[daily.limit]}")
+
+@Value("$(systemProperties.daily.limit)")
+
+
+18. Which two statements are true concerning the BeanPostProcessor Extension point?
+
+Custom BeanPostProcessors can be implemented for Spring applications.
+
+BeanPostProcessors are called during the initilization phase of bean life cycle.
+
+
+19. Which two statements are true about Spring Boot and Spring data JPA?
+
+Embedded databases are not re-created during the startup
+
+Spring Data JPA is the only implementation for relational databases.
+
+
+20. Which two statements are correct regarding Spring Boot 2.x Actuator Metrics?
+
+An external monitoring system must be used with Actuator.
+
+The metrics endpoinoint/actuator/metrics is exposed over HTTP by default
+
+
+21. Which two statements are true regarding Spring boot-based Spring MVC application?
+
+Spring boot starts up an embedded servlet container by default.
+
+Jety is the default servlet container.
+
+
+22. Which two statements are true concerning constructor injection?
+
+Constructor injection is preferred over field injection to support unit testing.
+
+Field injection is preferred over constructor injection from a unit testing standpoint.
+
+
+23. Which two statements are true about @Controller classes?
+
+The classes are eligible for handling requests in Spring MVC
+
+The @Controller is a stereotype annotation like @Component
+
+
+24. Which two statements are correct when @SpringBootApplication is annotated on a class?
+
+It causes Spring Boot to enable auto-configuration by default.
+
+A seperate ApplicationContext will be created for each class annotated with
+
+
+25. Which two statements are true about REST?
+
+REST is a Protocol
+
+REST is interoperable
+
+
+26. Which tow annotations indicate that the transaction for a transcational test method should be committed after the test method has completed?
+
+@Commit
+
+@Rollback(false)
+
+
+27. Which three statements are advantages of using Spring's Dependency Injection?
+
+Dependency injection reduces the start-up time of an application.
+
+Dependency injection creates tight coupling between components.
+
+Configuration can be externalized and centralized in a small set of files.
+
+
+28. Which two statements about the @Autowired are true?
+
+Mulptiple arguments can be injected into a single method using @Autowired
+
+@Autowired can be used to inject references into BeanPostProcessor
+

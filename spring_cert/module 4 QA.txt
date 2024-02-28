@@ -1,0 +1,325 @@
+Module 4 question 44 See each transaction roll back
+
+Hi, for the exam, it is important to know that after each test, the JPA transaction is roll backed. If you want to see the log , please take a look at the terminate after each test run. You will see a message like this:
+
+...o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test:....
+
+
+
+
+Module 4 question 23 experiment with @ConditionalOnBean
+
+
+Hi, for the exam, we definitely need to understand @ConditionalOnBean.
+
+I did an experiment with this example.
+
+@Configuration
+
+@ConditionalOnJava(JavaVersion.NINE)
+
+//I added this annotation to make sure the container process LocalFileStoreAutoConfiguration first.
+
+@AutoConfigureAfter(LocalFileStoreAutoConfiguration.class)
+
+
+
+public class Java9AutoConfiguration {
+
+    @Bean
+
+    //Since the fileStore bean has been created and exists in the application context, this javaEnvInfo bean can be created.
+
+    @ConditionalOnBean(name="fileStore")
+
+    public JavaEnvInfo javaEnvInfo() {
+
+        return new Java9EnvInfo();
+
+    }
+
+}
+
+
+
+
+Module 4 question 17 replacing the three annotations by one @SpringBootApplication
+
+
+
+Hi, in the exam, we need to know @Configuration + @ComponentScan + @EnableAutoConfiguration  = @SpringBootApplication, just like what the lecture says at the very end.
+
+I modified ApplicationConfiguration class in this example. I put
+
+//@Configuration
+
+//@ComponentScan
+
+//@EnableAutoConfiguration
+
+@SpringBootApplication
+
+public class ApplicationConfiguration{
+}
+
+It still works.
+
+
+
+
+
+Module 4 CommandLineRunner as a @Bean
+
+
+
+Hi, in the exam, we also need to know how to define a CommandLineRunner as a @Bean. I modified question 12 like this:
+
+1. Add DBRunner class:
+
+public class DBRunner implements CommandLineRunner {
+
+     @Autowired
+
+     private JdbcTemplate jdbcTemplate;
+
+  @Override
+
+     public void run(String... args) {
+
+        System.out.println("Fetching employees e-mails");
+
+        jdbcTemplate.queryForList("select email from employee", String.class)
+
+                .forEach(System.out::println);
+
+    }
+
+}
+
+2. Modify SpringBootConsoleApplication into:
+
+@SpringBootApplication
+
+public class SpringBootConsoleApplication{
+
+
+
+    public static void main(String[] args) {
+
+        SpringApplication.run(SpringBootConsoleApplication.class, args);
+
+    }
+
+  @Bean
+
+    public DBRunner dbRunner(){
+
+        return new DBRunner();
+
+    }
+
+
+
+It also works.
+
+
+
+
+Module 4 question 10 @Profile and @PropertySource
+
+
+Hi, for the exam,  I believe it is important to know how to define different properties under different profiles in spring boot.
+
+Let me use the DataWriter in module 1 question 26 as an example. Modify module 4 question 10 using the following steps.
+
+Step 1.  add this class :
+
+public interface DataWriter {
+
+      String getName();
+
+}
+
+Step 2. Add these two classes:
+
+@Component
+
+@Profile("dev")
+
+@Getter
+
+@Setter
+
+@PropertySource("classpath:devData.properties")
+
+@ConfigurationProperties(prefix="writer")
+
+public class DevDataWriter implements DataWriter {
+
+    @Value("${writer.name}")
+
+    private String name;
+
+
+
+}
+
+@Component
+
+@Profile("prod")
+
+@Getter
+
+@Setter
+
+@PropertySource("classpath:prodData.properties")
+
+@ConfigurationProperties(prefix="writer")
+
+public class ProdDataWriter implements DataWriter {
+
+    @Value("${writer.name}")
+
+    private String name;
+
+}
+
+
+
+Step 3 add two different properties files, for example devData.properties file with content writer.name = dev_data_writer; prodData.properties file with content writer.name = prod_data_writer
+
+
+
+Step 4.  public class SpringBootConsoleApplication implements CommandLineRunner {
+
+          ...
+
+   @Autowired
+
+    DataWriter datawriter;
+
+    @Override
+
+    public void run(String... args) {
+
+         ...
+
+        System.out.println(datawriter.getName());
+
+    }
+
+}
+
+Step 5.  Try to edit the configuration of the SpringBootConsoleApplication by adding --spring.profiles.active=prod in the program arguments. Then, run the SpringBootConsoleApplication class.
+
+
+
+
+
+
+
+Module 4 question 7 @PropertySource and logging (important to know for exam)
+
+
+
+Hi, for this exam, we may need to know @PropertySource has no effect on logging. Here are the two quotes
+
+Quote 1.  "The logging system is initialized early in the application lifecycle and as such logging properties will not be found in property files loaded via @PropertySource annotations."
+
+Quote 2. Logging is initialized before the application context is created, so there is no way for @PropertySources to play a role at all. IMO this is the expected behaviour.
+
+Based on these, I modified module 4 question 7's logback example.
+
+Case 1 The default application.properties overrides the logback-spring.xml
+
+1. add a bean to the SpringBootConsoleApplication:
+
+   @Autowired
+
+    DummyBean dummyBean;
+
+   @Bean
+
+    DummyBean dummyBean() {
+
+        loggerForDummy.log(Level.WARNING, "WARN message from creating a   dummy bean");
+
+        loggerF.log(Level.FINE, "FINE Message from creating a dummy bean");
+
+        loggerF.log(Level.FINEST, "FINEST Message from creating a dummy bean");
+
+  DummyBean dummyBean = new DummyBean();
+
+  return dummyBean;
+
+    }
+
+2. In  logback-spring.xml, I log  ALL service f and dummy bean's messages
+
+<root level="WARN">
+
+        <appender-ref ref="CONSOLE"/>
+
+        <appender-ref ref="FILE"/>
+
+        <appender-ref ref="ROLLING-APPENDER"/>
+
+    </root>
+
+    <logger name="app.service.f" level="ALL"/>
+
+   <logger name="app.service.fordummy" level="ALL"/>
+
+3. In application.properties, add a log level for dummy and change f's level to WARN like this:
+
+.....
+
+logging.level.app.service.fordummy=WARN
+
+logging.level.app.service.f = WARN
+
+
+
+Case 1 output overridden by the applicaton.properties
+
+These levels override those in the xml in step 2
+
+app.service.fordummy     : WARN message from creating a dummy bean. app.service.f                       : WARNING Message from serviceF
+
+You can see not ALL loggings for both the bean and servicef are printed.
+
+
+
+Module 4 question 25 control which endpoints to be exposed
+
+
+Hi, in the exam , I believe we may need to know how to specify which endpoints to be exposed in the actuator.
+
+For example, in this example, add these two lines in application.properties:
+
+management.endpoints.web.exposure.include= info, health, beans, loggers, metrics
+
+management.endpoints.jmx.exposure.include = info, health, env, caches
+
+By default info and health are exposed without specifying these two properties.
+
+
+
+
+
+
+
+
+
+
+Module 4 question 8 command line argument properties take precedence
+
+Hi, I believe in our exam, we may need to know command line argument properties takes the precedence over yml and .properties file.
+
+We can run the command like this:
+
+java -jar  module04-question08-2.0.3.RELEASE.jar  --spring.profiles.active=default --app.propertyA=-10
+
+We can see propertyA = -10 in the output.
+
+You will need to fix the pom file in order to run the jar file from command prompt. I've just posted the instructions on another post.

@@ -1,0 +1,167 @@
+1. Do you use Spring in a unit test?
+
+Spring framework is usally not used in unit tests, however Spring contains some support for unit testing within following packages:
+- org.springframework.test.util
+	- RelfectionTestUtils
+		- ORM Entitites related testing - set value for private field, normally handled by ORM
+		- Manual dependency injection into private field, normally handled by @Autowired, @Inject
+		- @PostConstruct and @PreDestroy lifecycle callback methods testing
+	- AopTestUtils - Aspect Oriented Programming related testing
+- org.psringframework.test.web
+ 	- ModelAndViewAssert - Unit Testing for Spring MVC Controllers
+ 		- mock implementations of the Environment and PropertySource
+ 		- MockEnvironment, MockPropertySource
+ - org.springframework.mock.jndi
+ 	- Mock implementation of JNDI SPI - usually used for Java EE
+ - org.springframework.mock.web
+ 	- Servlet API mock objects
+
+Unit Tests should test one unit of functionality in isolation. This unit of functionality can be defined as single method, class, module, component. In OOP unit of functionality is usually defined as single class. 
+All class collaboratoes should be mocked as well. Testing should be performed outside of container, that means that IoC/DI should not be required to create instances of objects under test.
+
+Integration tests should test multiple modules or components that are combined together. Ioc/Di Container is used for this kind of testing, with some simplification upon deployment.
+
+System tests
+- slow, expensive, easy to set system case, hard to test detailed case
+Integration tests
+- medium-to-slow, medium to high cost, details testing is a challenge, easy to test integration between components
+Unit tests
+- fast, cheap, impossible to test integration system case, easy to test detailed case
+
+
+2. What type of tests typically use Spring?
+
+Integration tests are type of tests that typically use Spring. Reason for it because we want to test mulitple components that are combined together.
+
+Annotations for integration testing:
+
+@ContextConfiguration
+	- allows to specify how to load and configure ApplicationContext for integration test
+	- specify @Configuration classes that will be used during ApplicationContext loading
+@BootstrapWith
+	- allows for low level control on how Context for tests is created
+	- used at class level
+@DirtiesContext
+	- marks test as one that modifies state of context, and it means that context should be recreated prior next test execution because otherwise modified context state might affect test execution
+	- when used at class level you can specify following modes:
+		- before_class, before_each_test_method, after_each_test_method, after_class
+	- when used at method level:
+		- before_method, after_method
+@WebAppConfiguration
+	- class-level annotation triggers creation of MockServletContext, which serves as the ServletContext for the test's WebApplicationContext
+	- indicates that ApplicationContext loaded for an integration test should be a WebApplicationContext
+@ContextHieararchy
+	- used when hiearchy of application contexts has to be used for integration test
+@Rollback
+	- class or method annotation that indicates that transaction should be rolled back after test executin
+	- even if @Rollback is not explicitly defined, all transactions under tests will be rolled back by default
+
+
+3. How can you create a shared application context in a JUnit integration test?
+
+Shared application context can be considered as:
+- Sharing context Definition
+- Sharing context Instance
+
+Context definion can be shared between tests in following way:
+- use base class for all tests which will contain @ContextConfiguration and other annotations, like for example @ActiveProfiles etc.
+- use Custom Annotation that will contain context configuration
+- use test configuration that inherits application configuration
+- use base interface for all tests that will contain context configuration
+
+Context Instance is shared by default between all tests, as long as requested context matches one that is already chached.
+Context will be reused as long as @ContextConfiguration (locations, classes, initializers, ...) @ActivePRofiles, @TestPropertySource attributes are matched. To see full list of attributes that needs to be matches you can look at MergedContextConfiguration class that is used as key to ContextCache.
+You can use @DirtiesContext to force Spring to create new instance of context for test
+
+
+4. When and where do you use @Transactional in testing?
+
+When - use @Transactional in testing whenever you want to run some part of the code that can alter state of transactional resource, for example database. Usage of this annotation allows you to mark code that should execute under transaction and allows to rollback all changes made by test, allowing other tests to pick from clear state.
+
+By default, transaction will be rolled-back for each test which was executed with @Transactional annotation.
+
+Where - it can be used:
+	- on top of the class - each test method in class will be executed in transaction
+	- on top of the method - test method will be executed
+
+
+5. How are mock frameworks such as Mockito or EasyMock used?
+
+Mock Framework like Mockito or EasyMock are used mainly during Unit Testing to mock collaborators of classes under test. Mockito or EasyMock can be also used during Integration testing when goal is to check cooperation between objects.
+
+Mock created with Mockito or EasyMock is a dynamic object, which can "pretend" real object and return predefined results when invoking method on it.
+
+
+6. How is @ContextConfiguration used?
+
+@ContextConfiguration is used on top of the class that represents Integration test, and it's purpose is to specify how to load and configure Application Context for integration test
+
+@ContextConfiguration can be used in two basic modes:
+- Annotated classes based approach
+- XML based approach
+
+Additionally @ContextConfiguration also allows you to specify:
+- initializers: list of ApplicationContextInitializer, used within cases that require some programmatic initialization of the application context
+- loader - usually not used and default DelegatingSmartContextLoader is used, if required, this field allows you to specify custom context loader
+- name . name of the context hierarchy level represented by this configuration, only applicable when used within a test class hieararchy configured using @ContextHierarchy
+
+
+7. How does Spring Boot simplify writing tests?
+
+Spring boot simplifies writing tests in following way:
+- provides @SpringBootTest - alternitive to @ContextConfiguration, creates ApplicationContext through SpringApplication, Enables tests Auto-configuration, enables spring boot test features
+- provides @MockBean - easy creation and injection of Mockito mock
+- provides @SpyBean - easy creation and injection of Mockito spy
+- provides @WebMvcTest - useful when test focuses only on Spring MVC components, disables full auto-configuration and applies only configuration relevant to MVC tests
+- provides Web environments:
+	- MOCK (default)
+	- RANDOM_PORT
+	- DEFINED_PORT
+	- NONE
+
+Allows to explicitly use Auto-configuration:
+- @JsonTest - Auto-configured JSON Tests
+- @WebMvcTest - Auto-configured Spring MVC Tests
+- @JdbcTest - Auto-configured JDBC tests
+- @DataJpaTest - auto configured data jpa test
+
+Provides spring-boot-starter-test module:
+- JUnit
+- Spring Test
+- Spring Boot Test
+- AssertJ - fluent assertion library
+- Hamcrest - library of matcher object
+- Mockito - mocking framework
+- JSONassert - an assertion lib for JSON
+- JsonPath - Xpath for JSON
+
+
+8. What does @SpringBootTest do? How does it interact with @SpringBootApplication and @SpringBootConfiguraiton?
+
+@SpringBootTest provides following features over regular Spring Test context:
+	- automatically searches for @SpringBootConfiguration
+		-unless nested @Configuration is detected or explicit @SpringBootTest(classes=...) is specified
+		- in most cases @SpringBootConfiguration is not explicitly used, it is inherited from @SpringBootApplication
+		used in production code to indicate starting place for application
+	- sets default ContextLoader to SpringBootContextLoader
+		- unless one is explicitly specified in @ContextConfiguration(loader=...)
+		- SpringBootContextLoader is specific ContextLoader that starts tests using SpringApplication
+	- provides Web environmets
+		- MOCK
+		- RANDOM_PORT
+		- DEFINED_PORT
+		- NONE
+	- allows to easily define Environment properties
+		- properties field of @SpringBootTest can be used to define key=value pairs that will be added to Environment
+	- Register TestRestTemplate and WebTestClient
+
+
+@SpringBootTest allows you to set following fields:
+	- classes - classes to use for loading an ApplicationContext
+		- if not set @SpringBootTest will automatically search for @SpringBootConfiguration which is inherited from @SpringBootApplication
+	- properties - key=value pairs that will be added to Environment before test execution
+	- webEnvironment - one of specified web environments used for web layer testing
+
+@SpringBootTest interacts with @SpringBootApplication and @SpringBootConfiguration through SpringBootTestContextBootstrapper and SpringBootContextLoader
+
+Goal of SpringBootContextLoader is to transform initial ContextConfiguration to ApplicationContext. SpringBootContextLoader will get as input class annotated with @SpringBootConfiguration, which will be located by SpringBootTestContextstrapper

@@ -1,0 +1,211 @@
+Module 3 question 1 java.lang.Error is also unchecked exception
+
+For the exam, we have to know that java.lang.Error is also an unchecked exception as wells as RuntimeException.
+
+
+Module 3 question 14 , about programmatic transaction
+
+Hi, for the exam, we have to know PlatformTransactionManager has commit() and rollback() methods for programmatic transactions.
+
+In EmployeeDao, I add a programmatic/user-defined transaction:
+
+public void createProgrammaticTrans(){
+
+         TransactionDefinition def = new DefaultTransactionDefinition();
+
+         TransactionStatus status = transactionManager.getTransaction(def);
+
+         try{
+
+             //do a unit of work
+
+             //comment out either one of the following statements and see.
+
+             //transactionManager.commit(status);
+
+             throw new RecoverableDataAccessException("do something wrong");
+
+         }
+
+         catch (DataAccessException e){
+
+              transactionManager.rollback(status);
+
+         }
+
+    }
+
+
+    For the exam,you will need to know programmatic transaction as well as declarative transaction @Transactional. We have to know TransactionCallBack()  and TransactionTemplate.
+
+
+
+You can try this:
+
+// EmployeeDao
+
+  @Autowired
+
+    TransactionTemplate transTemp;
+
+@Autowired
+
+    PlatformTransactionManager transactionManager;
+
+public Object doTransaction(){
+
+        transTemp.setName("MyProgrammaticTransaction");
+
+       return transTemp.execute(new TransactionCallback(){
+
+
+
+            @Override
+
+            public Object doInTransaction(TransactionStatus transactionStatus) {
+
+                System.out.println("Transaction name is " + transTemp.getName());
+
+                try {       throw new RuntimeException();
+
+                }
+
+                catch (Exception e) {
+
+                    System.out.println("something wrong...."); }
+
+                return transactionStatus.isRollbackOnly();
+
+            }
+
+        });
+
+
+
+Call this do Transaction() method in EmployeeService.
+
+
+
+
+Hi, one more note to be aware of. For the exam, we need to know TransactionStatus.setRollbackOnly() to rollback a transaction.
+
+I modified this example:
+
+In EmployeeDao.java, add a this method:
+
+public Object doTransaction(){
+
+        transTemp.setName("MyProgrammaticTransaction");
+
+       return transTemp.execute(new TransactionCallbackWithoutResult(){
+
+
+
+            @Override
+
+            public void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+
+                System.out.println("Transaction name is " + transTemp.getName());
+
+                try {      throw new RuntimeException();
+
+                }
+
+                catch (Exception e) {
+
+                    System.out.println("something wrong....");
+
+                    transactionStatus.setRollbackOnly();
+
+                    System.out.println("Rollback? "+ transactionStatus.isRollbackOnly());
+
+                     
+
+                }
+
+     }
+
+        });
+
+     }
+
+
+
+     One more note we need to know for the exam is PlatformTransactionManager.rollback()  to roll back a programmatic transaction.
+
+In EmployeeDao, add this method:
+
+public Object doTransaction(){
+
+        transTemp.setName("MyProgrammaticTransaction");
+
+       return transTemp.execute(new TransactionCallbackWithoutResult(){
+
+
+
+            @Override
+
+            public void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+
+                System.out.println("Transaction name is " + transTemp.getName());
+
+                try {
+
+                                 throw new RuntimeException();
+
+                }
+
+                catch (Exception e) {
+
+                    System.out.println("something wrong....");
+
+                    transactionManager.rollback(transactionStatus);
+
+                    System.out.println("Transaction completed? "+ transactionStatus.isCompleted());
+
+
+
+                }
+
+     }
+
+        });
+
+
+
+    }
+
+
+
+The output is:
+
+Starting doProgrammaticTransaction
+
+Starting doTransaction
+
+Data Source Trace: Connection javax.sql.DataSource.getConnection()
+
+Transaction name is MyProgrammaticTransaction
+
+something wrong....
+
+Connection Trace: public abstract void java.sql.Connection.rollback() throws java.sql.SQLException
+
+Connection Trace: public abstract void java.sql.Connection.close() throws java.sql.SQLException
+
+Transaction completed? true
+
+Exception thrown from doTransaction: Transaction is already completed - do not call commit or rollback more than once per transaction
+
+Completed doTransaction
+
+Completed doProgrammaticTransaction
+
+
+Module 3 question 28
+
+For the exam, the CrudRepository methods, can be findBySomething or getBySomething or readBySomething.
+
+For example,
+
+In EmployeeDao, if you replace findByFirstName with getByFirstName or readByFirstName, they still work.

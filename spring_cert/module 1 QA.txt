@@ -1,0 +1,319 @@
+Module 1 question 10, singleton has dependency on prototype
+
+Hi everyone, for the exam, you will know when a singleton depends on a prototype, the prototype bean is always the same instance.  In this case, the prototype bean is just like a singleton. To fix this issue, we have to use @Lookup method to inject method like this:
+
+@Component
+
+public  class SpringBean1 {
+
+  @Autowired
+
+    SpringBean2 springbean2;
+
+  public SpringBean1(SpringBean2 sp2){
+
+        springbean2 = sp2;
+
+    }
+
+   @Lookup
+
+//To inject a different prototype spring bean 2 whenever spring bean 1 is requested.
+
+    public SpringBean2 getSpringBean2(){
+
+        return null;
+
+    }
+
+}
+
+To write a unit test, inject @Autowired ApplicationContext context,
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes=ApplicationConfiguration.class)
+public class RunnerTest {
+    @Autowired
+    ApplicationContext context;
+ 
+    @Test
+    public void testBeanInstances(){
+        SpringBean1 sb1 = context.getBean(SpringBean1.class);
+        SpringBean1 sb1_1 = context.getBean(SpringBean1.class);
+        //Spring Bean 1 is singleton.
+        assertEquals(sb1, sb1_1);
+        SpringBean2 sb2 = sb1.getSpringBean2();
+        SpringBean2 sb2_1 = sb1_1.getSpringBean2();
+         //Now, different instances of prototype spring bean 2 are injected into singleton spring bean 1. 
+        assertNotEquals(sb2, sb2_1);
+    }
+ 
+}
+The test pass.
+
+
+Also, for the exam, this is important to know: instead of using @RunWith(SpringJUnit4ClassRunner.class) to autowire ApplicationContext, use this:
+
+@ContextConfiguration(classes=ApplicationConfiguration.class)
+
+public class RunnerTest extends AbstractJUnit4SpringContextTests{....}
+
+
+Module 1 question 10 destroying prototype bean ourselves
+
+
+we have to know that the container will destroy singleton bean when it  shuts down. But the container won't destroy prototype beans when it shuts down. To prove this, add @PreDestroy method in SpringBean 1 and SpringBean3 respectively. You can see the @PreDestroy method of Spring Bean 3 is not called.
+
+But for the exam, we have to know that we can implement BeanPostProcessor to keep track of every prototype bean and implement DisposableBean to clean up prototype bean. I found an example from Stackoverflow. Modify SpringBean3 to implement DisposableBean.
+
+@Component
+
+public class DestroyBPP implements BeanPostProcessor, BeanFactoryAware, DisposableBean {
+
+private BeanFactory beanFactory;
+
+private final List<Object> prototypeBeans = new LinkedList<>();
+
+@Override
+
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+
+        return bean;
+
+    }
+
+
+
+    @Override
+
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+
+
+
+        if (beanFactory.isPrototype(beanName)) {
+
+            synchronized (prototypeBeans) {
+
+                prototypeBeans.add(bean);
+
+                System.out.println(" how many prototype bean? " + prototypeBeans.size());
+
+  }
+
+        }
+
+        return bean;
+
+    }
+
+
+
+    @Override
+
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+
+        this.beanFactory = beanFactory;
+
+    }
+
+
+
+    @Override
+
+    public void destroy() throws Exception {
+
+        synchronized (prototypeBeans) {
+
+            for (Object bean : prototypeBeans) {
+
+                if (bean instanceof DisposableBean) {
+
+                    DisposableBean disposable = (DisposableBean)bean;
+
+                    try {
+
+                        disposable.destroy();
+
+                    } catch (Exception e) {
+
+                        e.printStackTrace();
+
+                    }
+
+                }
+
+            }
+
+
+
+            prototypeBeans.clear();
+
+            System.out.println("Prototype Bean is clear");
+
+        }
+
+    }
+
+}
+
+
+
+Module 1 question 32 setDefaultProperties
+
+The exam may ask you something about SpringApplication's setDefaultProperties method. Here is an example based on SprinBean.
+
+In the SpringBoot's main class, I add the following. Add getter for localhostAddress and output it in the main application. It will print out the local host address
+
+//In SpringBoot's main class:
+public static void main(String[] args) {
+    //Instead of calling the static method, create a SpringApplication instance and override the default properties
+    //SpringApplication.run(SpringBootConsoleApplication.class, args);
+    SpringApplication application = new SpringApplication(SpringBootConsoleApplication.class);
+    Properties defaults = new Properties();
+    defaults.put("localhost", "127.0.0.1");
+    application.setDefaultProperties(defaults);
+    application.run(args);
+}
+__________________________________________________________________________________________________________________________________________________________________
+In the SpringBean, add this:
+   @Value("${localhost}")
+    private String localhostAddress;
+
+
+Module 1 question 24
+
+ want to add one more note which is quite important for the exam. I add JsonStoreDataDao without annotating it with @Profile like this:
+
+@Component
+
+//no profile is defined for this class
+
+public class JsonStoreDataDao implements FinancialDataDao{ ...}
+
+When the current active profile is set to either file ,what will happen?
+
+The answer is it will throw an exception because the container finds two qualifying beans one is the JsonStoreDataDao, another one is FileStoreDataDao.
+
+The reason is the JsonStoreDataDao is available regardless what active profile is.
+
+One trick is adding @Primary to FileStoreDataDao.  When the container cannot decide which bean to pick either FileStoreDataDao or JsonStoreDataDao, the container will pick the one annotated with @Primary.
+
+
+Module 1 question 16 : more about autowire an array of Records
+2 upvotes
+
+
+For the exam, we need to know @Autowired can autowire an array of all beans of a particular type.
+
+I modified the example, by adding:
+
+@Autowired
+
+private RecordsReader[] readers;
+
+
+
+In the @PostConstruct, try to print each element in readers. You will see all the beans implementing RecordsReader are printed.
+
+
+
+About CommonAnnotationBeanPostProcessor
+
+
+For the exam, CommonAnnotationBeanPostProcessor needs to be registered with the container in order to use @PostConstruct/@PreDestroy .
+
+If you are using Java 8 or less, in the bean config xml, we need to put either:
+
+1. <context:annotation-config>
+
+2.<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
+If you are using Java 9 or above, we don't need to specify this. All we can do is to add this dependency:
+
+<dependency>     <groupId>javax.annotation</groupId>     <artifactId>javax.annotation-api</artifactId> </dependency>
+
+
+
+Module 1 question 16 @Qualifer can be used with a collection
+
+For the exam, we have to know @Qualifier can be applied to a collection, such as a Set.
+
+For example, in this question, I modified the code:
+
+//In reader package
+
+public class DigitalRecordsReader {
+
+}
+
+//In ApplicationConfig:
+
+@Bean
+
+   @Qualifier("animated")
+
+    public Set<DigitalRecordsReader> animatedReadersSet(){
+
+        Set<DigitalRecordsReader> dgSet = new HashSet<>();
+
+        DigitalRecordsReader reader0 = new DigitalRecordsReader();
+
+        DigitalRecordsReader reader1 = new DigitalRecordsReader();
+
+        dgSet.add(reader0);
+
+        dgSet.add(reader1);
+
+        return dgSet;
+
+   }
+
+
+
+    @Bean
+
+    @Qualifier("non-animated")
+
+    public Set<DigitalRecordsReader> staticReadersSet(){
+
+        Set<DigitalRecordsReader> dgSet = new HashSet<>();
+
+        DigitalRecordsReader reader0 = new DigitalRecordsReader();
+
+        DigitalRecordsReader reader1 = new DigitalRecordsReader();
+
+        dgSet.add(reader0);
+
+        dgSet.add(reader1);
+
+        dgSet.add(new DigitalRecordsReader());
+
+        return dgSet;
+
+    }
+
+
+
+//In RecordService01,
+
+@Autowired
+
+    @Qualifier("non-animated")
+
+    private Set<DigitalRecordsReader> dgreaders ;
+
+
+
+@PostConstruct
+
+    public void init() {
+
+        System.out.println(
+
+                ... getClass().getSimpleName() + " dgreaders set= " + dgreaders +  "set size "+ dgreaders.size() + "\n"
+
+
+
+  }
+
+The output for the set size is 3 as the non-animated set is injected.

@@ -1,0 +1,92 @@
+Module 2 question 5 about @AfterThrowing's throwing attribute
+
+For the exam or practice, we have to know that @AfterThrowing's advice specified what type of exception can trigger this advice.
+
+For example, modify this example in this way:
+
+//The aspect   
+
+@AfterThrowing(value = "serviceOrSamePackageRepository()", throwing = "exception")
+
+    public void afterThrowing(JoinPoint joinPoint, SecurityException exception) {
+
+        ....
+
+    }
+
+//The EmployeeRepository
+
+public Employee findEmployeeById(long id) {
+
+        if (id == -1)
+
+            throw new IllegalArgumentException("id cannot be -1");
+
+        if (id == -100)
+
+            throw new SecurityException("ID 100 causes security exception");
+
+   }
+
+The result is that :
+
+1. when the employee id = -1,  @AfterThrowing is not triggered.
+
+2. when the employee id = -100,  @AfterThrowing is triggered.
+
+
+
+Module 2, ProceedingJoinPoint proceed
+
+
+For the exam, we may need to know that in the @Around method, it is valid to called the proceed() method as many times as you want. (I know most books only call it once for the purpose of demo.)
+
+Also, it is valid to replace the object returned from proceed() in this way:
+
+try{
+
+        Object result = joinPoint.proceed();
+
+         //replace result by a new Object instance.
+
+         return new Object();
+
+}
+
+catch (....){ ...}
+
+finally { ....}
+
+}
+
+
+
+Module 2 question 8 , an Exception is thrown in the @Before advice method
+
+Hi, for the exam , we have to know that if an exception is thrown in @Before advice method, the adviced method is never called.
+
+In this example, you can try to do:
+
+@Before("execution(* com..HelloBean.formatData(..))")
+
+    public void beforeHelloBean(JoinPoint joinPoint) {
+
+        System.out.println("HelloBeanAspect::beforeHelloBean <- start");
+
+     ....
+
+        throw new RuntimeException("An exception occurs in the before advice.");
+
+    }
+
+You will see the formatData is never called.
+
+However, the @After and @AfterThrowing are still intercepted.
+
+
+
+Module 2 question 6, @EnableAspectJAutoProxy enables @AspectJ
+
+For the exam, we need to know @EnableAspectJAutoProxy actually enables @AspectJ. Spring AOP actually reuses AspectJ's annotations.   
+
+Pay attention to @Aspect annotation. It is from AspectJ API.

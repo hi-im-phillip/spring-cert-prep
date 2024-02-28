@@ -1,0 +1,462 @@
+1. What is the difference between checked and unchecked exceptions? Why does Spring prefer unchecked exceptions?
+What is the data access exception hierarchy?
+
+Checked exception - exception that is extending java.lang.Exception class that has to be explicitly declared in throws
+part of method signature of method that is throwing an exception and has to be explicitly handled by code that invokes the method.
+If code that si calling the method with checked exception does not handle exception, it has to declare it in throws part of method signature.
+
+Pros
+- Developer using API always has a list of exceptional situations that has to be handled
+- Fast compile-time feedback on check if all exceptional situations were handled
+Cons 
+- May result in cluttered code
+- Coupling between callee and caller
+
+Unchecked exception - Exception that is extending RuntimeException class, does not have to be explicitly declared in throws part of method signature of 
+method that is throwing an exception and does not have to be explicitly handled by code that invokes the method. Developr has freedom of choice if error
+handling should be implemented or not.
+
+Pros
+- Reduces cluttered code
+- Reduces coupling between callee and caller
+Cons
+- May result in missing situations in which error handling should be implemented
+- Lack of compile-time feedback on error handling
+
+
+Data Access Exception is a runtime exception
+Examples of concrete Data Access Exceptions
+- CannotAcquireLockException
+- CannotcReateRecordException
+- DataIntegrityViolationException
+
+DataAccessException -> NestedRuntimeExc -> RuntimeExc -> Exc -> Throwable -> Serializable
+
+2. How do you configure a DataSource in Spring? Which bean is very useful for development/test databases?
+
+Configuration of Data Source in Spring is dependent on type of application that is executed.
+
+Type of execution:
+- Standalone: Data source is configured in @Configuration class and is created as a bean of one of supported data source types
+- Spring Boot: Data Source is configured through application.properties
+- Application Server: Data source should be fetched from JNDI via JndiDataSourceLookup / JndiTemplate, application server is responsible for creating
+and managing data source requested in resources configurations of deployment descriptors
+
+When working with development/test databases, following beans are very useful:
+- EmbeddedDatabaseBuilder - allows to easily configure H2/HSQLDB embedded database with schema/data initialization scripts
+- DataSourceInitializer / ResourceDatabasePopulator - allows to use schema/data initialization scripts without usage of EmbeddedDatabaseBuilder
+
+
+3. What is the Template design pattern and what is the JDBC template?
+
+Template design pattern is a behavioral design pattern that can be used to encapsulate algorithm/main flow with it steps in a way to achieve steps customization
+and shared code reusability. It is achieved by creating abstract class that contains algorithm definition/main flow with shared code, and child classes extending
+abstract class which are customizing step or steps of the algorithm.
+
+Template design pattern can be used to achieve greater code reusability, however since it is using inheritance, which is very strong relationship between classes
+it can limit future flexibility of the system. You should use this patter with caution and you should analyze if strategy design pattern will not give you similiar results. Strategy uses composition instead of inheritance and in some cases instead of using template method, strategy can be used to achieve code reusability and also code flexibility.
+
+Jdbc template is a class located in org.springframework.jdbc.core package. Goal of this class is to simplify use of JDBC by providing implementation of JDBC workflow, leaving application to provide SQL statements and results extraction.
+
+Jdbc Template executes SQL queries or updates, initiates iteration over ResultSet, ResultSet mapping, also it catches exception and translates them into generic exceptions.
+
+Code that interacts with Jdbc template needs to provde implementation of callback interfaces which allows specific steps of jdbc workflow customization:
+- PreparedStatementCreater
+- ResultSetExtractor
+- PreparedStatementSetter
+- RowMapper
+
+
+4. What is a callback? What are the three JdbcTemplate callback interfaces that can be used with quieries? 
+What is each used for?
+
+A callback is a code or reference to the code that can be passed as an argument to the method. This method will execute passed callback during execution.
+
+On Java level callback can be:
+- Class that implements interface
+- Anonymous class
+- Lambda expression
+- Reference Method
+
+Jdbc template callbacks that can be used with queries:
+- RowMapper - interface for processing ResultSet data on per-row basis, implementation should call ResultSet.get*() methods, but should not call ResultSet.next(), it should only extract values from current row and based on those values should create object, which will be returned from mapRow method, implementation is usaully stateless
+
+- RowCallbackHandler - interface for processing ResultSet data on a per-row basis, implementation should call ResultSet.get*() methods, but should not call ResultSet.next(), it should only extract values from current row, implementation is usually stateful, it keeps accumulated data in some object, processRow method from this class does not return any value, instead method saves results into for example object field that will keep state
+
+- ResultSetExtractor - interface for processing entire ResultSet data, all rows needs to be processed and implementation should call ResultSet.next()
+method to move between rows, implementation is usually stateless, implementation should not close ResultSet, it will be closed by Jdbc template
+
+Jdbc template other callbacks:
+- PreparedStatementCreator - should create PreparedStatement based on Connection provided by Jdbc template
+- PreparedStatementSetter
+- CallableStatementCreator
+- PreparedStatementCallback
+- CallableStatementCallback
+
+
+5. Can you execute a plain sql statement with the jdbc template?
+
+Yes, jdbc template allows execution of plain sql statements with following methods:
+- query
+- queryForList
+- queryForObject
+- queryForMap
+- queryForRowSet
+- execute
+- update
+- batchUpdate
+
+
+6. When does the JDBC template acquire (and release) a connection, for every method called or once per template? why?
+
+Connection lifecycle in jdbc template depeneds on transaction being involved or not.
+
+If jdbc template is used without transaction, then connection is acquired and released for every method call. Reason for this strategy, is to minimize amount of time when resource (connection) has to be held.
+
+If jdbc template is used tohether with transaction, then DataSourceUtils which is using TransactionSynchronizationManager will reuse connection between method calls as long as transcation is not commited or rolled back. Reason for this strategy is that connection cannot be closed when transcation is in progress, since closing connection would also rollback any changes made.
+
+Jdbc template uses getConnection() method from DataSource class through DataSourceUtils class. If DataSource is plain Jdbc connection source, then connection is actually opened/closed, however if connection pool, like DBCP or C3PO is used, then connection is not being opened/closed, however it is acquired or released from/to the pool.
+
+
+7. How does the JdbcTemplate support generic queries? How does it return objects and lists/maps of objects?
+
+Jdbc template supports generic queries with following methods:
+- queryForObject - returns single object, expects query to return only one record, if this requirement is not matched
+IncorrectResultSizeDataAccessException will be thrown
+- queryForList - returns list of objects of declared type, expects query to return results with only one column, otherwise 
+IncorrectResultSizeDataAccessException will be thrown
+- queryForRowSet - returns SqlRowSet object that contains metadata information (like column names) and allows to read results data nad iterate through records
+
+Jdbc template returns objects, lists/map by using following:
+- objects - queryForObject - SingleColumnRowMapper for generic types and RowMapper for custom types
+- lists - queryForList - SingleColumnRowMapper for generic types
+- maps - queryForMap - ColumnMapRowMapper for any query
+
+
+8. What is a transaction? What is the difference between a local and global trasnaction?
+
+Transaction is an operation that consist of series of tasks, in which all of those task should be performet, or none of the tasks should be performed. Those tasks are being treated as one unit of work. If all tasks in transaction are successful, changes made by those tasks are preserved, if at least one of the tasks is unsuccessful, changes made by tasks that were already completed will be reverted and any tasks awaiting execution will not be executed.
+
+Transaction should follow ACID principle:
+- Atomicity - All changes are applied or none changes are applied
+- Consistency - system should go from one valid state to other valid state, any constrainsts on data should never be left in invalid state
+- Isolation - one transaction cannot affect other one, concurrent execution of transaction should leave system in the same state as if sequential execution of transaction would be performed
+- Durability - guarantees that if transaction has been committed, data will be preserved, even in case of system/power failure
+
+Global transaction is a kind of transaction that spans multiple transactional resources. Those resources can be anything, but usually include databases (can be more than one) and queues. In Java, popular standard for managing global transaction is JTA, which is an API for using transaction system provided by Application server.
+
+Local transaction are resource specific transaction, they do not span across multiple transactional resources. Local transactions are much simpler than global transaction however main disadvatages is lack of ability to treat series of tasks dealing with multiple transactional resources such as databases and queues as single unit of work.
+
+
+9. Is a transaction a cross cutting concern? How is it implemented by Spring?
+
+Transaction is a cross cutting concern and in Spring it is implemented with usage of @Transactional annotation.
+
+If @Transactional is present on top of the method or entire class, then each call to the method in the class will be proxied by TransactionalInterceptor and TransactionalAscpectSupport classes. Those classes will interact with PlatformTranscationManager to commit transaction upon successsful method execution or rollback upon exception. Exact behavior will be dependent on transaction propagation and isolation level settings, which can be set in @Transactional annotation.
+
+
+10. How are you going to define a transaction in Spring? What does @Transactional do? What is the PlatformTransactionManager?
+
+To use transactions in Spring Framework, you need to:
+- Enable transaction management by using @EnableTransactionManagement annotation on top of your Configuration class
+- Create bean method in configuration class that will return bean implementing interface PlatformTransactionManager, example of transactions managers:
+- DataSourceTransactionManager
+- JtaTransactionManager
+- JpaTransactionManager
+
+- Use @Transactional annotation on top of classes or methods that should involve transaction management
+
+@Transactional can be used on top of classes or methods to enable transaction management for entire class or method. When method is called, invocation is proxied by TransactionInterceptor and TransactionAspectSupport which are using PlatformTransactionManager to manage transaction.
+
+Transaction is being started at the beginning of the method and it is being commited at the end of successful execution. Transaction can be rolled back upon exception being thrown. This behavior is dependent on transaction propagation type.
+
+@Transactional annotation allows you to configure following attributes:
+- Transaction Manager
+- Isolation Level
+- Propagation Type
+- Timeout for Transaction
+- Read only Transaction
+- Define which exception types will cause transaction rollback
+- Define which exception types will not cause transaction rollback
+
+PlatformTransactionManager is an interface that is used by declarative Spring's AOP Transaction Management to create, commit and rollback transactions.
+
+PlatformTransactionManager contains following methods:
+- getTransaction - returns currently active transaction or creates new one
+- commit - commits transaction, or rolls back transaction if it was makred for rollback
+- rollback - performs rollback of transaction
+
+
+11. Is the Jdbc template able to paricipate in an existing transaction?
+
+Yes, Jdbc template is able to participate in existing transaction. It will support both, transaction created with @transactional and also programmatically created transaction.
+
+Jdbc template is able to participate in existing transaction by usage of DataSourceUtils and TransactionSynchronizationManager.
+TransactionInterceptor and TransactionAspectSupport are also using PlatformTransactionManager together with DataSourceTransactionManager which will set transaction in TransactionSynchronizationManager for Jdbc Template to reuse.
+
+
+12. What is a transaction isolation level? How many do we have and how are they ordered?
+
+Transaction isolation determines how changes made under one transaction are visible in other transactions and other users of the system. Higher isolation level means that changes from one transaction are not visible and lower isolation level means that changes from one transaction may slip into selects executed under other transaction.
+
+Higher transaction isolation level make data being visible in more consistent way, lower transaction isolation level makes data less consistent but increases overall throughput and concurrency of the system.
+
+Three challenges that may occur due to Transaction isolation level:
+- phantom read
+- non repeatable read
+- dirty read
+
+Phantom read:
+- Transaction A - first read
+	- select * from person where id between 5 and 10
+- Transaction B - write
+	- inser into person values(7, 'test', 'test');
+- Transaction A - second read
+	- select * from person where id between 5 and 10
+
+High isolation level will make second read returning same values as first read, lower isolation level will include new row with id 7 in second read
+To prevent phantom read, you need to pick isolation level that uses range locks.
+
+
+Non-repeatable read:
+- Transaction A - first read
+	- select * from person where id = 5
+- Transaction B - write & commit
+	- update person set last_name = 'Doe' where id = 5
+- Transaction A - second read
+	- select * from person where id = 5
+
+High isolation level will make second read returning same values as first read, lower isolation level will read new values for record 5
+To prevent non repeatable reads you need to use isolation level that uses read-write locks on data being processed
+
+
+Dirty read:
+- Transaction A - first read
+	- select * from person where id = 5
+- Transaction B - write (commit does not have to happen)
+	- update person set last_name = 'Doe' where id = 5
+- Transaction A - second read
+	- select * from person where id = 5
+
+High isolation level will make second read returning same values as first read, lower isolation level will read new values for record 5, even if Transaction B will not commit the data.
+
+To prevent dirty reads you need to use isolation level that prevents uncommitted changes by other transaction being visible in your transaction.
+
+
+Most relational databases support 4 transaction levels:
+- Serializable:
+	- Highest isolation level
+	- read-write locks held until end of transaction
+	- range locks held until end of transaction
+	- not possible: phantom read, non-repeatable read, dirty read
+	- concurency: very poor
+- Repeatable read
+	- read-write locks held until end of transaction
+	- not possible: non repeatable read, dirty read
+	- concurrency: poor
+- Read commited
+	- read locks held until ned of select statement
+	- write locks held until end of transaction
+	- not possible: dirty read
+	- concurrency: good
+- Read uncommited
+	- lowest isolation level
+	- it is possible to see changes from other transactions that are not commited
+	- not possible -
+	- concurrency: very good
+
+13. What is @EnableTransactionManagement for?
+
+Annotation is used on top of @Configuration class to enable annotation-driven transaction management by @Transactional annotation in Spring framework.
+
+When @EnableTransactionManagement is used, TransactionalInterceptor and TransactionAspectSupport will be used to proxy each call to @Transactional class or 
+method, which will use PlatformTransactionManager to manage transaction.
+
+@EnableTransactionManagement allows to specify following values:
+- mode - set advice mode for @transactional, indicates how calls to methods should be intercepted, PROXY is default mode, you can switch it to more advanced ASPECTJ weaving advice, which supports local calls
+- order - indicates order of advice execution when more then one advice applies to @Transactional join point
+- proxyTargetClass - indicates whether CGLIB Proxy classes should be created or if JDK Proxies should be created, this field is used only when Mode is set to Proxy
+
+
+14. What does transaction propagation mean?
+
+Transaction propagation defines how existing transaction is re-used when calling @Transactional method with transaction already running.
+
+Transaction propagation can be defined in annotation in propagation field as one of following:
+- REQUIRED - support a current transaction, create a new one if none exists
+- SUPPORTS - support a current transaction, execute non-transactionally if none exists
+- MANDATORY - support a current transaction, throw an exception if none exists
+- REQUIRES_NEW - create a new transaction, and susped the current transaction if one exists
+- NOT_SUPPORTED - execute non-transactinally, susped the current transaction if one exists
+- NEVER - execute non transactinally, throw exception if a transaction exists
+- NESTED - execute within a nested transaction if a current transaction exists, behave lik required else
+
+
+15. What happends if one @Transactional annotated method is calling another @Transactional method on the same object instance?
+
+Jdk proxy and cglib proxy in spring beans AOP do not support self invocation, so when one method with @Transactional calls different method with @Transactional from the same class, nothing happends, transaction interceptor will not be called.
+
+To enable self invocation support, you need to configure Spring Aspects with AspectJ, to do that you need to:
+- have dependancy to spring-aspects
+- include aspectj-maven-plugin
+- configure transaction support with: @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
+
+
+16. Where can the @Transactional be used? What is a typical usage if you put it at class level?
+
+@Transactional can be used on top of class or method, in classes or interfaces.
+
+If used on top of class, it applies to all public methods in this class.
+
+If used on top of method, it needs to have public access modifier, otherwise transaction management will not be applied
+
+
+17. What does declarative transaction management mean?
+
+Declarative transaction management means that instead of handling transactions manually through the code, methods which should be executed in transactions are declared with @Transactional annotation.
+
+
+18. What is the default rollback policy? How can you override it?
+
+Default rollback policy in Spring Framework is set to automatic rollback, but only when unchecked exception is being thrown from the method annotated wtih @Transactional. When checked exception is being thrown from the method, transaction is not being rolled back.
+
+You can override this policy by setting rollbackFor | rollbackForClassName or noRollbackFor | noRollbackForClassName field in @Transactional.
+
+19. What is default rollback policy in a JUnit test, when you use the @RunWith(SpringJUnit4ClassRunner.class) in JUnit 4 or @ExtendWith(SpringExtension.class) in JUnit 5, and annotate your @Test method with @Transactional?
+
+Default rollback policy in @Test methods with @Transactinal is always rollback. This means that after test execution transaction will always be rolled back. The reason for this is that each test method should be able to change state of database or call other classes that will change state of the database, however for the tests to be repeatable, changes should be reverted after @Test method execution.
+
+You can change this behavior by using @Rollback set to false.
+
+
+20. Why is the term "unit of work" so important and why does JDBC AutoCommit violate this pattern?
+
+Unit of owrk is a generic term to describe, set of tasks that are performing some changes needs to be performed, or no changes should be performed at all.
+
+In Relational Databases, Unit of Work can be represented by Database Transaction, which Atomic nature describes "all-or-nothing" behavior described above.
+
+In context of JPa|Hibernate, Unit of work tracks all changes made to the data Objects representing entries in the database, and once done, ORM figures out all changes that needs to be applied to the database. This way amount of calls to the database can be minimized by aggregating all changes into one call.
+
+Jdbc AutoCommit violates Unit of Work, because it makes every SQL statement being invoked in a separate transaction that is committed after SQL is executed, this makes impossible to implement Unit of Work consisting of multiple SQL operations.
+
+
+21. What do you need to do in Spring if you would like to work with JPA?
+
+Following steps are required to work with JPA in Spring Framework:
+- Declare maven dependencies:
+	- JPA API - javax.persistance
+	- SPring ORM - org.springframework
+	- ORM of your choice - org.hibernate:hibernate-core
+	- Database Driver - org.hsqldb
+	- Optionally, Spring Data JPA - org.springframework.data
+- Define DataSource Bean
+- Define PlatformTransactionManager, in case of JPA JpaTransactionManager
+- Define EntityManagerFactoryBean
+	- LocalContainerEntityManagerFactoryBean for standalone application
+	- EntityManagerFactory from JNDI
+	- LocalEntityManagerFactoryBean for Test purposes
+- Define @Entity classes with at least on @Id field
+- Define DAO classes, or use Spring Data JPA repositories
+
+
+22. Are you able to participate in a given transaction in Spring while working with JPA?
+
+Yes, JPA in Spring uses JpaTransactionManager, which supports cases when DataSource is used directly, so it allows mixing JPA and JDBC code under one transaction.
+
+When using Spring Framework on Java EE platform, it is possible to reuse existing transaction as well by using JtaTransactionManager, which will delegate transaction management to Java EE container.
+
+
+23. Which PlatformTransactionManager can you use with JPA?
+
+JPA can work with following transaction managers:
+- JpaTransactionManager - recommend when working with one database and one Entity Manager
+- JtaTransactionManager - recommended when working with multiple databases and Entity Managers, or when working with multiple databases and other transactional resources, for example one transaction needs to span DAtabase and JMS Topic
+
+Usage of JpaTransactionManager in case of multiple Databases / Transaction Resources / Entity Managers will cause each transaction, span only one resource, this is why JtaTransactionManager is required in this case.
+
+Multiple Databases / Entity Managers Scenario with incorrectly used JpaTransactionManager for this case use JtaTransactionManager
+
+
+24. What do you have to configure to use JPA with Spring? How does Spring Boot make this easier?
+
+Following steps are required to work with JPA in Spring Framework:
+- Declare maven dependencies:
+	- JPA API - javax.persistance
+	- SPring ORM - org.springframework
+	- ORM of your choice - org.hibernate:hibernate-core
+	- Database Driver - org.hsqldb
+	- Optionally, Spring Data JPA - org.springframework.data
+- Define DataSource Bean
+- Define PlatformTransactionManager, in case of JPA JpaTransactionManager
+- Define EntityManagerFactoryBean
+	- LocalContainerEntityManagerFactoryBean for standalone application
+	- EntityManagerFactory from JNDI
+	- LocalEntityManagerFactoryBean for Test purposes
+- Define @Entity classes with at least on @Id field
+- Define DAO classes, or use Spring Data JPA repositories
+
+Spring Boot simplifies JPA setup by:
+- Providing spring-boot-starter-data-jpa dependency which includes all required dependencies
+- Providing auto-configuration for JPA
+- Automatically defines PlatformTransactionManager, EntityManager and other required beans
+- Allows Data Source to be configured via properties
+- Provides out-of-the-box support for Hikari Connection Pool
+- Automatically creates DAO beans for Repositories.
+
+
+25. What is a Repository interface?
+
+Repository interface is a Java interface that describes Dao with expected behaviors, based on which Spring Data will automatically generate Dao logic. Repository interface takes Domain class and ID type to manage.
+
+Custom repository interface needs to extend one of following interface:
+- Repository - basic marker repository
+- CrudRepository - adds generic methods for CRUD operations
+- PagingAndSortingRepository - adds findAll methods for paging/sorting
+- JpaRepository - JPA specific extension of Repository
+
+
+26. How do you define Repository interface? Why is it an interface not a class?
+
+To define Repository interface, you need to follow those steps:
+- Create Java interface that extend one of: Repository, CrudRepository, PagingAndSortingRepository, JpaRepository
+- Create class with @Entity
+- Insde @Entity class create a simple primary key with @Id or create a class that represent complex key with @EmbeddedId at field level and @Embeddable at key class definition level.
+- Use @EnableJpaRepositories to point out package to scan for Repositories
+
+Repositories interface is an interface, not a class for Spring DAta to be able to use JDK Dynamic Proxy to intercept all calls to repository and also to allow creation of custom base repositories for every Dao based on SimpleJpaRepository configured at @EnableJpaRepositories level
+
+
+27. What is the naming convention for finder methods in a Repository interface?
+
+find[limit]By[property/properties expression][comparison][ordering operator]
+
+limit - result of the query can be limited by usage of first/top keyword
+- findFirst10ByLastName
+
+property/properties expression - result will be filtered based on property of entity, multiple properties can be used with usage of And, Or keyword
+- FindByLastnameOrFirstname
+
+comparison - comparison mode can be specified after specify property used for filtering
+- findByStartDateBetween
+
+ordering operator - optionally you can specify ordering operator at the end of method name
+- findByLastnameorderByFirstnameDesc
+
+
+28. How are Spring Data repositories implemented by Spring at runtime?
+
+Spring Repositories are implemented at runtime by SimpleJpaRepository by default.
+
+When application context is starting up, Spring will scan for all classes annotated with @Configuration.
+When @Configuration class with @EnableJpaRepositories will be detected, JpaRepositoriesRegistrar with JpaRepositoryConfigExtension will be used to create beans for repositories in packages pointed out by basePackges field in @EnableJpaRepositories. JpaRepositoryFactoryBean will use JpaRepositoryFactory to create beans based on bean definitions and by default will create instance of SimpleJpaRepository class for each Repository interface.
+
+Class used implementation of Repository interface can be customized on: 
+- Global level, by using repositoryBaseClass field from @EnableJpaRepositories 
+- Single Dao/Repository by creating separate interface and Impl class for behavior that you want to customize
+
+
+29. What is @Query used for?
+
+@Query can be used on top of Repository method and with it you can specify query that should be used by JPA. When declaring one on top of finder method, specified query will be used, instead of generating one automatically based on finder method name.
+
+Using @Query allows you to achieve more control and flexibility of the JPA query that will be executed.
