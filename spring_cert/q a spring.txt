@@ -187,3 +187,414 @@ Mulptiple arguments can be injected into a single method using @Autowired
 
 @Autowired can be used to inject references into BeanPostProcessor
 
+
+
+29. Which three statements are advantages of using Springs Dependency Injection?
+
+Dependency injection reduces the start up time of an application
+
+Creates tight coupling between components
+
+Configuration can be externalized and centralized in a small set of files
+
+
+30. Which two statements about @Autowired annotations are true?
+
+Multiple arguments can be injected into a single method using @Autowired
+
+@Autowired can be used to inject references into BeanPostProcessor
+
+
+31. Whar are the main advantages for using Spring when writing integration tests?
+
+Reuse Spring configuration files of the application
+
+Be able to use the rollback after the test pattern
+
+Use dependency injection
+
+
+32. What could not return a Spring MVC controller?
+
+An absolute path to the view
+
+
+33. What is right about the Spring test module?
+
+It provides an abstraction layer for the main open source mock frameworks
+
+Provides the @Mock annotation
+
+It dynamically generates mock objects
+
+All of the above
+
+None of the above - Correct
+
+
+34. What provides Spring boot?
+
+Support for Jetty and Undertow as embedded containers
+
+Auto-configuration of the Spring Framework and third libraries
+
+Convenient dependency descriptors to load transitive dependencies
+
+
+35. Assuming @Transactional annotation support is enabled and the transferMoney method is called through a Spring AOP proxy, what is the behavior of the following code sample?
+
+@Transactional(propagation=Propagation.REQUIRED)
+public void transferMoney(Account src, Account target, double amount) {
+add(src, -amount);
+add(src, amount);
+}
+
+@Transactional(propagation=Propagation.REQUIRES_NEW)
+public void add(Account account, Double amount) {
+// IMPLEMENTATION
+}
+
+The add() method uses the transaction of the transferMoney() method
+
+
+36. Select one or many correct answers about Spring bean life cycle.
+
+The method annotated with @PostConstruct is called before the afterPropertiesSet callback method of the InitializingBean interface
+
+Incorrect:
+
+The method annotated with @PostConstruct is called after bean instantiation and before properties setting of the bean
+
+The method @PreDestroy of a prototype bean is called when the bean is garbage collected
+
+1. The init() method declared in the init-method attribute of a bean is called before the afterPropertiesSet callback method of the InitializingBean interface
+
+
+37. Using the Spring AOP framework, what is the visibility of the method matches by the following join point?
+
+@Pointcut("execution(* *(..))")
+private void anyOperation() {};
+
+public methods
+
+
+38. What data access technology is supported by the Spring framework?
+
+JDBC, Hibernate, JPA
+
+
+39. What is the transaction behavior of the PROPAGATION_REQUIRES_NEW mode? Select a unique answer.
+
+The current method must start a new transaction and run within its own transcation. If there is an existing transaction in progress, it is suspended.
+
+
+40. What is not provided by the JdbcTemplate?
+
+Data source access
+
+Incorrect
+
+Open/close data source connection
+
+JDBC exception wrapping into DataAccess Exception
+
+JDBC statement execution
+
+
+41. Which of the following is true regarding the below Spring controller?
+
+@RestController
+public class OwnerController {
+
+@RequestMapping(value = "/owner/{ownerId}", method = RequestMethod.POST)
+@ResponseBody
+public Owner findOwner(@PathVariable("ownerId") int ownerId) {
+return new Owner();
+}
+}
+
+RequestMethod.GET method is more accurate than POST
+
+@ResponseBody could be removed
+
+Incorrect answers
+
+@PathVariable should be replaced with the @PathParam annotation
+
+Returning the 201 HTTP status code is better
+
+
+42. Select the right statement about referring a Spring configuration file inside the package com.example.myapp in the below example?
+ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/com.example.myapp.config.xml");
+
+The classpath: prefix could be omitted
+
+Package name using the dot character is not well formatted
+
+The slash character preceding com.example could be omit
+
+None of the above
+
+Correct answer:
+ All of the above
+
+
+43. What are the right affirmations about the @PostConstruct, @Resource and the @PreDestroy annotations?
+
+Those annotations are specified in the JSR-250
+
+The <context:component-scan> tag enable them
+
+The <context:annotation-config> tag enable them
+
+Declaring the CommonAnnotationBeanPostProcessor enable them
+
+
+
+44. What configuration is supported by the LocalSessionFactoryBean which supports Hibernate 4 or higher? Select a unique answer.
+
+Listing entity classes annotated with @Entity
+
+Scanning a package to detect annotated entity classes (with @Entity)
+
+Listing hibernate XML mapping configuration file (.hbm.xml)
+
+Correct answer - All above
+
+
+45. What is an after throwing advice?
+
+Advice to be executed if a method exits by throwing an exception
+
+
+46. Which of the following statements is true regarding the @ResponseStatus annotation?
+
+@ResponseStatus is detected on nested exceptions
+
+
+47. What are the unique right answer about Spring AOP support?
+
+A pointcut could select methods that have custom annotation
+
+
+
+48. What statement is not correct in live environment? Select a unique answer.
+
+Constuctor and properties autowiring in the same bean are not compatible
+
+A bean should have a default or a no-args constructor
+
+The <constructor-arg> tag could take type, name and index to reduce ambiguity
+
+Correct answer: All of the above
+
+
+49. What is an advice?
+
+An action taken by an aspect at a particular join point
+
+
+
+50. What is right about Spring Security configuration and the security namespace? Select one or more correct answers.
+
+The patterns declared into the intercept-url tag are analyzed from up to bottom. Winning is the first that matches.
+
+
+51. How could you secure MVC controller with Spring Security? Select a unique answer.
+
+With the @Secured annotation
+
+With the @RolesAllowed annotation
+
+In a XML security configuration file
+
+None of the above
+
+Correct answer: All of the above
+
+
+52. What is the default rollback policy in transaction management?
+
+Rollback for RuntimeException
+
+
+53. What are the main advantage(s) for using Spring when writing unit tests?
+
+Provide some mocks for servlet classes
+
+Incorrect:
+
+Reuse Spring configuration files of the application
+
+Use dependency injection
+
+All of the above
+
+None of the above
+
+
+54. What are the main advantages of using interfaces when designing business services? Select one or more answer choices.
+
+Mocking or stubbing the service
+
+Loosely coupled code
+
+
+55. What are the possible mechanisms provided by Spring Security to store user details? Select one or more correct answers.
+
+Database, JAAS, LDAP, Properties file
+
+
+56. Given the following configuration class, what are the correct affirmations? Select one or more answers.
+public class ApplicationConfig {
+
+private DataSource dataSource;
+
+@Autowired
+public ApplicationConfig(DataSource dataSource) {
+this.dataSource = dataSource;
+}
+
+@Bean(name="clientRepository")
+ClientRepository jpaClientRepository() {
+return new JpaClientRepository();
+}
+}
+
+Configuration annotation is missing
+
+Default or no-arg constructor is missing
+
+
+56.What are the 2 correct statements about AOP proxy?
+
+AOP proxies are created by Spring in order to implement the aspect contracts
+
+Proxies are created by a BeanPostProcessor
+
+Incorrect:
+
+AOP proxies are always created with a JDK dynamic proxy
+
+Only classes that implements a least one interface could be proxied
+
+All methods could be proxied
+
+
+57. Where do you cannot declare Spring MVC controller? Select one or more answers.
+
+Into the web.xml file of the web application
+
+Into the JSP pages
+
+
+58. Using the Spring AOP framework, what are the joinpoint methods of the following pointcut expressions?
+
+execution(public * *(..))
+
+The execution of all public method
+
+
+59. What the name of the bean defined in the following configuration class? Select a single answer.
+@Configuration
+public class ApplicationConfig {
+
+@Autowired
+private DataSource dataSource;
+
+@Bean
+ClientRepository clientRepository() {
+ClientRepository accountRepository = new JpaClientRepository();
+accountRepository.setDataSource(dataSource);
+return accountRepository;
+}
+}
+
+clientRepository
+
+
+60. How to auto-inject into a field a Spring bean by its name? Select one or more answer choices.
+
+By using both the @Autowired and the @Qualifier Spring annotations
+
+By using the @Autowired annotation and naming the field with the bean name
+
+
+61. What is an after returning advice? Select a unique answer.
+
+Advice to be executed after a join point completes without throwing an exception
+
+
+62. Using JdbcTemplate, what is the Spring provided class you will use for result set parsing and merging rows into a single object? Select a unique answer.
+
+ResultSetExtractor
+
+
+63. Select method’s signatures that match with the following pointcut:
+execution(* com.test.service..*.*(*))
+
+void com.test.service.MyServiceImpl#transfert(Money amount)
+
+void com.test.service.account.MyServiceImpl#transfert(Money amount)
+
+Incorrect:
+
+void com.test.service.MyServiceImpl#transfert(Account account, Money amount)
+
+void com.test.service.account.MyServiceImpl#transfert(Account account, Money amount)
+
+
+64. Select correct statement(s) about transactional support of the Spring test module.
+
+Transaction manager could be set within the @TransactionConfiguration annotation
+
+The transaction of a method annotated with the @Rollback annotation with its default values is rolled back after the method has completed
+
+
+65. Why is it a best practice to mark transaction as read-only when code does not write anything to the database? Select one or more answers.
+
+May be improve performance when using Hibernate
+
+Provides safeguards with Oracle an some other dbs
+
+
+66. Does Spring provide programmatic transaction management? Select a unique answer.
+
+Yes, with TransactionTemplate class
+
+
+67. Considering 2 classes AccountServiceImpl and ClientServiceImpl. Any of these 2 classes inherits from each other. What is the result of the following pointcut expression?
+
+execution(* *..AccountServiceImpl.update(..))
+&& execution(* *..ClientServiceImpl.update(..))
+
+No joint point is defined
+
+
+68. What is the easiest method to write a unit tesT?
+
+
+@RequestMapping("/displayAccount")
+String displayAccount(@RequestParam("accountId") int id, Model model)
+
+
+69. What is a pointcut?
+
+An expression to identify joinpoints
+
+
+70. What Spring Cloud provides in a microservice architecture?
+
+A server for externalized configuration
+
+Netflix OSS integration for Spring Boot
+
+
+71. Select one or more correct statements about developing integration test with Spring support.
+
+Spring context configuration could be inherited from super class
+
+
+72. What is/are typically case(s) where you usually need to manually instantiated an ApplicationContext?
+
+In a standalone application started with a main method
