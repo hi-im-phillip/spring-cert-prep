@@ -598,3 +598,1221 @@ Spring context configuration could be inherited from super class
 72. What is/are typically case(s) where you usually need to manually instantiated an ApplicationContext?
 
 In a standalone application started with a main method
+
+
+Question 1:
+Which of the following annotations is used to declare a class as a Spring bean?
+a) @Inject
+b) @Component
+c) @Bean
+d) @Service
+
+Answer 1:
+b) @Component
+
+
+Question 2:
+What is the purpose of the @Autowired annotation in Spring?
+a) To create a new instance of a bean.
+b) To specify the scope of a bean.
+c) To inject dependencies automatically.
+d) To define the initialization method of a bean.
+
+Answer 2:
+c) To inject dependencies automatically.
+
+
+
+Question 3:
+In Spring MVC, what is the role of the @RequestMapping annotation?
+a) To define a new bean in the application context.
+b) To specify the URL path for a controller method.
+c) To handle database transactions.
+d) To declare a JPA entity.
+
+Answer 3:
+b) To specify the URL path for a controller method.
+
+
+
+Which of the following is true about the @Transactional annotation in Spring?
+a) It is used to create a new transaction.
+b) It specifies the isolation level of a transaction.
+c) It ensures that a method is executed within a transaction.
+d) It is used only for read-only operations.
+
+Answer 4:
+c) It ensures that a method is executed within a transaction.
+
+
+
+Question 5:
+What is the purpose of the Spring Boot framework?
+a) To provide a set of utilities for JavaBeans.
+b) To simplify the configuration of Spring applications.
+c) To replace the Spring MVC framework.
+d) To handle asynchronous programming in Spring.
+
+Answer 5:
+b) To simplify the configuration of Spring applications.
+
+
+
+Which annotation is used to enable Spring's annotation-based configuration?
+a) @EnableConfiguration
+b) @Configuration
+c) @EnableAnnotations
+d) @EnableSpring
+
+Answer 6:
+b) @Configuration
+
+
+
+Question 7:
+What is the purpose of the @Qualifier annotation in Spring?
+a) To specify the implementation class of a bean.
+b) To mark a method as a qualifier for dependency injection.
+c) To disambiguate bean injection when multiple candidates are available.
+d) To set the order of execution for a method.
+
+Answer 7:
+c) To disambiguate bean injection when multiple candidates are available.
+
+
+
+Question 8:
+In Spring Data JPA, what is the role of the @Repository annotation?
+a) To declare a JPA entity.
+b) To specify the primary key of an entity.
+c) To indicate that the class defines a data repository.
+d) To define a custom query for an entity.
+
+Answer 8:
+c) To indicate that the class defines a data repository.
+
+
+Question 9:
+What is the purpose of the Spring Boot Actuator?
+a) To enable reactive programming in Spring Boot.
+b) To provide monitoring and management endpoints.
+c) To handle caching in Spring applications.
+d) To configure database connection pooling.
+
+Answer 9:
+b) To provide monitoring and management endpoints.
+
+
+Question 10:
+Which Spring module is commonly used for handling authentication and authorization in web applications?
+a) Spring Batch
+b) Spring Security
+c) Spring Cloud
+d) Spring Integration
+
+Answer 10:
+b) Spring Security
+
+
+Question 11:
+What is the purpose of the @Value annotation in Spring?
+a) To inject values from properties files into a bean.
+b) To specify the order of bean initialization.
+c) To create a new instance of a bean.
+d) To define a JPA entity.
+
+Answer 11:
+a) To inject values from properties files into a bean.
+
+
+
+Question 12:
+In Spring Boot, what is the primary configuration file name that is automatically loaded by the framework during application startup?
+a) spring-config.xml
+b) application.properties
+c) main.properties
+d) boot-config.yaml
+
+Answer 12:
+b) application.properties
+
+
+
+Question 13:
+Which annotation is used to schedule a method to be invoked periodically in a Spring application?
+a) @Timer
+b) @Scheduled
+c) @Repeatable
+d) @CronTask
+
+Answer 13:
+b) @Scheduled
+
+
+
+Question 14:
+What does the term "Aspect" refer to in the context of Aspect-Oriented Programming (AOP) in Spring?
+a) A primary controller in Spring MVC.
+b) A cross-cutting concern encapsulated into a module.
+c) A type of Spring bean.
+d) An externalized configuration property.
+
+Answer 14:
+b) A cross-cutting concern encapsulated into a module.
+
+
+
+What is the primary purpose of the Spring Boot Starter modules?
+a) To provide additional features for Spring applications.
+b) To enable custom configuration for Spring Boot applications.
+c) To simplify the dependency management of Spring projects.
+d) To replace the Spring framework.
+
+Answer 15:
+c) To simplify the dependency management of Spring projects.
+
+
+
+Question 16:
+What is the purpose of the @RestController annotation in Spring MVC?
+a) To define a new Spring bean.
+b) To specify the URL path for a controller method.
+c) To indicate that the class is a RESTful controller.
+d) To enable transaction management in a controller.
+
+Answer 16:
+c) To indicate that the class is a RESTful controller.
+
+
+Question 17:
+What is the primary role of the Spring Boot CommandLineRunner interface?
+a) To define custom JPA repositories.
+b) To handle command-line arguments during application startup.
+c) To configure database connections.
+d) To define scheduled tasks in a Spring Boot application.
+
+Answer 17:
+b) To handle command-line arguments during application startup.
+
+
+
+Question 18:
+Which annotation is used to enable Spring's declarative transaction management?
+a) @Transactional
+b) @EnableTransactionManagement
+c) @TransactionConfig
+d) @EnableTransactions
+
+Answer 18:
+b) @EnableTransactionManagement
+
+
+
+In Spring Data JPA, what is the purpose of the @Query annotation?
+a) To declare a new JPA entity.
+b) To specify the primary key of an entity.
+c) To define a custom query for a repository method.
+d) To configure the cache settings for an entity.
+
+Answer 19:
+c) To define a custom query for a repository method.
+
+
+Question 20:
+What is the role of the Spring Boot Starter Parent in a Maven project?
+a) To define the parent project in a multi-module setup.
+b) To inherit common configurations for Spring Boot projects.
+c) To enable Spring Batch features in a project.
+d) To replace the Spring Boot framework.
+
+Answer 20:
+b) To inherit common configurations for Spring Boot projects.
+
+
+
+Question 26:
+Which of the following are valid Spring bean scopes? (Select all that apply)
+a) Singleton
+b) Prototype
+c) Request
+d) Session
+e) Global
+f) WebSocket
+
+Answer 26:
+a) Singleton
+b) Prototype
+c) Request
+d) Session
+
+
+
+Question 27:
+In Spring Security, which features can be achieved using the @PreAuthorize annotation? (Select all that apply)
+a) Role-based access control
+b) Method-level security
+c) URL-based security
+d) Expression-based access control
+e) Cross-site scripting protection
+
+Answer 27:
+a) Role-based access control
+b) Method-level security
+d) Expression-based access control
+
+
+
+Question 28:
+Which of the following annotations are used for configuration in Spring Boot? (Select all that apply)
+a) @SpringBootApplication
+b) @Configuration
+c) @EnableAutoConfiguration
+d) @ComponentScan
+e) @BootstrapConfiguration
+
+Answer 28:
+a) @SpringBootApplication
+b) @Configuration
+c) @EnableAutoConfiguration
+d) @ComponentScan
+
+
+Question 29:
+What is the purpose of the @Primary annotation in Spring? (Select all that apply)
+a) It marks a bean as the primary candidate for autowiring when multiple beans of the same type exist.
+b) It is used to define the primary key of a JPA entity.
+c) It specifies the primary constructor of a Spring bean.
+d) It is used in conjunction with @Autowired to inject the primary bean.
+
+Answer 29:
+a) It marks a bean as the primary candidate for autowiring when multiple beans of the same type exist.
+d) It is used in conjunction with @Autowired to inject the primary bean.
+
+
+
+Question 30:
+Which of the following are true regarding Spring Boot profiles? (Select all that apply)
+a) Profiles allow you to define different configurations for different environments.
+b) You can activate a profile using the spring.profiles.active property.
+c) Profiles are primarily used for setting up database connections.
+d) Default profiles are always active and cannot be deactivated.
+
+Answer 30:
+a) Profiles allow you to define different configurations for different environments.
+b) You can activate a profile using the spring.profiles.active property.
+
+
+
+Question 31:
+Which of the following annotations are used for handling exceptions in a Spring MVC application? (Select all that apply)
+a) @ExceptionHandler
+b) @ControllerAdvice
+c) @HandleError
+d) @ExceptionResolver
+e) @ResponseStatus
+
+Answer 31:
+a) @ExceptionHandler
+b) @ControllerAdvice
+
+
+
+Question 32:
+In Spring Data JPA, which methods are commonly used for defining custom queries in a repository interface? (Select all that apply)
+a) findBy
+b) queryBy
+c) search
+d) readBy
+e) getBy
+
+Answer 32:
+a) findBy
+c) search
+
+
+
+Question 33:
+Which of the following statements are true regarding Spring Boot's application.properties file? (Select all that apply)
+a) It is used for defining properties specific to Spring Boot.
+b) It supports YAML format in addition to traditional property format.
+c) It overrides properties defined in external configuration files.
+d) It is only used for setting database connection properties.
+
+Answer 33:
+a) It is used for defining properties specific to Spring Boot.
+b) It supports YAML format in addition to traditional property format.
+c) It overrides properties defined in external configuration files.
+
+
+Question 34:
+In Spring Security, which components are used for handling user authentication? (Select all that apply)
+a) AuthenticationManager
+b) UserDetailsService
+c) AuthorizationManager
+d) AuthenticationProvider
+e) UserDetails
+
+Answer 34:
+a) AuthenticationManager
+b) UserDetailsService
+d) AuthenticationProvider
+
+
+
+
+Question 35:
+Which of the following annotations are used for defining and configuring beans in a Spring application? (Select all that apply)
+a) @Bean
+b) @Component
+c) @Configuration
+d) @Service
+e) @Inject
+
+Answer 35:
+a) @Bean
+c) @Configuration
+
+
+
+Question 36:
+Which of the following annotations are commonly used for handling transactions in Spring? (Select all that apply)
+a) @Transactional
+b) @TransactionManager
+c) @TransactionScope
+d) @TransactionalManager
+e) @Transaction
+
+Answer 36:
+a) @Transactional
+
+
+Question 37:
+In Spring Boot, what is the purpose of the @SpringBootTest annotation? (Select all that apply)
+a) It loads the complete application context.
+b) It is used for unit testing individual components.
+c) It disables the loading of the application context.
+d) It allows loading a specific configuration class.
+e) It is used for integration testing.
+
+Answer 37:
+a) It loads the complete application context.
+d) It allows loading a specific configuration class.
+e) It is used for integration testing.
+
+
+
+Question 38:
+Which of the following are common implementations of the Spring Data repository interfaces? (Select all that apply)
+a) JdbcTemplate
+b) Hibernate
+c) QueryDSL
+d) MyBatis
+e) MongoTemplate
+
+Answer 38:
+b) Hibernate
+c) QueryDSL
+e) MongoTemplate
+
+
+
+Question 39:
+In Spring Boot, what is the purpose of the @ConditionalOnClass annotation? (Select all that apply)
+a) It checks for the presence of a specific class in the classpath.
+b) It enables a bean only if another bean is present.
+c) It is used for conditional bean creation.
+d) It activates a profile based on the presence of a class.
+e) It configures the classloader for a specific class.
+
+Answer 39:
+a) It checks for the presence of a specific class in the classpath.
+c) It is used for conditional bean creation.
+
+
+
+Question 40:
+Which of the following annotations are commonly used for configuring method security in Spring Security? (Select all that apply)
+a) @Secured
+b) @RolesAllowed
+c) @PreAuthorize
+d) @PostAuthorize
+e) @Permission
+
+Answer 40:
+a) @Secured
+c) @PreAuthorize
+d) @PostAuthorize
+
+
+
+In Spring MVC, which annotations are used for mapping HTTP request methods to controller methods? (Select all that apply)
+a) @RequestMapping
+b) @RequestMethod
+c) @HttpMethod
+d) @Mapping
+e) @MethodMapping
+
+Answer 41:
+a) @RequestMapping
+d) @Mapping
+
+
+
+Question 42:
+Which of the following statements are true regarding Spring Boot's application.yml file? (Select all that apply)
+a) It is an alternative format to application.properties for configuration.
+b) It supports property inheritance.
+c) It is suitable only for simple key-value configurations.
+d) It cannot be used for configuring complex data structures.
+e) It is hierarchical and supports nested configurations.
+
+Answer 42:
+a) It is an alternative format to application.properties for configuration.
+b) It supports property inheritance.
+e) It is hierarchical and supports nested configurations.
+
+
+
+Question 43:
+In Spring Data JPA, which methods are used for derived queries? (Select all that apply)
+a) find
+b) query
+c) read
+d) get
+e) count
+
+Answer 43:
+a) find
+c) read
+d) get
+
+
+
+Question 44:
+Which of the following annotations are used for asynchronous programming in Spring? (Select all that apply)
+a) @Async
+b) @Future
+c) @EnableAsync
+d) @Task
+e) @Asynchronous
+
+Answer 44:
+a) @Async
+c) @EnableAsync
+
+
+
+In Spring Security, which components are involved in the authentication process? (Select all that apply)
+a) AuthenticationManager
+b) AuthenticationProvider
+c) AuthenticationToken
+d) AuthenticationFilter
+e) AuthenticationSuccessHandler
+
+Answer 45:
+a) AuthenticationManager
+b) AuthenticationProvider
+c) AuthenticationToken
+
+
+
+Question 46:
+Which annotations are commonly used for handling method-level caching in Spring? (Select all that apply)
+a) @Cacheable
+b) @CacheEvict
+c) @CacheConfig
+d) @EnableCaching
+e) @CachePut
+
+Answer 46:
+a) @Cacheable
+b) @CacheEvict
+d) @EnableCaching
+e) @CachePut
+
+
+
+Question 47:
+In Spring Data JPA, which methods are commonly used for ordering query results? (Select all that apply)
+a) findOrderBy
+b) queryByOrderBy
+c) getByOrder
+d) readByOrder
+e) findAllByOrder
+
+Answer 47:
+a) findOrderBy
+b) queryByOrderBy
+e) findAllByOrder
+
+
+
+Question 48:
+Which annotations are used for defining a cross-cutting concern in Spring AOP? (Select all that apply)
+a) @Aspect
+b) @JoinPoint
+c) @Pointcut
+d) @Advice
+e) @AspectJ
+
+Answer 48:
+a) @Aspect
+c) @Pointcut
+d) @Advice
+
+
+
+Question 49:
+In Spring Boot, what is the purpose of the @ConditionalOnMissingBean annotation? (Select all that apply)
+a) It checks for the presence of a specific class in the classpath.
+b) It enables a bean only if another bean is present.
+c) It is used for conditional bean creation.
+d) It activates a profile based on the presence of a class.
+e) It configures the classloader for a specific class.
+
+Answer 49:
+c) It is used for conditional bean creation.
+
+
+
+Question 50:
+Which of the following are true regarding the Spring Boot Actuator's /actuator/env endpoint? (Select all that apply)
+a) It provides information about environment properties.
+b) It exposes sensitive information by default.
+c) It can be used to modify the application's environment at runtime.
+d) It is disabled by default.
+e) It is useful for retrieving application configuration.
+
+Answer 50:
+a) It provides information about environment properties.
+d) It is disabled by default.
+
+
+
+1) Which of these is used by Spring Boot for all internal logging (while leaving the underlying log implementation open) ? *
+ A. Log4J2
+ B. Logback
+ C. Commons Logging
+ D. Java Util Logging
+
+
+B. Logback
+
+
+
+2) The Developer can provide its own status values to be used by a HealthIndicator. Is this true ? (Choose one) *
+ Yes
+ No
+
+Yes.
+
+
+3) Which ones are true about dependency autowiring? Select all that apply. *
+ A. There can be multiple constructor methods annotated with @Autowired, but only 1 of them can be set as required.
+ B. If dependencies annotated with @Required are not set, a corresponding exception is raised.
+ C. If the Autowired annotation is used on well-known dependencies like BeanFactory and ApplicationContext, these dependencies like BeanFactory and ApplicationContext, must be explicitly defined in the context (e.g. defined in XML-based configuration).
+ D. MessageSource interface is automatically resolved, with no additional setup necessary, other than putting the 'Autowired' annotation.
+
+A. There can be multiple constructor methods annotated with @Autowired, but only 1 of them can be set as required.
+D. MessageSource interface is automatically resolved, with no additional setup necessary, other than putting the 'Autowired' annotation.
+
+
+4) Which class in the following list is the default view resolver in Spring : *
+ A. JspResourceViewResolver
+ B. InternalResourceViewResolver
+ C. ResourceViewResolver
+
+B. InternalResourceViewResolver
+
+
+
+5) The Spring container gets its instructions by consuming the configuration metadata. Which of these forms can represent the Spring configuration metadata? Choose all that apply. *
+ A. XML-based
+ B. Annotation-based
+ C. Java-based
+ D. Property-file-based
+
+
+A. XML-based
+B. Annotation-based
+C. Java-based
+
+
+
+Fill in the blanks. ________ expresses the usage of an EntityManager and its associated persistence context. This is also the annotation in the blank in the code below. ________ private EntityManager entityManager; *
+ A. @PersistenceUnit
+ B. @PersistenceContext
+ C. @EntityManagerResource
+ D. @Entity
+
+
+B. @PersistenceContext
+
+
+
+7) The Spring IoC container by default tries to identify beans to autowire by type; if multiple beans are found, it chooses for autowiring the one with the name matching the @Qualifier value. *
+ A. True
+ B. False
+
+
+B. False
+
+
+
+8) Which of these are true about creating a deployable war file in Spring Boot? Select all that apply. *
+ A. When creating a 'war' file which will be deployed into a server, it is best to add the 'external' setting below, to avoid the server files being included in the 'war'. <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-tomcat</artifactId> <scope>external</scope> </dependency>
+ B. If you use Maven and spring-boot-starter-parent, you must change the pom.xml 'packaging' setting to below. <packaging>war</packaging>
+ C. If you use Maven and spring-boot-starter-parent, you must change the pom.xml 'artifact' setting to below. <artifact>non-embedded</artifact>
+ D. The first step in producing a deployable war file is to provide a SpringBootServletInitializer subclass.
+
+
+
+The correct statements are:
+
+B. If you use Maven and spring-boot-starter-parent, you must change the pom.xml 'packaging' setting to below. <packaging>war</packaging>
+D. The first step in producing a deployable war file is to provide a SpringBootServletInitializer subclass.
+
+
+9) In Spring MVC, which of these can be the return type of a method annotated with @RequestMapping? Select all that apply. *
+ A. ModelAndView
+ B. Modal
+ C. Void
+ D. String
+
+A. ModelAndView
+D. String
+
+
+
+10) What are the types of dependency injection supported by Spring IoC Container ? (Choose all that apply) *
+ A. field-based injection
+ B. constructor injection
+ C. interface-based injection
+ D. setter injection
+
+
+A. Field-based injection
+B. Constructor injection
+D. Setter injection
+
+
+11) What are the advantages of an application that is built making use of dependency injection? (Choose one) *
+ A. All of the above
+ B. High cohesion
+ C. High readability
+ D. High coupling
+ E. Easiness of testing
+
+
+A. All of the above
+
+
+
+
+12) Which of these is true about Mockito and Easymock usage in Spring? *
+ A. Below is a valid usage of Mockito. @Bean public MyService myService() { return Mockito.mock(MyService.class); }
+ B. Below is a valid usage of Mockito. <bean id="myService" class="org.mockito.Mockito" factory-method="mock"> <constructor-arg value="org.dummy.MyService"/> </bean>
+ C. Mockito and Easymock assists in the usage of mock objects for testing.
+ D. All of the above.
+
+
+C. Mockito and Easymock assist in the usage of mock objects for testing.
+
+Explanation:
+
+Mockito is commonly used in Spring for creating mock objects for testing, and it's typically used in combination with the @MockBean annotation or directly in test classes.
+The provided options A and B are not valid usages for creating Mockito mocks in the context of a Spring application. Mockito mock creation is usually done in the test classes or using annotations like @MockBean.
+
+
+
+
+13) We have the following bean declaration. What is the created bean’s ID? @Bean DataSource prodDataSource() { return new DriverManagerDataSource(); } *
+ A. prodDataSource
+ B. driverManagerDataSource
+ C. dataSource
+
+
+
+The created bean's ID will be derived from the method name, so in this case:
+
+A. prodDataSource
+
+
+
+
+14) What is needed to work with JPA in Spring ? (choose all that apply) *
+ A. Declare a JpaTransactionManager bean
+ B. Declare a PersistenceProvider bean
+ C. All of the above
+ D. Declare an EntityManagerFactory bean
+
+
+
+A. Declare a JpaTransactionManager bean
+D. Declare an EntityManagerFactory bean
+
+
+15) Fill in the blanks. ___________ acts as a stereotype for the annotated class, indicating its role as a web component. It is a specialization of @Component. *
+ A. @WebController
+ B. @WebComponent
+ C. @Web
+ D. None of the above.
+
+
+D. None of the above.
+
+
+
+16) Which of these are true regarding Spring Security? Select all that apply *
+ A. @EnableGlobalMethodSecurity can enable annotation-based security.
+ B. To secure the system, it is not enough to just hide URL sections of the JSP. This is because the attacker can acquire the URL by some ways, and transact illegally on the system. Methods should also be secured.
+ C. @Secured can be used to implement method-level security.
+ D. @PreAuthorize can be annotated only in the class level and cannot be annotated in the method level.
+
+
+A. @EnableGlobalMethodSecurity can enable annotation-based security.
+B. To secure the system, it is not enough to just hide URL sections of the JSP. This is because the attacker can acquire the URL by some ways, and transact illegally on the system. Methods should also be secured.
+C. @Secured can be used to implement method-level security.
+
+D. @PreAuthorize can be annotated both at the class and method levels, so the statement "annotated only in the class level and cannot be annotated in the method level" is incorrect.
+
+
+17) What is the complete definition of a bean ? (Choose one) *
+ A. An object that is instantiated, assembled, and managed by a Spring IoC Container
+ B. A Plain Old Java Object
+ C. An instance of a class
+
+
+A. An object that is instantiated, assembled, and managed by a Spring IoC Container
+
+
+
+18) Which of these are valid usage of the @RequestMapping annotation in Spring MVC? Select all that apply. *
+ A. @RequestMapping(method = RequestMethod.PATCH)
+ B. @RequestMapping(value="/{systemId}", method = RequestMethod.HEAD)
+ C. @RequestMapping(value="/offline", method = RequestMethod.GET)
+ D. @RequestMapping("/")
+
+
+So, all options (A, B, C, D) are correct.
+
+
+
+19) Which methods will match the following pointcut expression ? (choose all that apply)
+execution(protected * com.ps.repos.*.*Repo.find*(..)) *
+ A. com.ps.repos.impl.JdbcTemplateUserRepo.findById(Long id)
+ B. none: Spring AOP supports only advising public methods
+ C. com.ps.repos.impl.JdbcUserRepository.findAll()
+
+
+A. com.ps.repos.impl.JdbcTemplateUserRepo.findById(Long id)
+
+This is because the pointcut expression specifies methods with the name starting with "find" in classes under the package com.ps.repos ending with "Repo" and accepting any parameters.
+
+Option B is incorrect because Spring AOP can advise non-public methods as well.
+
+Option C does not match the pointcut expression because it involves a method named "findAll," not starting with "find."
+
+
+
+20) Which of these can enable support for Spring Security’s @Secured? *
+ A. <secured-annotations/>
+ B. <method-security/>
+ C. <global-method-security secured-annotations="enabled" />
+ D. It is enabled by default. No additional declaration is needed to enable it.
+
+C. <global-method-security secured-annotations="enabled" />
+
+
+
+21) Which of these is being described below ? Select the one that applies best.
+It is a Spring framework, designed to simplify the bootstrapping and development of a new spring application. The framework takes an opinionated approach to configuration, freeing developers from the need to define boilerplate configuration. *
+ A. Spring Bootstrap
+ B. Spring Configuration
+ C. Spring IO
+ D. Spring Boot
+
+
+D. Spring Boot
+
+
+22) Given the following unit test, what is missing from the class definition that prevents the test from being executed correctly?
+public class SimplePetServiceTest {
+ @InjectMocks
+ SimplePetService simplePetService;
+ PetRepo petRepo;
+ 
+ @Before
+  public void initMocks() {
+   MockitoAnnotations.initMocks(this);
+ }
+ @Test
+ public void findById() {
+   Mockito.when(petRepo.findById(1L)).thenReturn(new Pet());
+   Pet pet = simplePetService.findById(1L);
+   assertNotNull(pet);
+  }  
+} *
+ A. Nothing, the test will be executed correctly and it will pass.
+ B. The class should be annotated with @RunWith(MockitoJUnitRunner.class)
+ C. The setUp method is missing the following statement: simplePetService.setRepo(petRepo);
+ D. The petRepo field is missing annotation @Mock
+
+
+D. The petRepo field is missing annotation @Mock
+
+The @Mock annotation is needed to create a mock instance for the PetRepo field, and it is not present in the given class.
+
+
+23) What is default HTML template engine in spring boot ? (Choose one) *
+ A. Thymeleaf
+ B. HTML
+ C. JSP
+ D. JSON
+
+
+A. Thymeleaf
+
+
+
+24) Which of these are true regarding Spring’s configuration based on component scanning? Select all that apply. *
+ A. @Configuration is needed to do component scanning.
+ B. @ComponentScan can be used to enable component scanning.
+ C. For the @Autowired annotation to work, component scanning must be enabled.
+ D. Using some configuration, it can be specified which java packages will be scanned for component scanning.
+
+
+B. @ComponentScan can be used to enable component scanning.
+D. Using some configuration, it can be specified which Java packages will be scanned for component scanning.
+
+
+
+25) What application factor does inversion of control help lessen? Select all that apply. *
+ A. Dependency
+ B. Redundant Processing
+ C. Limitations brought by waterfall sequential design process
+ D. Runtime locking and deadlock issues
+
+A. Dependency
+C. Limitations brought by waterfall sequential design process
+D. Runtime locking and deadlock issues
+
+
+26) When should a transaction be declared as readOnly ? *
+ A. when a large set of data is read
+ B. when no changes should be allowed to the databases
+ C. when it does not include any writing statements execution
+
+
+C. when it does not include any writing statements execution
+
+
+
+27) Which of these are considered safe REST operations? Select all that apply *
+ A. POST
+ B. PUT
+ C. GET
+ D. DELETE
+
+
+C. GET
+D. DELETE
+
+
+
+
+28) Which of these are true about the Spring IoC container? Select all that apply. *
+ A. It is a JEE-compliant (Java Platform, Enterprise Edition) server implementation.
+ B. It is responsible for instantiating, configuring, and assembling Spring beans
+ C. ApplicationContext is a representation of the Spring IoC container
+ D. It gets its instructions on the beans it needs to work with by reading configuration metadata. The metadata can be in XML, Java annotations, or Java code.
+
+
+
+B. It is responsible for instantiating, configuring, and assembling Spring beans
+C. ApplicationContext is a representation of the Spring IoC container
+D. It gets its instructions on the beans it needs to work with by reading configuration metadata. The metadata can be in XML, Java annotations, or Java code.
+
+A. is incorrect because the Spring IoC container is not a JEE-compliant server implementation. It is a separate lightweight container provided by the Spring Framework.
+
+
+
+
+29) Which of these is supported as an embedded container in Spring Boot? Select all that apply. *
+ A. Tomcat
+ B. Jetty
+ C. Undertow
+ D. Azure
+ E. JBoss
+
+
+A. Tomcat
+B. Jetty
+C. Undertow
+
+These are the embedded containers supported by Spring Boot. D. Azure and E. JBoss are not embedded containers but rather represent cloud services (Azure) and an application server (JBoss).
+
+
+
+30) Spring Boot Actuator helps you manage and monitor your applications by providing endpoints accessible on which protocols ? (Choose all that apply) *
+ A. JMX
+ B. HTTP
+ C. TCP/IP
+ D. ICMP
+
+
+A. JMX
+B. HTTP
+
+
+
+
+31) Which of these are features of Spring AOP? Select all that apply. *
+ A. can use CGLIB proxies
+ B. can introduce new interfaces (and a corresponding implementation) to an advised object
+ C. can proxy objects that does not implement an interface
+ D. can weave the aspects at compile time
+
+
+
+A. can use CGLIB proxies
+C. can proxy objects that do not implement an interface
+
+B. and D. are not correct:
+
+B. Spring AOP cannot introduce new interfaces to an advised object.
+D. Spring AOP typically weaves aspects at runtime, not at compile time.
+
+
+
+
+32) Which of these can be used to opt-in to auto-configuration in Spring Boot ? (Choose all that apply) *
+ A. @EnableAutoConfiguration
+ B. @EnableComponentScan
+ C. @SpringBootApplication
+ D. @Configuration
+
+
+A. @EnableAutoConfiguration
+
+
+
+33) Which of these applies to BeanFactoryPostProcessor, and does not apply to BeanPostProcessor? Select all that apply. *
+ A. It can modify the application context's internal bean factory after the context's standard initialization.
+ B. You can control the order in which they execute by implementing the Ordered or PriorityOrdered interface.
+ C. They run after bean definitions will have been loaded, but before any beans have been instantiated, and are used for changing bean configuration metadata.
+ D. It operates on bean (or object) instances; that is, it does its work after the container has instantiated a bean instance.
+
+
+A. It can modify the application context's internal bean factory after the context's standard initialization.
+B. You can control the order in which they execute by implementing the Ordered or PriorityOrdered interface.
+C. They run after bean definitions will have been loaded, but before any beans have been instantiated, and are used for changing bean configuration metadata.
+
+D. applies to BeanPostProcessor as it operates on bean instances after the container has instantiated them.
+
+
+34) What configuration annotation enables creation of repository instances with SpringDataJPA ? *
+ A. @EnableTransactionManagement
+ B. @EnableJpaRepositories
+ C. @EnableInstantRepositories
+ D. @EnableRepositoryGeneration
+
+
+B. @EnableJpaRepositories
+
+
+
+35) Which of these are stereotypes and will be discovered by component scanning? Select all that apply. *
+ A. @Controller
+ B. @RestController
+ C. @Repository
+ D. @Service
+
+
+A. @Controller
+B. @RestController
+C. @Repository
+D. @Service
+
+
+
+36) Which annotation declares an advice method ? (choose all that apply) *
+ A. @Aspect
+ B. @AfterReturning
+ C. @Component
+ D. @Before
+ E. @Pointcut
+
+
+
+A. @Aspect
+B. @AfterReturning
+D. @Before
+E. @Pointcut
+
+
+
+37) The @DataJpaTest annotation is used to annotate test-classes that contain tests of only JPA components. *
+ A. false
+ B. true
+
+
+B. true
+
+
+
+38) Which of these is true about the DataSource interface? *
+ A. Spring obtains a database connection through an implementation DataSource.
+ B. The DataSource interface is part of the Spring Framework.
+ C. Spring's DriverManagerDataSource implementation, provides pooling.
+ D. All of the above.
+
+
+
+The correct statement is:
+
+A. Spring obtains a database connection through an implementation DataSource.
+
+B. The DataSource interface is not part of the Spring Framework; it is a standard interface defined in the javax.sql package.
+
+C. Spring's DriverManagerDataSource implementation does not provide pooling.
+
+
+39) What data access technology is supported by the Spring framework ? (choose all that apply) *
+ A. JPA
+ B. JDBC
+ C. Hibernate
+ D. NoSQL
+
+
+A. JPA (Java Persistence API)
+B. JDBC (Java Database Connectivity)
+C. Hibernate (an ORM framework)
+
+
+
+40) Which of these is the HTTP response code when there is an internal server error (HttpStatus.INTERNAL_SERVER_ERROR)? *
+ A. 200
+ B. 300
+ C. 400
+ D. 500
+
+
+D. 500
+
+
+
+41) Which options in the list below represent a cross-cutting concern ? (choose all that apply) *
+ A. transactions
+ B. security
+ C. connecting to the database
+ D. caching
+
+
+A. transactions
+B. security
+D. caching
+
+are examples of cross-cutting concerns. These concerns often involve functionality that needs to be applied consistently across different parts of an application, cutting across various modules and layers.
+
+
+
+42) Which of these database system isolation levels is best described below? In this isolation level, dirty reads are prevented; while non-repeatable reads and phantom reads can occur. *
+
+Read Committed
+
+
+43) Analyze the following code snippet: public Set findAll() { String sql = "select id, username, email, password from p_user"; return new HashSet<>(jdbcTemplate.query(sql, rowMapper)); } *
+ A. must implement RowMapper<T> interface
+ B. provides a method to transform a ResultSet content into User objects
+ C. is stateful
+
+B. provides a method to transform a ResultSet content into User objects
+
+This code snippet is a method that uses a RowMapper (rowMapper) to transform the ResultSet content from a SQL query into User objects. It doesn't explicitly indicate the requirement to implement the RowMapper<T> interface or suggest that it is stateful.
+
+
+
+44) Which of these are true about Spring MVC view resolvers (implementations of the ViewResolver interface)? Select all that apply. *
+ A. They are actual servlets (it inherits from the HttpServlet base class).
+ B. They resolve themes for the web application to have features like personalized layouts.
+ C. They resolve logical String-based view names to actual View types.
+ D. They map exceptions to views.
+
+
+
+C. They resolve logical String-based view names to actual View types.
+D. They map exceptions to views.
+
+Explanation:
+
+View resolvers in Spring MVC are responsible for translating logical view names into actual view objects that can render the response.
+View resolvers can also be configured to map exceptions to specific views in case of errors.
+Option A is incorrect as view resolvers are not actual servlets; they are components used in the Spring MVC framework. Option B is incorrect because resolving themes is typically handled by a ThemeResolver, not a ViewResolver.
+
+
+45) Which of these is the Spring Boot starter that you would use for a Spring Rest application ? *
+ A. None of the above
+ B. spring-boot-starter-web-rest
+ C. spring-boot-starter-rest
+ D. spring-boot-starter-mvc-rest
+
+
+A. None of the above
+
+
+46) In Spring Boot, on which areas below, can configuration settings be put, to control logging? *
+ A. @PropertySources in Spring @Configuration files
+ B. System properties
+ C. Conventional Spring Boot external configuration files
+ D. B and C only.
+
+
+D. B and C only.
+
+In Spring Boot, configuration settings to control logging can be put in System properties (option B) and conventional Spring Boot external configuration files (option C). @PropertySources in Spring @Configuration files (option A) is not typically used for configuring logging in Spring Boot.
+
+
+47) Which of the methods below are HTTP methods ? *
+ A. GET
+ B. OPTIONS
+ C. SUBMIT
+ D. PUT
+
+
+A. GET
+B. OPTIONS
+D. PUT
+
+
+
+48) Which of these is being described below? Select the one that applies best. It enables support for handling components marked with AspectJ’s @Aspect annotation. *
+ A. @AspectConfiguration
+ B. @EnableAspectJAutoProxy
+ C. @Component
+ D. @Configuration
+
+
+B. @EnableAspectJAutoProxy
+
+
+49) What does @SpringBootTest auto-configure ? *
+ A. A PropertySourcesPlaceholderConfigurer
+ B. Configuration as specified by class annotated with @SpringBootConfiguration or nested @Configuration present in the test-class.
+ C. A TestRestTemplate and/or WebTestClient.
+ D. The default context loader.
+
+
+B. Configuration as specified by class annotated with @SpringBootConfiguration or nested @Configuration present in the test-class.
+
+@SpringBootTest auto-configures the Spring application context based on the configuration defined by the class annotated with @SpringBootConfiguration or nested @Configuration classes in the test.
+
+
+50) What is the default scope in the web context? *
+ A. singleton
+ B. prototype
+ C. session
+ D. application
+
+
+A. singleton
