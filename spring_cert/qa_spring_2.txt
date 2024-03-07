@@ -1,0 +1,610 @@
+1) What is the difference between declaring a bean with @Bean and with @Component ? *
+ A. @Bean annotates a method that creates a bean in a configuration class; @Component annotates classes to mark them as bean definitions for the Spring Container
+ B. @Bean is a specialization of @Component and annotates classes to mark them as bean definitions for the Spring Container
+ C. @Bean is the JSR 250 equivalent of @Component
+
+
+A. @Bean annotates a method that creates a bean in a configuration class; @Component annotates classes to mark them as bean definitions for the Spring Container
+
+
+
+2) Which of these is the one being described below? Select the one that applies best. This wraps a single Connection that is not closed after each use. This is not multi-threading capable. *
+ A. SingleConnectionDataSource
+ B. DriverManagerDataSource
+ C. SmartDataSource
+ D. None of the above.
+
+
+A. SingleConnectionDataSource
+
+
+
+
+3) What dependencies does spring-boot-starter-test brings to the classpath ? *
+ A. jMock
+ B. AssertJ
+ C. JsonPath
+ D. JUnit
+
+
+B. AssertJ
+D. JUnit
+
+
+
+4) Which of these is being described below? A bean instance in this scope lives within the lifetime of a single HTTP Session. *
+ A. global session
+ B. request
+ C. session
+ D. application
+
+
+C. session
+
+
+5) How can data exposed by the /info endpoint be customized ? (Choose one) *
+ A. by declaring a bean of type InfoIndicator
+ B. by setting info.* properties into the application.yml or application.properties file
+
+
+B. by setting info.* properties into the application.yml or application.properties file
+
+The /info endpoint in Spring Boot can be customized by configuring properties in the application.yml or application.properties file under the info.* namespace.
+
+
+6) Which ones are true about scopes? Select all that apply. *
+ A. For prototype-scoped beans, the client is responsible for cleaning up after the usage of the prototype bean. Spring doesnt keep further record of the mentioned bean after handing it to the client, unless bean post processors are added.
+ B. The acquisition of a 'singleton' bean is more similar to calling a java 'new' operator, than the acquisition of a 'prototype' bean.
+ C. The 'request', 'session', 'application', and 'servlet' scopes are only available in a web-aware ApplicationContext implementation.
+ D. By default, when a singleton bean depends on a prototype bean, there will be an object instance of the prototype bean, and it is that same object instance that will be supplied to all users of the concerned singleton bean.
+
+
+B. The acquisition of a 'singleton' bean is more similar to calling a Java 'new' operator than the acquisition of a 'prototype' bean.
+
+
+
+D. By default, when a singleton bean depends on a prototype bean, there will be an object instance of the prototype bean, and it is that same object instance that will be supplied to all users of the concerned singleton bean.
+
+
+
+7) Given the following integration test:
+@RunWith(SpringJUnit4ClassRunner.class) @ContextConfiguration public class SimpleTest { //test methods here }
+What can be said about the behavior of Spring when the test is executed ? (choose one) *
+ A. Spring will look for a file named SimpleTest-context.xml in the same location as the SimpleTest class to use it to initialize the context
+ B. Spring will not be able to create a test context for the tests to run in
+ C. Spring will build an empty context and the tests will fail
+
+
+A. Spring will look for a file named SimpleTest-context.xml in the same location as the SimpleTest class to use it to initialize the context
+
+Explanation:
+
+The @ContextConfiguration annotation without any parameters in this case indicates that Spring should look for a default XML configuration file based on the test class name (SimpleTest-context.xml) in the same location as the test class.
+
+
+
+
+8) In Spring AOP, different types of this include “around”, “before” and “after”. *
+ A. Aspect
+ B. Join point
+ C. Advice
+ D. Pointcut
+
+
+The different types in Spring AOP, including "around," "before," and "after," are referred to as:
+
+C. Advice
+
+
+
+9) Which of the following HTTP message converters are supported by Spring MVC ? *
+ A. YamlMessageConverter
+ B. MappingJackson2HttpMessageConverter, but Jackson2 must be in the classpath
+ C. StringHttpMessageConverter
+
+
+
+B. MappingJackson2HttpMessageConverter, but Jackson2 must be in the classpath
+
+
+
+10) Which of these is true regarding the code below.
+<bean id="myBean" class="org.MyBean">          <property name="person" value="john"/>          <property name="age" value="10"/>          <property name="project" value="project1"/>     </bean> 
+*
+ A. There must be a bean named 'john' in the container.
+ B. If the class have a property named 'age', and it is an 'int', it will be populated with the value 10.
+ C. There must be a bean named 'project1' in the container.
+ D. All of the above.
+
+
+B. If the class has a property named 'age,' and it is an 'int,' it will be populated with the value 10.
+
+Explanation:
+
+The XML configuration is setting the 'age' property of the 'myBean' bean to the value 10.
+Options A and C are incorrect as there is no requirement for beans named 'john' or 'project1' to be present in the container. The values "john" and "project1" are used as literal values for the properties, not as references to other beans.
+
+
+
+11) The presence of this annotation informs Spring Boot that it should take an opinionated approach to configuring the application *
+ A. @EnableSpringBootConfig
+ B. @OpinionatedConfig
+ C. @AutoConfig
+ D. @EnableAutoConfiguration
+
+
+D. @EnableAutoConfiguration
+
+
+12) Which of these is the root of the hierarchy of Spring data access exceptions? *
+ A. AbstractException
+ B. DataException
+ C. AbstractDataException
+ D. DataAccessException
+
+
+D. DataAccessException
+
+
+
+13) Which four different types of web environments can be specified using the webEnvironment attribute of the @SpringBootTest annotation ? (Choose all that apply.) *
+ A. NONE
+ B. DEFINED_PORT
+ C. LOCALE_PORT
+ D. RANDOM_PORT
+ E. MOCK
+
+
+B. DEFINED_PORT
+D. RANDOM_PORT
+E. MOCK
+
+
+
+14) Which of these is described below? Select the one that applies best. It enables the modularization of concerns that cut across multiple types and objects. *
+ A. Model-View-Controller (MVC)
+ B. Object-Oriented Programming (OOP)
+ C. Aspect-Oriented Programming (AOP)
+ D. Spring Framework
+
+C. Aspect-Oriented Programming (AOP)
+
+
+
+15) What annotation is used to map HTTP Requests to handler methods ? *
+ A. @HandlerMapping
+ B. @RequestMapping
+ C. @Mapping
+
+
+B. @RequestMapping
+
+
+16) Which of these classes assist in programmatic transaction demarcation and transaction exception handling? It executes codes within a transaction using the TransactionCallback interface. *
+ A. TransactionInterceptor
+ B. TransactionTemplate
+ C. TransactionStatus
+ D. PlatformTransactionManager
+
+
+
+The class that assists in programmatic transaction demarcation and transaction exception handling, executing code within a transaction using the TransactionCallback interface, is:
+
+B. TransactionTemplate
+
+
+17) What is true about the after advice ? (choose all that apply) *
+ A. it is not executed if the target method execution ends by throwing an exception
+ B. it can catch the target method exception and throw a different exception
+ C. it can catch the target method exception and prevent propagation
+
+
+
+A. it is not executed if the target method execution ends by throwing an exception
+B. it can catch the target method exception and throw a different exception
+
+Explanation:
+
+After advice is executed after the target method (regardless of whether it ends normally or throws an exception).
+It can catch the target method exception and throw a different exception, but it cannot prevent the propagation of the original exception. The original exception will be propagated unless caught and handled within the after advice.
+
+
+
+18) Martin Fowler came up with the name Dependency Injection, to rename which principle? *
+ A. Abstract Factory Design
+ B. Inversion of Control
+ C. Configuration Management
+ D. CGLIB-based Method Injection
+
+
+B. Inversion of Control
+
+Dependency Injection is a form of Inversion of Control (IoC) where the control of the flow of a system is inverted, and dependencies are injected rather than being created or managed by the dependent class.
+
+
+
+19) What is a principal ? *
+ A. an object storing the credentials for a user
+ B. a term that signifies a secured resource
+ C. the term that signifies a user, device, or system that could perform an action within the application
+
+
+C. the term that signifies a user, device, or system that could perform an action within the application
+
+In the context of security, a principal represents the identity of an entity (e.g., user, device, or system) that can perform actions within an application.
+
+
+
+20) Fill in the blanks. The term __________ usually represents a set of actions treated as one and undone also as one if needed. The __________ mode of JDBC should be disabled so that sets of actions can be undone as one. Select the one that applies best. *
+ A. JTA, concurrency
+ B. auto-commit, unit of work
+ C. transaction demarcation, rollback
+ D. unit of work, auto-commit
+
+
+D. unit of work, auto-commit
+
+Explanation:
+
+The term "unit of work" usually represents a set of actions treated as one and undone also as one if needed.
+The "auto-commit" mode of JDBC should be disabled so that sets of actions can be undone as one.
+
+
+21)@SpringBootConfiguration is a specialization of @Configuration ? (Choose one) *
+ A. false
+ B. true
+
+ B. true
+
+
+22) Which ones are true about Spring Framework’s Test module? Select all that apply. *
+ A. JUnit is supported.
+ B. It provides consistent caching of contexts during test execution.
+ C. It provides mock objects.
+ D. TestNG is not supported.
+
+
+A. JUnit is supported.
+C. It provides mock objects.
+
+
+23) Which of these is the one being described below? Select the one that applies best.
+Its advantages include: faster development, lesser repetitive SQL code, and less if any at all need to deal with vendor-specific SQL and database issues. Its disadvantages include: a little more initial learning curve needed, and can be a little slower than SQL queries when it comes to complex queries. *
+ A. AOP
+ B. JDBC
+ C. OXM
+ D. ORM
+
+
+D. ORM (Object-Relational Mapping)
+
+Object-Relational Mapping (ORM) provides advantages such as faster development, reduction of repetitive SQL code, and abstracting away vendor-specific SQL and database issues. However, it may require a slightly steeper learning curve, and for complex queries, it might be a bit slower compared to hand-written SQL queries.
+
+
+24) What is used “under the hood” to implement the transactional behavior in Spring ? *
+ A. JPA
+ B. JDBC
+ C. AOP
+
+
+C. AOP (Aspect-Oriented Programming)
+
+Spring uses AOP (Aspect-Oriented Programming) "under the hood" to implement transactional behavior. AOP allows Spring to separate transaction management concerns from the core business logic, enabling the application to apply transactions declaratively.
+
+
+
+25) Which of these is supported as an embedded container in Spring Boot? Select all that apply. *
+ A. Tomcat
+ B. Jetty
+ C. Undertow
+ D. Azure
+
+
+A. Tomcat
+B. Jetty
+C. Undertow
+
+
+
+26) Which of the following are valid transaction propagation values ? (choose all that apply) *
+ A. PREFERED
+ B. NOT_ALLOWED
+ C. REQUIRED
+ D. MANDATORY
+
+
+C. REQUIRED
+D. MANDATORY
+
+Explanation:
+
+REQUIRED: Supports a current transaction; creates a new one if none exists.
+MANDATORY: Supports a current transaction; throws an exception if none exists.
+
+
+27) On which of these database system isolation levels can phantom reads occur? Select all that apply. *
+ A. Serializable
+ B. Repeatable reads
+ C. Read committed
+ D. Read uncommitted
+
+
+B. Repeatable reads
+C. Read committed
+
+Explanation:
+
+Phantom reads are possible in isolation levels where other transactions can insert or delete rows that match a certain condition within the current transaction's range.
+In the case of Repeatable reads and Read committed isolation levels, new rows might appear or disappear during the course of a transaction, causing phantom reads.
+
+
+
+28) What is the correct way to import bean definitions from a configuration class into another configuration class ? (Choose one) *
+ A. @Resource(DataSourceConfig.class)
+ B. @ImportResource(DataSourceConfig.class)
+ C. @Import(DataSourceConfig.class)
+
+
+C. @Import(DataSourceConfig.class)
+
+The @Import annotation is used for importing bean definitions from another configuration class in Spring.
+
+
+
+29) Which of these is the JdbcTemplate callback interface described below?
+It extracts values from each row of a ResultSet. *
+ A. PreparedStatementCreator
+ B. CallableStatementCreator
+ C. RowCallbackHandler
+ D. None of the above.
+
+
+C. RowCallbackHandler
+
+
+
+30) Given the following configuration class and bean, the bean being autowired into another bean as dependency, what happens when the application runs ?
+package com.cfg;//configuration@Configurationpublic class AppConfig {}package com.quiz;// bean@Componentpublic class QuizBean {} package com.another.quiz;// autowiring the bean@Componentpublic class AnotherQuizBean {      @Autowired      QuizBean quizBean;} 
+*
+ A. an exception will be thrown because there is no scope defined for the bean of type QuizBean
+ B. a bean of type QuizBean is created and autowired into a bean of type AnotherQuizBean
+ C. an exception will be thrown because @ComponentScan is missing from the configuration class so the bean definitions are not discovered
+
+
+B. A bean of type QuizBean is created and autowired into a bean of type AnotherQuizBean.
+
+
+The @Component annotation on QuizBean indicates that it should be automatically discovered and registered as a bean.
+The @Autowired annotation on AnotherQuizBean's quizBean field signals Spring to inject a bean of type QuizBean into AnotherQuizBean when it is created.
+Assuming the components are in the correct package scanning scope, the application should run without exceptions.
+
+
+31) Fill in the blanks. In Spring Security, upon successful ______, the ______ (which is most of the time a ______ object from the UserDetailsService) is used to build the Authentication object that is stored in the SecurityContextHolder. Select the one that applies best. *
+ A. authentication, authorization service, Principal
+ B. authorization, authorization service, UserDetails
+ C. authorization, authentication manager, Principal
+ D. authentication, principal, UserDetails
+
+
+D. authentication, principal, UserDetails
+
+
+
+32) What is authorization ? *
+ A. the process of making a decision whether an authenticated user is allowed to perform a certain action within the application
+ B. the process of verifying the validity of the principal’s credentials
+ C. the process of generating credentials for a user
+
+
+
+A. The process of making a decision whether an authenticated user is allowed to perform a certain action within the application.
+
+
+
+33) Which of these is a way of closing an application context, that allows you to listen to an event, so that you can do some additional actions when the application context is closing? *
+ A. No additional configuration is needed. The application closing event is published by default.
+ B. Use the 'registerShutdownHook()' on the application context
+ C. Call 'close()' on the application context
+
+
+B. Use the 'registerShutdownHook()' on the application context
+
+
+34) Which endpoints are provided out of the box when Spring Boot Actuator is on the classpath ? (Choose all that apply) *
+ A. /beans
+ B. /actuator
+ C. /info
+ D. /health
+
+
+A. /beans
+C. /info
+D. /health
+
+
+35) After an AOP join point gets executed and completes normally (that is, without an exception thrown), which of these advices, when used, will have a chance to execute some code? Select all that apply. *
+ A. After returning advice (using @AfterReturning)
+ B. After throwing advice (using @AfterThrowing)
+ C. Around advice (using @Around)
+ D. After (finally) advice (using @After)
+
+
+A. After returning advice (using @AfterReturning)
+C. Around advice (using @Around)
+D. After (finally) advice (using @After)
+
+
+After returning advice (@AfterReturning) is executed after a join point completes normally (without an exception).
+Around advice (@Around) allows you to execute code before and after the join point, including handling the normal execution.
+After (finally) advice (@After) is executed after the join point, regardless of whether it completed normally or threw an exception.
+
+
+36) Which of these is the one being described below? Select the one that applies best.
+It can be declared in the web.xml. It provides the link between the web.xml and the application context. It delegates its Filter methods to beans. *
+ A. DispatcherServlet
+ B. Filter
+ C. FilterChainProxy
+ D. DelegatingFilterProxy
+
+
+D. DelegatingFilterProxy
+
+Explanation:
+
+DelegatingFilterProxy is a Spring-provided javax.servlet.Filter that delegates to a Spring-managed bean that implements the Filter interface.
+It allows for the link between the web.xml and the application context in a Spring-based web application.
+
+
+37) Which of these can be used by Spring Boot to externalize configuration ? *
+ A. YAML files
+ B. properties files
+ C. environment variables
+ D. XML files
+
+
+A. YAML files
+B. properties files
+C. environment variables
+
+
+38) Which of these are true about configuring the use of JPA in Spring? Select all that apply. *
+ A. You can set up an EntityManager using LocalEntityManagerFactoryBean.
+ B. You can set up an EntityManager using LocalContainerEntityManagerFactoryBean.
+ C. The persistence.xml is required.
+ D. To enable JPA in a Spring Boot application, add the spring-boot-starter and spring-boot-starter-data-jpa dependencies.
+
+
+A. You can set up an EntityManager using LocalEntityManagerFactoryBean.
+B. You can set up an EntityManager using LocalContainerEntityManagerFactoryBean.
+D. To enable JPA in a Spring Boot application, add the spring-boot-starter and spring-boot-starter-data-jpa dependencies.
+
+
+
+39) Which of the following are stereotype annotations ? (choose all that apply) *
+ A. @Bean
+ B. @PostConstruct
+ C. @Component
+ D. @Scope
+ E. @Service
+
+
+
+C. @Component
+E. @Service
+
+
+
+40) In Spring MVC, if the return type of a method annotated with @RequestMapping is a String, what does this String represent? *
+ A. The name of the session attribute holding a View object
+ B. The name of the session attribute holding a ModelAndView object
+ C. Logical view name
+ D. The name of the request attribute holding a ModelAndView object
+
+
+C. Logical view name
+
+Explanation:
+
+In Spring MVC, when the return type of a method annotated with @RequestMapping is a String, it represents the logical view name.
+The logical view name is used to determine the view that should be rendered to display the results of the method. The actual view resolution is done by the configured view resolver.
+
+
+41) What needs to be done to implement transactional behavior in a Spring application ? (choose all that apply) *
+ A. enable declarative transaction support by annotating a configuration class with @EnableTransactionManagement
+ B. activate transactional profile
+ C. declare a transaction manager bean
+ D. annotate service methods with @Transactional
+
+
+A, C, D
+
+
+42) Which of these are specializations of @Component? Select all that apply. *
+ A. @Repository
+ B. @Service
+ C. @Resource
+ D. @Controller
+
+
+A, B, D
+
+
+
+43) Considering the following handler method definition:
+@RequestMapping(value = "/showUser", method = RequestMethod.GET)public String show(@RequestParam("userId") Long id, Model model) {         . . .}
+
+Which of the following requests are mapped to it ? *
+ A. http://localhost:8080/mvc-basic/showUser?userId=2c
+ B. http://localhost:8080/mvc-basic/showUser?id=105
+ C. http://localhost:8080/mvc-basic/showUser?userId=105
+ D. http://localhost:8080/mvc-basic/showUser?userid=105
+
+
+C. http://localhost:8080/mvc-basic/showUser?userId=105
+
+
+44) In Spring security, which of these is the attribute of the ‘intercept-url’ element which is a comma-separated list of the security configuration attributes (such as role names)? *
+ A. pattern
+ B. filters
+ C. access
+ D. requires-channel
+
+
+
+C. access
+
+Explanation:
+
+In Spring Security, the access attribute of the intercept-url element is used to specify the security configuration attributes, such as role names, that are required to access a particular URL pattern.
+The access attribute takes a comma-separated list of security expressions.
+
+
+45) Which of the following can be used for Dependency managment in spring boot ? *
+ A. Spring
+ B. Gradle
+ C. ant
+ D. Maven
+
+
+D. Maven
+
+
+
+48) In Spring Boot, on which areas below, can configuration settings be put, to control logging? *
+ A. @PropertySources in Spring @Configuration files
+ B. System properties
+ C. Conventional Spring Boot external configuration files
+ D. B and C only.
+
+
+D. B and C only.
+
+Explanation:
+
+In Spring Boot, configuration settings for logging can be controlled through system properties (e.g., using -D command-line options) and conventional external configuration files (e.g., application.properties or application.yml).
+
+
+49) What does the RestTemplate handle ? *
+ A. Representations
+ B. Both
+ C. Resources
+
+
+C. Resources
+
+Explanation:
+
+The RestTemplate in Spring is primarily used for interacting with RESTful web services and handling resources. It can be used to send HTTP requests and handle the responses, making it a convenient tool for working with RESTful APIs.
+
+
+50) Which of these is true about the testing class below? Select all that apply.
+     @RunWith(SpringRunner.class)     @ContextConfiguration(classes = MyTestConfig.class)     @Transactional     public class MyRepositoryTests {
+*
+ A. Each test method within the class MyRepositoryTests will be run within a transaction.
+ B. By default, all methods of the class MyRepositoryTests will be automatically committed after completion of the test.
+ C. The test methods in MyRepositoryTests that have the propagation type set to NOT_SUPPORTED will still be run within a transaction.
+ D. Spring's @Transactional annotation can also be annotated on the method level.
+
+
+
+A, D.

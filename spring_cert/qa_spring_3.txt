@@ -1,0 +1,538 @@
+1) A bean annotated with ‘Session’ scope is created : *
+ A. All of the above
+ B. one per user session
+ C. once per request
+ D. each time the bean is referenced
+
+
+
+B. one per user session
+
+
+
+2) Which of the following describes the REPEATABLE_READ isolation level ? *
+ A. dirty, repeatable, phantom reads are not possible when a transaction has this isolation level set.
+ B. dirty reads are possible when a transaction has this isolation level set.
+ C. repeatable reads are possible when a transaction has this isolation level set.
+ D. phantom reads reads are possible when a transaction has this isolation level set.
+
+
+
+
+A. dirty, repeatable, phantom reads are not possible when a transaction has this isolation level set.
+
+
+
+3) What is true about the @AliasFor annotation ? (choose one) *
+ A. is used to declare aliases for annotation attributes
+ B. is not part of the Spring framework
+ C. it can be used to declare an alias for a bean
+
+
+
+A. is used to declare aliases for annotation attributes
+
+
+
+4) Which of the following are valid bean scopes supported by Spring ? (choose all that apply) *
+ A. singleton
+ B. multiple
+ C. prototype
+ D. session
+ E. volatile
+
+
+
+A. singleton
+C. prototype
+D. session
+
+
+
+5) Which exceptions preferred in Spring ? (choose one) *
+ A. checked exceptions
+ B. unchecked exceptions
+ C. application exceptions
+
+
+
+B. unchecked exceptions
+
+
+
+6) Which of these is true regarding Spring transactions? *
+ A. @Transactional annotation works only on methods with public visibility.
+ B. Placing the @Transactional annotation on an interface (or an interface method), works only if you are using class-based (as opposed to interface-based) proxies.
+ C. The @Transactional annotation’s default propagation type is PROPAGATION_REQUIRED.
+ D. All of the above.
+
+
+D. All of the above.
+
+
+7) Which ones are correct about scopes? Select all that apply. *
+ A. The singleton scope is not available in a web-aware ApplicationContext.
+ B. Custom scopes are created using the org.springframework.beans.factory.config.Scope interface.
+ C. The scope which scopes a single bean definition to any number of object instances is called the ‘context’ scope.
+ D. ‘Singleton’ is the default scope.
+
+
+B. Custom scopes are created using the org.springframework.beans.factory.config.Scope interface.
+D. ‘Singleton’ is the default scope.
+
+
+
+8) Fill in the blanks. Select the one that applies best. ______ (in a class annotated with ______) enables MVC Java config. *
+ A. @EnableMVC, @Configuration
+ B. @EnableMVC, @WebConfiguration
+ C. @EnableWebMVC, @WebConfiguration
+ D. @EnableWebMVC, @Configuration
+
+
+
+D. @EnableWebMVC, @Configuration
+
+
+
+9) In which of these database system isolation levels can dirty reads occur? Select all that apply? *
+ A. Read uncommitted
+ B. Repeatable reads
+ C. Serializable
+ D. Read committed
+
+
+A. Read uncommitted
+
+
+10) Which of these are true about Spring and meta-annotations? Select all that apply. *
+ A. @Component is a meta-annotation.
+ B. The @Service annotation is annotated with a meta-annotation.
+ C. An annotation can be annotated by more than 1 meta-annotation.
+ D. A meta-annotation is an annotation that is declared on another annotation.
+
+
+A. @Component is a meta-annotation.
+B. The @Service annotation is annotated with a meta-annotation.
+C. An annotation can be annotated by more than 1 meta-annotation.
+D. A meta-annotation is an annotation that is declared on another annotation.
+
+
+12) Using the @SpringBootTest, the default context loader will be set to SpringBootContextLoader if a context loader is not configured in the application. *
+ A. false
+ B. true
+
+B. true
+
+
+13) Given the following controller, to what request will the call method be mapped to ? (choose one)
+@Controller
+@RequestMapping("/persons")
+public class PersonsController {
+    @RequestMapping("/list")
+    public String call(Model model,HttpServletRequest rq) {
+        ...
+    }
+}
+
+
+B. http://localhost:8080/persons/list
+
+
+
+14) What are the two protocols you can use to access actuator endpoints ? *
+ A. JMX
+ B. FTP
+ C. HTTP
+
+
+ A. JMX
+ C. HTTP
+
+
+15) Which annotation can we use in Spring Boot to do component scanning ? (Choose all that apply) *
+ A. @EnableAutoConfiguration
+ B. @ComponentScan
+ C. @SpringBootApplication
+
+B. @ComponentScan
+ C. @SpringBootApplication
+
+
+16) This is a predicate that matches join points. The concept of join points as matched by expressions of this kind is central to AOP. *
+ A. Aspect
+ B. Pointcut
+ C. Advice
+ D. None of the above.
+
+
+ B. Pointcut
+
+
+17) Which of these can be added after the code below to assist in the definition? Select all that apply.
+ DriverManagerDataSource myDataSource = new DriverManagerDataSource();     .....
+*
+ A. myDataSource.setDriverClass(…..);
+ B. myDataSource.setConnectionUrl(…..);
+ C. myDataSource.setUserId(…..);
+ D. myDataSource.setPassword(…..);
+
+ D. myDataSource.setPassword(…..);
+
+
+
+18) Which of these can fill the blank below, to protect access to ‘/driver’?
+protected configure(HttpSecurity http) throws Exception {
+	  http.authorizeRequests()._______________("/driver").hasRole("DRIVER");
+     }
+*
+ A. withUrl
+ B. on
+ C. match
+ D. mvcMatchers
+
+ D. mvcMatchers
+
+
+19) Which of these are true regarding the JdbcTemplate class? Select all that apply. *
+ A. JdbcTemplate simplifies Hibernate data access code.
+ B. It catches JDBC exceptions and translates them to the generic, more informative, DataAccessException exception hierarchy.
+ C. It performs iteration over ResultSets and extraction of returned parameter values.
+ D. It can use the RowCallbackHandler interface which extracts values from each row of a ResultSet.
+
+
+ B. It catches JDBC exceptions and translates them to the generic, more informative, DataAccessException exception hierarchy.
+ C. It performs iteration over ResultSets and extraction of returned parameter values.
+ D. It can use the RowCallbackHandler interface which extracts values from each row of a ResultSet.
+
+
+
+20) Fill in the blank. In Spring MVC, some of the values returned by _____________ are: a String, a View, or a ModelAndView. *
+ A. View Resolvers methods
+ B. HandlerMapping methods
+ C. Controller handler methods
+ D. Model methods
+
+
+The correct answer is C. Controller handler methods.
+
+
+21) What the annotation @Conditional is used for ? *
+ A. @Conditional  can be used for loading application configuration based on environments.
+ B. none of the above.
+ C. @Conditional can be used for conditional bean registrations.
+
+
+The correct answer is C. @Conditional can be used for conditional bean registrations.
+
+
+22) In which security annotation are you allowed to use SpEL ? *
+ A. @RolesAllowed
+ B. @PreAuthorize
+ C. @Secured
+
+
+The correct answer is B. @PreAuthorize
+
+
+
+23) Which of the following affirmations is false ? (Choose all that apply) *
+ A. inversion of control is another name for dependency injection.
+ B. inversion of control is a programming technique, expressed in terms of object-oriented programming, in which object coupling is bound at run time by an assembler object and is typically not known at compile time using static analysis.
+ C. inversion of control is a common pattern in the Java community that helps wire lightweight containers or assemble components from different projects into a cohesive application.
+
+
+The correct answer is B. Inversion of control is a programming technique, expressed in terms of object-oriented programming, in which object coupling is bound at compile time by an assembler object and is typically not known at run time using static analysis.
+
+
+
+24) What are the Health Indicator statuses that are provided out of the box ? (Choose all that apply) *
+ A. Status.UP
+ B. Status.UNAVAILABLE
+ C. Status.UNKNOWN
+ D. Status.DOWN
+ E. Status.OUT_OF_SERVICE
+
+
+The correct answers are A, C, D, and E.
+
+
+
+25) HTTP response status codes are three-digit integer codes where the first digit determines the class of the response. Which class is represented by 4xx HTTP response code ? *
+ A. Client error
+ B. Successful
+ C. Redirection
+ D. Server error
+
+
+The correct answer is A. Client error
+
+
+26) Fill in the blanks. ________ is an implementation of ________ for a single JPA EntityManagerFactory. It binds a JPA EntityManager from the mentioned factory to the thread. Select the one that applies best. *
+ A. JpaTemplate, Template
+ B. JpaTransactionManager, PlatformTransactionManager
+ C. JpaDataSource, DataSource
+ D. JpaEntity, Entity
+
+
+The correct answer is B. JpaTransactionManager, PlatformTransactionManager
+
+
+
+27) In Spring AOP, which of these can prevent execution from proceeding to the join point? Select all that apply. *
+ A. Before advice
+ B. After returning advice
+ C. After throwing advice
+ D. Around advice
+
+
+The correct answers are A. Before advice and D. Around advice.
+
+
+28) Which of these is a method used in customizing bean lifecycles, and is found inside the DisposableBean interface? *
+ A. postConstruct()
+ B. afterPropertiesSet()
+ C. destroy()
+ D. onInit()
+
+
+The correct answer is C. destroy().
+
+
+29) What does the @EnableAspectJAutoProxy do? Select the one that applies best. *
+ A. @EnableAspectJAutoProxy enables Spring AOP.
+ B. @EnableAspectJAutoProxy enables @AspectJ support.
+ C. There is no @EnableAspectJAutoProxy annotation. There is an @EnableAspectJ annotation used in aspect-weaving in Spring.
+ D. None of the above.
+
+
+The correct answer is B. @EnableAspectJAutoProxy enables @AspectJ support.
+
+
+30) Which of these database system isolation levels is best described below?
+In this isolation level, dirty reads, non-repeatable reads and phantom reads are all prevented. *
+ A. Read uncommitted
+ B. Serializable
+ C. Repeatable reads
+ D. Read committed
+
+
+The correct answer is B. Serializable
+
+
+
+31) Which annotation to use, in the case of Spring Data JPA, to enable the discovery and creation of repositories ? (choose one) *
+ A. @EnableJpaRepositories
+ B. @Repository
+ C. @Embeddable
+
+
+The correct answer is A. @EnableJpaRepositories
+
+
+32) What of the following is something that a Spring MVC handler method could not return ? *
+ A. a Model
+ B. a null value
+ C. a ModelAndView
+ D. a string
+ E. a JstlView instance
+
+
+
+33) How to disable a specific auto-configuration class ? *
+ A. @EnableAutoConfiguration(exclude={ClassName.class})
+ B. @EnableAutoConfiguration(excludeName={ClassName.class})
+ C. spring.autoconfigure.exclude=ClassName
+
+A,C
+
+
+34) What does the @WebMvcTest annotation auto-configure ? (Choose all that apply) *
+ A. MockMvc
+ B. Spring Security
+ C. Thymeleaf
+ D. Caching
+
+
+A. MockMvc
+
+
+
+35) Where does Spring Boot look for property file in a test ? (Choose one) *
+ A. outside of the application JAR with the name application.properties and the YAML counterparts
+ B. at the location specified using the @TestPropertySource annotation
+ C. One or more locations as specified in the @PropertySource annotation annotating a @Configuration class.
+
+
+B. at the location specified using the @TestPropertySource annotation
+
+
+36) Which of these are true about Spring AOP proxies? Select all that apply. *
+ A. Spring AOP uses JDK dynamic proxies for AOP proxies by default.
+ B. Spring AOP proxies that uses the standard JDK dynamic proxies cannot work with target objects that does not expose the target methods through interfaces.
+ C. CGLIB is necessary when proxying objects that does not implement any interface.
+ D. CGLIB classes are under the org.springframework.cglib package and included in the spring-core jar.
+
+
+
+A. Spring AOP uses JDK dynamic proxies for AOP proxies by default.
+B. Spring AOP proxies that use standard JDK dynamic proxies cannot work with target objects that do not expose the target methods through interfaces.
+C. CGLIB is necessary when proxying objects that do not implement any interface.
+D. CGLIB classes are under the org.springframework.cglib package and included in the spring-core jar.
+
+
+38) Which of these advices, when used, will have a chance to execute some code before the join point is executed? Select all that apply. *
+ A. @AfterReturning
+ B. @Before
+ C. @Around
+ D. @After
+
+
+
+B. @Before
+
+
+
+39) Which of these are true about security and Spring Security? Select all that apply. *
+ A. Security is a cross-cutting concern.
+ B. Spring secures method invocations using Spring AOP.
+ C. Spring secures web requests using Spring AOP.
+ D. Spring AOP is not the best solution if you need to secure in finer detail than method invocations. For example, if you need to secure domain objects directly, AspectJ could be a better choice.
+
+
+A. Security is a cross-cutting concern.
+D. Spring AOP is not the best solution if you need to secure in finer detail than method invocations. For example, if you need to secure domain objects directly, AspectJ could be a better choice.
+
+
+
+40) In Spring security, which of these is the attribute of the ‘intercept-url’ element which is sometimes set to ‘http’, ‘https’ or ‘any’? *
+ A. pattern
+ B. filters
+ C. access
+ D. requires-channel
+
+
+
+D. requires-channel
+
+
+
+41) What library is mandatory for writing unit tests for a Spring application ? (Choose one) *
+ A. any mock generating library such as jMock, Mockito, or EasyMock
+ B. spring-test
+ C. JUnit
+
+
+C. JUnit
+
+
+
+42) How do you define profile specific property files in Spring Boot ? (Choose one) *
+ A. application-{test}.properties
+ B. application-{profile}.properties
+
+
+B. application-{profile}.properties
+
+
+
+43) Which of the following are Spring Annotations ? (choose all that apply) *
+ A. @PreDestroy
+ B. @PostConstruct
+ C. @Autowired
+ D. @Inject
+ E. @Component
+ F. @Resource
+
+ C. @Autowired
+ E. @Component
+
+
+44) What is the format of the following properties ? (Choose one)
+info:
+  app:
+    name: persons-server
+    description: Spring App
+    version: 1.0-SNAPSHOT
+*
+ A. YAML format
+ B. HTML format
+ C. XML format
+
+
+ A. YAML format
+
+
+45) Which of the following statements regarding annotation-based configuration are true ? *
+ A. Annotating a class with Controller is not enough for that class to handle requests; the class also has to extend Spring’s AbstractController class.
+ B. @RequestMapping is both used at class and method level
+ C. @ModelAttribute can only be used to annotate controller method arguments.
+ D. To enable auto-detection of controller classes, you have to enable component scanning in your configuration
+
+
+B. @RequestMapping is both used at class and method level
+D. To enable auto-detection of controller classes, you have to enable component scanning in your configuration
+
+
+46) Which of these is true about the names of beans? Select all that apply. *
+ A. @Bean has an ‘id’ attribute.
+ B. @Bean(name={“name1″,”name2”}) is a valid code.
+ C. You are not required to supply a name or id for a bean.
+ D. @Bean(alias={“name1″,”name2”}) is a valid code.
+
+
+ B. @Bean(name={“name1″,”name2”}) is a valid code.
+ C. You are not required to supply a name or id for a bean.
+
+
+
+47) Which of these is true about Spring MVC annotations @RequestMapping and @GetMapping? Select all that apply. *
+ A. They are exactly the same.
+ B. There is no such annotation as @GetMapping.
+ C. @GetMapping will never handle HTTP POST calls.
+ D. @RequestMapping can handle HTTP POST calls.
+
+
+C. @GetMapping will never handle HTTP POST calls.
+ D. @RequestMapping can handle HTTP POST calls.
+
+
+
+48) Which of these are true regarding @Autowired’s ‘required’ attribute and @Required? Select all that apply. *
+ A. When @Autowired’s ‘required’ attribute is set to true, and no value is injected, a corresponding exception is raised.
+ B. Only one annotated (with @Autowired) constructor per class can be marked as required.
+ C. When @Required is used, the property is ignored if it cannot be autowired.
+ D. It is allowed to have multiple constructor methods in one class where all those constructor methods are: annotated with @Autowired and marked as non-required.
+
+
+A. Correct - When @Autowired's required attribute is set to true and no suitable bean is found for injection, an exception is thrown.
+
+B. Incorrect - There is no restriction on the number of constructors annotated with @Autowired. However, if there are multiple constructors, one of them should be marked as primary.
+
+C. Incorrect - @Required is a separate annotation and is not directly related to @Autowired. It doesn't control whether a property is ignored if it cannot be autowired.
+
+D. Correct - It is allowed to have multiple constructor methods in one class, all annotated with @Autowired, and marked as non-required.
+
+
+
+49) Which one is true about lazy initialization of beans? *
+ A. When a lazy-initialized bean A is a dependency of non-lazy-initialized singleton bean B, bean A will still be lazy-initialized.
+ B. Singleton-scoped beans, by default, are lazy-initialized.
+ C. Prototype-scoped beans, by default, are lazy-initialized.
+ D. All of the above.
+
+
+B. Singleton-scoped beans, by default, are lazy-initialized.
+
+
+
+50) Which of these are true about Spring MVC controllers? Select all that apply. *
+ A. Controllers implemented using annotations do not have to extend specific base classes or implement specific interfaces.
+ B. Controllers implemented using annotations do not have direct dependencies on Servlet or Portlet APIs.
+ C. The @Controller annotation acts as a stereotype for the annotated class, indicating that it has the role of a controller.
+ D. Controllers implemented using @Controller are testable artifacts.
+
+
+A. Controllers implemented using annotations do not have to extend specific base classes or implement specific interfaces.
+B. Controllers implemented using annotations do not have direct dependencies on Servlet or Portlet APIs.
+C. The @Controller annotation acts as a stereotype for the annotated class, indicating that it has the role of a controller.
+D. Controllers implemented using @Controller are testable artifacts.
