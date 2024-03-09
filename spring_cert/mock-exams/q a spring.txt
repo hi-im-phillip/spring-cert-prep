@@ -1673,6 +1673,7 @@ The correct statement is:
 
 A. Spring obtains a database connection through an implementation DataSource.
 
+
 B. The DataSource interface is not part of the Spring Framework; it is a standard interface defined in the javax.sql package.
 
 C. Spring's DriverManagerDataSource implementation does not provide pooling.

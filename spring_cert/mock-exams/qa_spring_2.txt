@@ -364,7 +364,17 @@ C. RowCallbackHandler
 
 
 30) Given the following configuration class and bean, the bean being autowired into another bean as dependency, what happens when the application runs ?
-package com.cfg;//configuration@Configurationpublic class AppConfig {}package com.quiz;// bean@Componentpublic class QuizBean {} package com.another.quiz;// autowiring the bean@Componentpublic class AnotherQuizBean {      @Autowired      QuizBean quizBean;} 
+package com.cfg;//configuration
+@Configuration
+public class AppConfig {}
+package com.quiz;// bean
+@Component
+public class QuizBean {} 
+package com.another.quiz;// autowiring the bean
+@Component
+public class AnotherQuizBean {      
+@Autowired      
+QuizBean quizBean;} 
 *
  A. an exception will be thrown because there is no scope defined for the bean of type QuizBean
  B. a bean of type QuizBean is created and autowired into a bean of type AnotherQuizBean

@@ -1,0 +1,315 @@
+1. What is a pattern? What is an anti-pattern? Is dependency injectin a pattern?
+
+A software design pattern is a general, reusable solution to a commonly occuring problem within a given context in software design. An anti pattern is a common response to arecurring problem that is usually ineffective and risks being
+highly counterproductive. Dependency injection is a programming technique that makes a class independent of its dependencies.
+
+2. What is an interface? and what are the advantages of making use of them in Java?
+
+An interface is away of implementing multiple inheritance (polymorphism). Interface only contain abstract methods and cannot be instantiated. Advantages include providing different implementations at runtime, the ability to inject
+dependencies, and polymorphism. An interface is a reference type in Java. It is similiar to a class. It is a collection of abstract methods. Inerfaceses are Java's way to implement multiple inheritance.
+
+What is meant by "application-context"?
+
+The ApplicationContext is the central inteface within a Spring application for providing configuration information to the application. It is a container used for inversion of control over beans. The beanFactory interface provides
+an advanced configuration mechanism capable of managing any type of object. ApplicationContext is a sub-interface of BeanFactory. In short, The bean factory provides the configuration framework and basic functionality, and the Application
+Context adds more enterprise-specific functionality. The ApplicationContext is a complete superset of the BeanFactory.
+
+3. What is concepts of a "container" and what is its lifecycle?
+
+The container will create the objects, wire them together, configure them and manage their complete life cycle from creation till destruction. The Spring container uses DI to manage the components that make up and application.
+
+4. How are you going to create a new instance of an ApplicationContext?
+
+ApplicationContext is just an interface so first you have to choose the implementation that best suits your needs. In case of annotations you will need a configuration class annotated with @Configuration. 
+
+ApplicationContext context = new FileSystemXmlApplicationContext("some/path/to/xml");
+ApplicationContext context = new ClassPathXmlApplicationContext("xml");
+ApplicationContext context = new AnnotaitonConfigApplicationContext(com.spring.action.config.SomeConfig.class);
+
+5. Can you describe the lifecycle of a Spring Bean in an ApplicationContext?
+
+1. Bean instantiated
+- Bean default constructor is called
+2. Bean properties are set
+- Bean's setter methods are called
+3. BeanNameAware:setBeanName()
+- if bean implements BeanNameAware inerface then setBeanName is called
+4. BeanFactoryAware:setBeanFactory()
+- if bean implements BeanFactoryAware interface then setApplicationContext is called
+5. ApplicationContextAware:setApplicationContext()
+- if bean implements ApplicationContextAware interface then setApplicationContext is called
+6. BeanPostProcessor: postProcessBeforeInitialization(Object bean, String beanName)
+- if bean implements BeanPostProcessor interface then postProcessBeforeInitialization is called
+7. Method annotated with @PostConstructor
+- any method annotated with @PostConstructor is called
+8. InitializingBean: afterPropertiesSet()
+- if bean implement InitializingBean interface then afterPropertiesSet is called
+9. Init-method set in xml bean configuration
+10. BeanPostProcessor: postProcessAfterInitialization(Object bean, String beanName)
+- if bean implements BeanPostProcessor interface then postProcessAfterInitialization is called
+11. Method annotated with @PreDestroy is called
+- any method annotated with @predestroy is called
+12. DisposableBean:destroy()
+- if bean implements DisposableBean interface then destroy is called
+13. destroy-method set in xml bean configuration
+
+
+6. How are you going to create an ApplicationContext in an integration test?
+
+For automatic creation of an ApplicationContext for test purposes you will need to configuration class and 2 annotations
+@RunWith(Springrunner.class)
+@ContextConfiguration(classes = Config.class)
+
+
+7. What is the preferred way to close an application context? Does Spring boot do this for you?
+
+context.close()
+context.registerShutdownHook()
+
+Yes, Spring does. In spring Application.run()
+
+8. Can you describe: Dependency injection using Java configuration?
+
+One bean method should call another bean method.
+
+9. Can you describe Dependency injection using annotations (@Component, @Autowired)?
+
+@Component marks the class as a Java bean which signals Spring to pick it up and pull it into the Application Context so that it can be injected into @Autowired instances.
+
+@Autowired has a Required property to indicate if the value being injected is optional
+
+@Required dependencies that are not set raise a corresponding exception
+
+
+10. Can you describe: Component scanning , Stereotypes and Meta-Annotations?
+
+Components are scanned at startup based off the specified classpath or marked with @Component
+
+Stereotypes: An annotation classification for classes. @Components, Controller, Service...
+
+Stereotype: is an annotation that can be used to annotate other annotations.
+
+Meta-Annotations: An annotation that is used as part of another annotation. For example, @RestController is not a Stereotype, it is a convenience annotation composed of Controller and ResponseBody
+
+11. Can you describe: Scopes for Spring beans? What is the default scope?
+
+Scopes define how the bean will be used. For example singleton scope will use of the same instance of the requested object each time. 
+Common scopes are singleton, prototype, session and request. The default scope is singleton.
+
+Are beans lazily or eagerly instantiated by default? How do you alter this behavior?
+
+Beans are eagerly instantiated by default. You can override this by making the bean @Lazy
+
+12. What is a property source? How Would you use @PropertySource?
+
+@PropertySource("classpath:/com/test/app.properties")
+public class ConfigTest
+
+@Value("${db.url}")
+private String url;
+
+@Autowired
+Environment env;
+
+env.getProperty("testbean.name")
+
+- PropertySource is an Annotation providing a convenient and declarative mechanism for adding a PropertySource to Spring's Environment. To be used in conjuction with @Configuration classes.
+
+
+13. What is a BeanFactoryPostProcessor and what is it used for? When is it invoked?
+
+BeanFactoryPostProcessor is an interface and beans that implement it are actually beans that undergo the Spring lifecycle but these beans don't take part of the other declared beans lifecycle. A bean implementing 
+BeanFactoryPostProcessor is called when all bean definitions will have been loaded, but no beans will have been instantiated yet. This allows for overriding or adding properties even to eager-initializing beans.
+This will let you have access to all the beans that you have defined in XML or that are annotated.
+
+14. Why would you define a static @Bean method?
+
+You would use static @Bean when defining post processor beans, e.g. of type BeanFactoryPostProcessor or bean PostProcessor, since such beans will get initialized early in the container lifecycle and should avoid triggering other 
+parts of the configuration at thah point. Static @Bean methods will never get intercepted by the container, not even with @Configuration classes. This is due to techincal limitations:
+CGLIB subclassing can only override non static methods. AS a consequence, a direct call to another @Bean method will have standard Java semantics, resulting in an independent instance being returned straight from the factory
+method itself.
+
+15. What is a PropertySourcesPlaceholderConfigurer used for?
+
+- Specialization of PlaceHolderConfigurerSupport / Resolve @Value annotations
+
+This bean is used for defining the location of the properties file to be used in assiging values to bean properties. But it also allows for searching the required value in the system and/or environment variables. 
+Resolves ${} placeholders withing bean definition property values and @Value annotations.
+
+SpEL is abbreviation of Spring Expression Language which can be used to query property value from properties file or manipulate java object and it's attributes at runtime.
+
+16. What is a BeanPostProcessor and how is it different to a BeanFactoryPostProcessor?
+
+BeanPostProcessor operates on bean instances whereas the BeanFactoryPostProcessor does it's work before the container instantiates any beans.
+
+BeanFactoryPostProcessor implementations are "called" during startup of the Spring context after all bean definitions will have been loaded while BeanPostProcessor are "called" when the Spring IOC container instantiates a bean.
+
+
+16. What does a BeanPostProcessor do? When are they called?
+
+A bean implementing BeanPostProcessor operates on bean instances which means that when the Spring IOC container instantiates a bean instance then BeanPostProcessor interfaces do their work. 
+
+
+17. What is an initialization method and how is it declared on a Spring bean?
+@Bean(initMethod="init", destroyMethod="destroy")
+
+Initialization method is a method that does some initialization work after all the properties of the bean were set by the container. It can be declared using the initMethod of @Bean, using @PostConstruct or implementing
+InitializingBean and overriding afterPropertiesSet(discouraged). The order the methods are called @PostConstruct, then afterPropertiesSet and then init-method.
+
+
+18. What does component-scanning do?
+
+To do dependency injection, Spring creates so-called application context. During startup, Spring instantiates objects and adds them to the application context.
+Objects in th application context are called "Spring beans" or "components". Spring resolves dependencies between Spring beans and injects Spring beans into other Spring bean's fields or constructors.
+
+The process of searching the classpath for classes that should contribute to the application context is called component scanning. Scan objects are: component, service, repository, controller
+
+19. What is the behavior of the annotation @Autowired with regards to field injection, constructor injection and method injection?
+
+The following are the types of dependency injections that could be injected inot your application:
+
+- constructor di
+- setter di
+- field di
+
+Advantages of the constructor injection patter:
+- it is more suitable for mandatory dependencies and it makes a strong dependency contract
+- it supports testing by using the dependencies passed as constructor arguments to the dependent class
+- it favours the use of immutable objects and does not break the information hiding principle
+Disadvantages 
+- it may cause circular dependency (Spring IOC container detect this circular reference at runtime, and throws a BeanCurrentlyInCreationExc)
+
+Advantages of setter injection:
+- it is more readable than the constructor injection
+- it solves the circular dependency problem
+- it allows costly resources or services to be created as late as possible, and only hwn required 
+- it does not require the constructor to be changed, but dependencies are passed through public properties
+
+Disadvatages:
+- securiy is lesser in the setter becaouse it can be overriden
+- not as compact as constructor di
+
+What is the begavior of the annotation @Autowired? Autowiring is a mechanism which enables more or less automatic dependency resolution primarily based on types. The basic procedure of di with @Autowired is:
+
+- Spring container examines the type of the field or parameter that is to be dependency injected
+- Spring container searches the application context for a bean which types matches the type of the field or parameter
+- If there are multiple matching bean candidates and one of them is annotated with @Primary, then this bean is selected and injected into the field or parameter
+- If there are multiple matching bean candidates and the field or parameter is annotated with the @Qualifier, then the Spring container will attempt to use the information from the @Qualifier to select a bean to inject
+- If there is no other resolution mechanism, such as the @Primary or @Qualifier, and there are multiple matching beans, Spring container will try to resolve the appropriate bean by trying to match the bean name to the name of the field or parameter. This the default bean resolution mechanism used when autowiring dependencies.
+- If still no unique match for the field or parameter can be determined, an exception will be thrown
+- 
+
+
+20. What is a proxy object and what are the two different types of proxies Spring can create?
+
+A proxy object is an object that have the same methods, at least the public methods as the object it proxies.
+The purpose of this is to mkae the proxy indistinguishable from the object it proxies.
+
+JDK Proxy: This is also know as a dynamic proxy. Its api is built into the JDK. For this proxy the Java interface is required
+CGLib Proxy: This is not build into JDK. However it is included in Spring JARS. and is used when the interface is not available.
+It cannot be applied to final classes or methods.
+
+21. What does the @Bean do?
+
+Indicates that a method produces a bean to be managed by the Spring container. Has properties:
+- destroyMethod
+- initMethod
+- name
+- vlaue
+
+Typically, @Bean methods are declared within @Configuration classes. In this case, bean methods may reference other @Bean methods in the same class by calling them directly.
+Bean methods may be declared in a @Component class or even in a plain old class. In such cases, a @Bean methods may be declared in a @Component class or even in a plain old class. In such case a @Bean method will get processed in a so called 'lite-mode'. In constract to the semantics for bean methods in @Configuration classes 'inter-bean references' are not supported in lite mode. Instead, when one @Bean method invokes another @Bean method in lite mode, the invocation is astandard Java method invocation.
+Spring does not inercept the invocation via a CGLIB proxy. This is analoguos to inter-@Transactional method calls where in proxy mode, Spring does not inercept the invocation.
+
+
+22. What is the default bean id if you only use @Bean? How can you override this?
+
+Default bean's id is method's name. To override it, use @Bean(name="name") or @Bean("name")
+
+23. Why are you not allowed to annotate a final class with @Configuration?
+
+Configuration classes are subclassed by the Spring container using CGLIB and final classes cannot be subclassed.
+
+24. How do you configure profiles? What are possible use cases where they might be useful?
+
+In Java configuration, you can use the @Profile to specify which profile a bean belongs to.
+The @Profile may be used in any of the following ways:
+- At class level in @Configuration classes. Beans in the configuration class and beans in configuration imported with @Import.
+- At class level in classes annotated with @Component or annotated with any other annotation that in turn is annotated with @Component
+- On method annotated with the @Bean. Applied to a single method annotated with the @Bean
+- Type level in custom annotations. Acts as a meta annotation when creating custom annotations
+
+Spring honors two separate properties when determining which profiles are active:
+spring.profiles.active and spring.profiles.default:
+
+- If spring.profiles.active is set then its value determines which profiles are active
+- If spring.profiles.active isn't set, then Spring looks to spring.profiles.default
+- If neither spring.profiles.active nor spring.profiles.default is set, then there are no active profiles, and only those beans that aren't defined as being in a profile are created.
+
+You can activate multiple profiles at the same time by listing the profile names, separated by commas. If you would like to define alternative beans with different profile conditions, use distinct Java method names pointing to the same bean name via the @Bean name attribute
+
+
+25. Can you use @Bean together with @Profile?
+Yes
+
+26. Can you use @Component together with @Profile?
+Yes
+
+27. How many profiles can you have?
+Integer.max
+
+28. How would you inject scalar/literal values into Spring beans?
+Scalar/literal values can be injected into Spring beans using the @Value. Such values can be originate from environment variables, properties, Spring beans.
+@Value("{some.key:default value}")
+
+@Value("{some.key:}")
+
+@Value("{some.key:one, two, three}")
+String[] stringArray
+
+29. What is Spring Expression Language (SpEL for short)?
+
+The Spring Expression Language is an expression language used in the different Spring products, not only in the Spring Framework. SpEL expression are framed with #. 
+SpEL has support for: Literal expression Boolean and relational operators Regular expressions Class etc.
+
+30. What is Environment abstraction in Spring?
+
+The Enviornment is an abstraction integrated in the container that models two key aspects of the application environment: profiles and properties. A profile is a named, logical group of bean definitions to be registered with the container only if the given profile is active. @PropertySource providing a convinient and declarative mechanism for adding a PropertySource to Spring's Environment. To be used in conjuction with @Configuration classes. Given a file app.properties containing the key/value pair, the following @Configuration class uses @PropertySource to contribute app.properties to the Environments set of PRopertySource
+
+31. What can you reference using SpEL?
+
+Referencing beans, properties and methods Reference bean by id: #{someBean} Bean's method: # {someClass.getArtist()}, #{someClass.getName().toUpperCase()}. To guard against a NullPointerException you can use the type-safe operator: # {someClass.getName()?.toUpperCase()}
+
+32. What si difference between $ and # in @Value expressions?
+
+Expressions starting with $ reference a property name in the application's environment. These expression are evaluated by the PropertySourcesPlaceholderConfigurer
+Spring bean prior to bean creation and can only be used in @Value.
+
+Expression starting with # is using parser SpEL and evaluated by a SpEL expression instance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

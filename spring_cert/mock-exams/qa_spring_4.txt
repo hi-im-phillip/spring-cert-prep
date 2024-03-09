@@ -1,0 +1,66 @@
+1) Which annotation to use, in the case of Spring Data JPA, to enable the discovery and creation of repositories ? (choose one) *
+ A. @EnableJpaRepositories
+ B. @Repository
+ C. @Embeddable
+
+
+A. @EnableJpaRepositories
+
+
+
+
+2) Which of the following is true about bean naming ? (choose all that apply) *
+ A. a bean can be declared without a name or id
+ B. two beans can have the same name
+ C. a bean can have multiple ids
+ D. it is possible for a bean to have multiple names
+
+
+
+A. a bean can be declared without a name or id
+D. it is possible for a bean to have multiple names
+
+
+
+3) Which endpoints are sensitive ? (Choose one) *
+ A. /info
+ B. /health
+ C. /httptrace
+ D. /metric
+
+
+B. /health
+
+
+
+4) Which one are true regarding this method in JBDCTemplate ? (Choose all that apply)public void execute(String sql) *
+ A. Just like most of the JDBCTemplate methods, it can throw a DataAccessException
+ B. It cannot execute SQL DDL statements
+ C. It can execute Sql insert/delete statements
+
+
+A. Just like most of the JDBCTemplate methods, it can throw a DataAccessException
+B. It cannot execute SQL DDL statements
+C. It can execute SQL insert/delete statements
+
+
+
+5) Where does Spring Boot look for property file in a test ? (Choose one) *
+ A. outside of the application JAR with the name application.properties and the YAML counterparts
+ B. at the location specified using the @TestPropertySource annotation
+ C. One or more locations as specified in the @PropertySource annotation annotating a @Configuration class.
+
+
+B. At the location specified using the @TestPropertySource annotation.
+
+
+
+6) What does the @EnableAspectJAutoProxy do? Select the one that applies best. *
+ A. @EnableAspectJAutoProxy enables Spring AOP.
+ B. @EnableAspectJAutoProxy enables @AspectJ support.
+ C. There is no @EnableAspectJAutoProxy annotation. There is an @EnableAspectJ annotation used in aspect-weaving in Spring.
+ D. None of the above.
+
+
+B. @EnableAspectJAutoProxy enables @AspectJ support.
+
