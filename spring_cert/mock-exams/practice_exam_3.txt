@@ -1,0 +1,76 @@
+1. Which of these two properties are to  be set in application.properties so that all the available actuator endpoints are enabled?
+
+
+management.endpoints.enabled-by-default=true
+
+management.endpoints.web.expose.include=*
+
+
+2. Which of these annotation is used in Java based Configuration over methods which indicate Bean Definitions?
+
+@Bean
+
+3. Which of these is true about @Profile annotation for providing String expression for its attribute?
+
+This is the correct example: @Profile("!c & d!")
+
+This is the correct example: @Profile("!a")
+
+
+4. When bean is not associated to the profile using @Profile
+
+The bean is available on each profile
+
+
+5. ____ (in a class annotated with ___) enables MVC Java config.
+
+@EnableWebMVC, @Configuration
+
+
+6. In Spring AOP, which of these can prevent execution from proceeding to the join point?
+
+Around advice, Before advice
+
+
+7. Transaction ___ in database systems determine how the changes within a transaction are visible to other users and systems accessing the database prior to the transaction being commited
+
+Isolation
+
+
+8. _____ is the base interface for all transaction managers that can be used in the SPring framework transaction infrastracture
+
+PlatformTransactionManager
+
+
+9. Which of these is true about @Query when working with database?
+
+It allows manual definition of the query to be executed by a repository method.
+
+JPQL can be used with it.
+
+Native SQL can be used with it
+
+It can be used in Spring data jpa
+
+
+10. Which of these are called after all the bean's properties have been set (after dependency injection is done)?
+
+Methods annotated with @PostConstruct
+
+afterPropertiesSet() as defined by the InitializingBean interface
+
+
+11. In the code below, parm1, parm2, parm3 and parm4, are all inputs to the controller method. Which of them would most likely need to be annotated with @RequestParam? Select all that apply.
+
+@RequestMapping(value="/parm1/{parm1}/parm2/{parm2}", method=RequestMethod.GET) 
+public String findSomething(String parm1, String parm2, String parm3, String parm4, Model model) {
+
+
+parm3, parm4
+
+Parm1 and parm2 looks like they use URI template Patterns, and therefore would need @PathVariable
+
+
+12. Which of these are annotations can be applied on Spring MVC controller method parameters?
+
+@RequestParam, @RequestHeader, @ModelAttribute, @RequestBody

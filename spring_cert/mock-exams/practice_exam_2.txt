@@ -1,0 +1,70 @@
+1. In Spring security, @Secured annotation is a legacy Annotation from Spring 2.x. In place of @Secured which of these annotations can be used?
+
+@PreAuthorize
+
+Not correct: @RolesAllowed
+
+
+2. Whicj of these is true about the annotation @PropertyResource in Spring Framework?
+
+It is used to provide system properties of JVM
+
+It is used to provide system environment variables
+
+It is used to provide properties files path
+
+
+3. Which of these correctly describes Transaction Management?
+
+It is implemented using Spring AOP
+
+It follows ACID properties
+
+4. In Spring security ____ holds the information of an authority granted to an authenticated principal?
+
+GrantedAuthority
+
+
+5. In Spring Security, for a given username ____ retrives the information from a database for performing authentication.
+
+UserDetailsService
+
+
+6. In Spring security ___ holds the information of user like username and password
+
+UserDetails
+
+7. Which of these is true about the annotation @Bean in spring bean life-cycle?
+
+It configures autowiring whether by name or type
+
+IT configures a method to be called during bean initialization (init method)
+
+It configures a method to be called on bean before it is destroyed (destroy method)
+
+
+8. In SPring MVC, some of the values returned by ____ are: a String, a View or a ModelAndView
+
+Controller handler methods
+
+
+9. Which of these are true about Spring MVC controllers?
+
+Controllers implemented using annotations do not have to extend specific base classes or implement specific interfaces.
+
+Controllers implemented using annotations do not have direct dependencies on Servlet or Portlet APIs
+
+The @Controller annotation acts as a stereotype for the annotated class, indicating that it has the role of a controller?
+
+Controllers implemented using @Controller are testable artifacts.
+
+
+11. Which of these is true about spring.factories file?
+
+Register application event listeners regardless of how the Spring Boot application is created
+
+Locate autoconfiguration candidates in, for instance, your own starter module.
+
+Customize the environment or application context prior to the Spring Boot application has started up
+
+Register a filter to limit the auto-configuration classes considered

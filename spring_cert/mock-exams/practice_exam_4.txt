@@ -1,0 +1,93 @@
+1. Which of these are properties of the @Transactional annotation?
+
+rollbackForClassname, noRollbackFor
+
+
+2. Which of these is true about the PropertySourcesPlaceholderConfigurer class?
+
+resolves ${} placeholders within bean definition
+
+resolves @Value annotation
+
+specialization of PlaceholderConfigurerSupport
+
+3. Which ones are true?
+
+It is possible to override methods on container-managed beans, to return the lookup result for another named bean in the container
+
+
+4. ___ and ___ can be used to secure service layer ____.
+
+@Secured, @PreAuthorize, methods
+
+
+5. Which of these can be used in Java-based or annotation-based Spring configuration? 
+
+@Bean, @Configuration, @Scope
+
+
+6. Which of these are true in Spring aspects-oriented programming?
+
+Due to proxy-based nature of Spring's AOP framework, calls within target object are by definition not intercepted
+
+If you are using CGLIB, public method calls on the proxy will be intercepted
+
+
+7. Which of these is an XML tag in Spring Security that allows access to the current Authentication object stored in the security context?
+
+authentication
+
+authorize - used to determine whether its contents should be evaluated or not
+
+
+8. Which of these are cross-cutting concerns where Spring AOP will be useful?
+
+Caching, Transaction, Security, Monitoring, Logging, Statistics
+
+9. Which of these are true regarding Spring transactions?
+
+Instances of the TranscactionTemplate class are threadsafe
+
+You can call the commit method of PlatformTranscationManager to issue a commit.
+
+The transaction name can be explicitly set only programmaticaly
+
+You can call the rollback method of PlatformTransactionManager to issue a rollback
+
+
+10. What does this code below return? 
+
+return this.jdbcTemplate.queryForObject("select name from Account where name like ?", 
+, new Object[]{"JOHN%"} 
+, new RowMapper<Account>() {
+ 	public Account mapRow(ResultSet rs, int rowNum) throws SQLException { 
+		return new Account(rs.getString("name")); 
+		} 
+	} 
+);
+
+It returns an Account object
+
+
+11. Which of these are classes that can be put on Spring MVC controller method parameters, and Spring will auto-populate these fields with the appropriate instance?
+
+ServletRequest, HttpSession, ServletResponse
+
+
+12. Which of these is one of the places where Spring Boot refers to as a property source?
+
+Default properties (specified by setting SpringApplication.setDefaultProperties)
+
+OS environment variables
+
+JNDI attributes from java:comp/env
+
+
+
+
+
+
+
+
+
+

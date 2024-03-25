@@ -1,0 +1,74 @@
+1. Which of these advices, when used, will always have a chance to execute some code after the join point execution,
+regardless on if the execution completes normally or throws an exception?
+
+@Around, @After
+
+Not correct @AfterThrowing
+
+
+2. Which of these dispatches request to controllers?
+
+DispatcherServlet
+
+Not correct: RequestDispatcher (doesnt exists)
+
+
+3. Which of these is true about the partial code below?
+
+@Repository
+@Profile({"dev", "!prod"})
+public class MyRepoImpl 
+
+
+
+The MyRepoImpl will be created as a Spring bean, when dev profile is active
+
+The MyRepoImpl will be created as a Spring bean, when the "uat" profile is active
+
+@Profile can be annotated on methods
+
+
+4. Which of these can be used in Java based or annotation based Spring configuration?
+
+@Required, @Autowired, @PreDestroy, @Import
+
+
+5. Which of these is true about @Bean methods that are marked with a java "static" modifier?
+
+The static modifier allows a method to be called without creating its containing configuration class as an instance
+
+It is necessary when beans will get initilized erly in the container lifecycle
+
+It avoids triggering other parts of the configuration at that point of definition
+
+They will never get intercepted by the container, not even within @Configuration classes
+
+
+6. During which phase can Beanpostprocessor modify the bean initialization?
+
+postProcessBeforeInitialization
+
+postProcessAfterInitialization
+
+
+7. Which of these can be used when Spring Data repositories are implemented at runtime?
+
+Jdk proxy
+
+
+8. Which of these are true regarding Spring Security?
+
+@RolesAllowed can be used to implement method-level security
+
+The 'authorize' tag can be used in a JSP
+
+<password-encoder> is used for supporting encoded password and not <encode-password>
+
+
+9. Which of these is the one being described below?
+
+IT is a PlatformTranscationManager implementation for single JDBC datasources
+
+DataSourceTransactionManager
+
+Doesnt exists: JDBCTransactionManager

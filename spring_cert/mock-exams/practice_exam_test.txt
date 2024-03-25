@@ -1,0 +1,206 @@
+1. Which of these are classes that can be put on Spring MVC controller method parameters, and Spring will auto-populate these fields with the appropriate instance?
+
+Correct: ServletResponse, HttpSession, ServletRequest
+
+Not Correct: Controller
+
+
+2. Which of these are true about Spring's proxy feature?
+
+Correct: 
+You can add methods or fields to an advised (proxied) class.
+
+There is a type of Spring proxy that can be triggered only if the proxied method throws an exception.
+
+If a proxied method is called directly by another method from inside the same class, the proxy of that proxied method will not be triggered.
+
+There is a type of Spring proxy that can replace the object being returned by the method.
+
+
+3. Which of these are valid controller methods?
+
+
+Correct: 
+
+@RequestMapping(value = "/getMyData") 
+public Map getMyData()
+
+@RequestMapping(value = "/getMyData") 
+public HttpHeaders getMyData() {
+
+@RequestMapping(value = "/getMyData") 
+public @ResponseBody MyDataDto getMyData(HttpSession httpSession) {
+
+Not correct:
+
+@RequestMapping(value = "/getMyData") 
+public @RequestBody MyDataDto getMyData() {
+
+
+4. In Spring MVC, which of these are a valid use of the @PathVariable? Select all that apply.
+
+Correct: 
+
+@RequestMapping(value="/users/{userId}") 
+public String viewUser(@PathVariable String userId, Model m) {
+
+@RequestMapping(value="/users/{userId}") 
+public String viewUser(@PathVariable("userId") String personnelId, Model m) {
+
+@RequestMapping(value="/users/{userId}/addresses/{addressId}") 
+public String viewUserAddress(@PathVariable String userId, @PathVariable String addressId, Model m) {
+
+
+5. Which of these Transaction Manager is used while using JPA with multiple entity manager factories in Spring Applications?
+
+
+JtaTransactionManager
+
+
+6. Which of these are true about Spring MVC? Select all that apply.
+
+
+It provides additional Spring scopes for the following: HTTP request, and HTTP Session.
+
+In Spring MVC, any object can be a command or form-backing object. It is not needed to implement a framework-specific interface or base class.
+
+It has a JSP tag library that enables data binding and themes.
+
+Not correct:
+
+To use Spring MVC, there is no additional jar needed. It is included in the spring core jar.
+
+
+7. What does this code below return? 
+
+return this.jdbcTemplate.queryForObject("select name from Account where name like ?", , new Object[]{"JOHN%"} , 
+new RowMapper<Account>() { public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+ return new Account(rs.getString("name")); } } );
+
+It returns an Account object
+
+
+8. Which of these, by default, will cause a rollback of the Spring transaction? Select all that apply
+
+unchecked exception, java.lang.RuntimeException, java.lang.Error
+
+
+9. Which ones are valid Autowired definitions? Select all that apply.
+
+@Autowired 
+private MyFile[] myFiles;
+
+@Autowired(required=true) 
+public MySource(MyConnection myConnection) {
+
+
+Typed Map collections can be autowired as long as the expected key type is String. 
+There is no searchBy attribute.
+
+
+
+10. Which of these database system isolation levels is best described below? In this isolation level, dirty reads, non-repeatable reads and phantom reads are all prevented
+
+Serializable
+
+
+11. Fill in the blanks. ________ is an implementation of ________ for a single JPA EntityManagerFactory. It binds a JPA EntityManager from the mentioned factory to the thread. Select the one that applies best.
+
+
+JpaTransactionManager, PlatformTransactionManager
+
+12. Which of these are true in Spring aspects-oriented programming? Select all that apply
+
+If you are using CGLIB, public method calls on the proxy will be intercepted.
+
+Due to the proxy-based nature of Spring's AOP framework, calls within the target object are by definition not intercepted.
+
+
+13. Which of these is the HTTP response code when the request is considered forbidden (HttpStatus.FORBIDDEN)?
+
+403
+
+14. Which of these is a method used in customizing bean lifecycles, and is found inside the InitializingBean interface?
+
+afterPropertiesSet()
+
+
+15. Which of these are true regarding Spring transactions? Select all that apply
+
+You can call the 'commit' method of PlatformTransactionManager to issue a commit.
+
+Instances of the TransactionTemplate class are threadsafe.
+
+The transaction name can be explicitly set only programmatically.
+
+Expl: You can call the 'rollback' method of PlatformTransactionManager to issue a rollback.
+
+
+15. Which of these are true about declaring MVC controllers without using annotations? Select all that apply.
+
+Create a controller class by implementing the Controller interface or extending any of Controller's implementations like AbstractController
+
+A HandlerMapping implementation that does not use annotations can be used, to map the requests to the handler objects.
+
+BeanNameUrlHandlerMapping is included in the Spring framework, and it is the default if no HandlerMapping bean is registered in the application context.
+
+
+16. Which of these is one of the places where Spring Boot refers to as a property source? Select all that apply
+
+
+OS environment variables, JNDI attributes from java:comp/env., JNDI attributes from java:comp/env.
+
+
+17. Which ones are true? Select all that apply.
+
+It is possible to override methods on container-managed beans, to return the lookup result for another named bean in the container.
+
+Not correct:
+
+If bean A is a singleton, and it has a property bean B which is a non-singleton, every time bean A is acquired by a client, a new instance of bean B is always supplied.
+
+To be able to do lookup method injection, the class that the Spring container will subclass, must not be 'final', but the method to be overridden can be 'final'.
+
+Spring does not use CGLIB in the implementation of the lookup method injection feature.
+
+
+18. Which of these is true about the PropertySourcesPlaceholderConfigurer class? Select all that apply
+
+specialization of PlaceholderConfigurerSupport
+
+resolves ${...} placeholders within bean definition property values
+
+resolves @Value annotations
+
+
+18. Which of these are properties of the @Transactional annotation? Select all that apply
+
+noRollbackFor, rollback, rollbackForClassname
+
+19. Which ones are true about the @Qualifier annotation? Select all that apply.
+
+The @Qualifier annotation can also be used on types and fields.
+
+The @Qualifier annotation can be used on individual constructor arguments
+
+Not Correct:
+
+The @Qualifier annotation cannot be used on method parameters.
+
+
+20. Which of these are true about the Autowired annotation? Select all that apply
+
+When the Autowired annotation is used on an array field or an array method argument 'MyClass[]', all beans of type MyClass in the Spring context, will be in the array injected.
+
+The Autowired annotation has a 'required' property to indicate if the value being injected is optional.
+
+Not correct:
+
+When the Autowired annotation is used on a method, the method can only have up to 1 argument on the method signature.
+
+When the Autowired annotation is used on a method, the method name must start with 'set'.
+
+
+21. Which of these HTTP actions are considered to be idempotent?
+
+GET, HEAD, PUT, DELETE, OPTIONS, and TRACE

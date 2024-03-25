@@ -1,0 +1,58 @@
+1. Which of these annotation is used to annotate test classes and determines how the Spring application context that will be available to all tests in the class is ot be loaded and configured?
+
+@ContextConfiguration
+
+2. _____ is a point in the execution of a program at which additional behaviour can be inserted using AOP.
+
+Join Point
+
+3.  ____ is an additional behavior, typically a cross cutting concern, that is to be executed at certain places (at Join Points) in a program
+
+Advice
+
+4. ___ is a modularization of a concern that cuts across multiple classes.
+
+Aspect
+
+
+5. ___ is linking aspects with other application types or objects to create an advised object
+
+Weaving
+
+6. Which of these is a callback interface for a JdbcTemplate class?
+
+ResultSetExtractor
+
+Not correct: PreparedStatementExtractor, StatementExtractor
+
+
+7. During any Transaction, if any problem occurs and once the system is back the changes have to be preserved.
+
+Durability
+
+8. Which jar is needed in classpath for using @RestController, @ResponseBody, @RequestBody in Spring applications?
+
+spring-web
+
+9. Which of these is a cross cutting concern?
+
+Logging, Monitoring, Data validation, Error handling
+
+10. Which of these is true about MVC?
+
+It is a software design pattern
+
+It gives standard template for designing web application
+
+It provides loose coupling among model, view and controllers
+
+
+11. In Spring MVC, which of these annotation can be applied to the argument of controller methods?
+
+@RequestParam, @RequestBody, @PathVariable
+
+12. ___ are dependency descriptors for different technologies that can be used in Spring boot application
+
+Spring boot starters
+
+
