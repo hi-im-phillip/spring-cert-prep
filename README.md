@@ -1,5 +1,27 @@
 
-<span style="color: cornflowerblue;"> <h1>Container, Dependency, and IoC</h1></span>  
+<h1 style="align-content: center">Spring certification exam prep notes</h1>
+
+<br><br>
+
+#### This repository contains notes and questions to help you prepare for the Spring Professional Certification exam. The notes are based on the Spring Professional Certification Study Guide and the Spring Framework 5 documentation.
+
+<hr style="border:2px solid gray"> </hr>
+
+<div><h2>Table of Contents</h2></div>
+
+####  1. [Container, Dependency, and IoC](#span-stylecolor-cornflowerblue-h1-container-dependency-and-ioc-h1-span)
+####  2. [Aspect Oriented Programming](#span-stylecolor-cornflowerblue-h1-aspect-oriented-programming-h1-span)
+####  3. [Data Management: JDBC, Transactions, Spring Data JPA](#span-stylecolor-cornflowerblue-h1-data-management--jdbc-transactions-spring-data-jpa-h1-span)
+####  4. [Spring Boot, Spring Boot Auto configuration, Spring Boot Actuator, Spring Boot Testing](#span-stylecolor-cornflowerblue-h1-spring-boot-spring-boot-auto-configuration-spring-boot-actuator-spring-boot-testing-h1-span)
+####  5. [Spring MVC and the Web Layer](#span-stylecolor-cornflowerblue-h1-spring-mvc-and-the-web-layer-h1-span)
+####  6. [Spring Security](#span-stylecolor-cornflowerblue-h1-spring-security-h1-span)
+####  7. [Spring REST](#span-stylecolor-cornflowerblue-h1-spring-rest-h1-span)
+####  8. [Spring Testing](#span-stylecolor-cornflowerblue-h1-spring-testing-h1-span)
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"> <h1> Container, Dependency, and IoC</h1></span>  
+
+
 
 ### <span style="color: #99ff99;"> 1. What is dependency injection and what are the advantages?</span>
 Dependency injection is a technique of creating software in which objects do not create
@@ -314,7 +336,7 @@ Bean is Destroyed (usually when context is closed):
 2. DisposableBean::destroy method gets called.
 3. @Bean(destroyMethod) method gets called
 
-### <span style="color: #99ff99;">What does component-scanning do?</span>
+### <span style="color: #99ff99;">15. What does component-scanning do?</span>
 
 Process in which Spring is scanning Classpath in search for classes annotated with stereotypes annotations
 (@Component, @Service, @Controller) and based on those creates beans definitions.
@@ -631,7 +653,11 @@ You can reference the following using SpEL:
 - $: Used to reference a property in Spring Environment Abstraction.
 - #: SpEL expression parsed and evaluated by SpEL.
 
-<span style="color: cornflowerblue;"> <h1>Aspect Oriented Programming</h1></span>
+<br><br>
+
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"><h1>Aspect Oriented Programming</h1></span>
 
 
 ### <span style="color: #99ff99;">1. What is the concept of AOP?</span>
@@ -797,8 +823,11 @@ ProceedingJoinPoint can be used in following use cases:
 - Filter arguments
 - Inject additional argument
 
+<br><br>
 
-<span style="color: cornflowerblue;"> <h1>Data Management: JDBC, Transactions, Spring Data JPA</h1> </span>
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"><h1>Data Management: JDBC, Transactions, Spring Data JPA</h1></span>
 
 
 ### <span style="color: #99ff99;">1. What is the difference between checked and unchecked exceptions? Why does Spring prefer unchecked exceptions? What is the data access exception hierarchy?</span>
@@ -1157,8 +1186,11 @@ Class used implementation of Repository interface can be customized on:
 
 Using @Query allows you to achieve more control and flexibility of the JPA query that will be executed.
 
+<br><br>
 
-<span style="color: cornflowerblue;"> <h1>Spring Boot, Spring Boot Auto Configuration, Spring Boot Actuator, Spring Boot Testing</h1> </span>
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"> <h1>Spring Boot, Spring Boot Auto Configuration, Spring Boot Actuator, Spring Boot Testing</h1> </span>
 
 
 ### <span style="color: #99ff99;">1. What is Spring boot?</span>
@@ -1281,13 +1313,14 @@ Spring boot looks for properties in following locations:
         - application-{profile}.properties and yml inside of jar in classpath root package
 
 You can change name of default configuration file with usage of spring.config.name property:
-
+```maven
 $ java -jar myproject.jar --spring.config.location=classpath:/default.properties
-
+  ```
 You can also explicitly point location of configuration file with usage of spring.config.location property:
 
+```maven
 $ java -jar myproject.jar --spring.location=classpath:/default.properties
-
+  ```
 
 ### <span style="color: #99ff99;">9. How do you define profile specific property files?</span>
 
@@ -1297,19 +1330,20 @@ Spring boot allows you to define profile specific property files in two ways:
     - application-{profile}.yml
         - also can be used application-default.properties or application-default.yml for property to be used when no profile is active
 
-- Multi-profile YAML Document
-  server:
-  url: http://local.service.com/
----
-spring:
-profiles: dev
-server:
-url: http://dev.service.com
----
-spring:
-profiles: prod
-server:
-url: http://prod.service.com/
+<br>
+- Multi-profile YAML Document <br>
+  server: <br>
+  url: http://local.service.com/ <br>
+--- <br>
+spring: <br>
+profiles: dev <br>
+server: <br>
+url: http://dev.service.com <br>
+--- <br>
+spring: <br>
+profiles: prod <br>
+server: <br>
+url: http://prod.service.com/ <br>
 
 
 ### <span style="color: #99ff99;">10. How do you access the properties defined in the property files?</span>
@@ -1548,18 +1582,24 @@ JMX allows you to access actuator Mbeans under org.springframework.boot group. Y
 Every one of the endpoint is enabled on by default except the shutdown. On JMX are all enabled by default except those who runs on web application (promethous, heapdump, jolokia, logfile). Default exposure via web are info and health endpoint.
 
 You can enable or disable actuator endpoints with usage of property:
-- management.endpoint.${ENDPOINT_NAME}.enable=true
+```properties
+management.endpoint.${ENDPOINT_NAME}.enable=true
+```
 
 For example:
-- management.endpoint.shutdown.enabled=true
+```properties
+management.endpoint.shutdown.enabled=true
+```
 
 You can also disable "Enabled by default" behavior with usage of property:
+```properties
 management.endpoints.enabled-by-default=false
-
+```
 Endpoints exposure with usage of properties
+```properties
 management.endpoints.jmx.exposure.exclude/include=*
 management.endpoints.web.exposure.exclude/include=info,health,env
-
+```
 Navigation through actuator endpoints can be enabled by usage of HATEOAS
 - to enable navigation, add dependency to project
 
@@ -1584,11 +1624,15 @@ Spring actuator allows you to list currently configured loggers with their level
 - via jmx by executing org.springframework.boot/Endpoint/Loggers/Operators/loggers
 
 loggers endpoint is exposed by default via JMX, to use it via HTTP you need to expose it by setting following property:
-- management.endpoints.web.exposure.include=loggers
+```properties
+management.endpoints.web.exposure.include=loggers
+```
 
 Logging level
-- via http /actuator/loggers/${LOGGER_NAME}
-- via JMX by executing - /Endpoint/Loggers/Operations/loggerLevels with provided parameter
+- via http
+  - /actuator/loggers/${LOGGER_NAME}
+- via JMX by executing 
+  - /Endpoint/Loggers/Operations/loggerLevels with provided parameter
 
 You can change logging level by:
 - http post /actuator/loggers/${LOGGER_NAME}: {"configuredLevel": "TRACE"}
@@ -1600,8 +1644,9 @@ You can change logging level by:
 Access an endpoint using a tag by defining it as part of the request in following way: tag=KEY:VALUE
 
 example:
+```http
 /actuator/metrics/http.server.requests?tag=status:200
-
+```
 Multiple tag in one query with usage of &:
 tag=KEY1:VALUE1&tag=KEY2:VALUE2
 
@@ -1610,8 +1655,10 @@ tag=KEY1:VALUE1&tag=KEY2:VALUE2
 
 Spring actuator provides metrics endpoint which can be used to examine metrics collected by the application during runtime.
 
-metrics endpoint allows you to view information about specific metric by visiting metric uri, /actuator/metrics/jvm.memory.used?tag=area:heap
-
+metrics endpoint allows you to view information about specific metric by visiting metric uri,
+```http
+/actuator/metrics/jvm.memory.used?tag=area:heap
+```
 metrics endpoint:
 - cpu usage, cpu core count
 - memory usage, max memory available
@@ -1629,9 +1676,13 @@ Spring boot actuator allows you to create custom metrics with usage of MeterRegi
 Micrometer used by spring boot actuator allows you to register meter primitives that can be exposed via actuator/metrics endpoint
 
 Registration of metric can be done via method inside MeterRegistry
-- meterRegistry.counter("storage.object.count", "type", "db")
+```java
+meterRegistry.counter("storage.object.count", "type", "db")
+```
   or via builder
+```java
 - Counter.builder("storage.object.count").tag().register()
+```
 
 
 ### <span style="color: #99ff99;">32. What is health indicator?</span>
@@ -1647,9 +1698,10 @@ This endpoint is used usually by monitoring software to periodically check syste
 - it can be used by load balancer to check which instances are healthy
 
 To change level of details exposed by /actuator/health endpoint, following properties can be used:
-- management.endpoint.health.show-details=...
-- management.endpoint.health.show.components=never,when-authorized, always
-
+```properties
+ management.endpoint.health.show-details=...
+ management.endpoint.health.show.components=never,when-authorized, always
+```
 To create custom Health Indicator, spring bean has to be created that implements HealthIndicator interface
 
 
@@ -1729,7 +1781,7 @@ It is possible to test only slice of the application with usage one of following
 - @ContextConfiguration#classes
 - @AutoConfigure annotations
 
-@Auto configure allows you to configure specific environment and tools for testing, for example @AutoConfigureMockMvc will configure Mock Mvc that can be used for Controllers testing
+@AutoConfigure allows you to configure specific environment and tools for testing, for example @AutoConfigureMockMvc will configure Mock Mvc that can be used for Controllers testing
 
 
 ### <span style="color: #99ff99;">40. What dependencies does spring-boot-starter-test brings to the classpath?</span>
@@ -1797,7 +1849,11 @@ Every @DataJpaTest is transactional by default after each test transaction is ro
 
 When using @DataJpaTest you can access TestEntityManager, which contains subset of EntityManager methods.
 
-<span style="color: cornflowerblue;"> <h1>Spring MVC and the Web Layer</h1> </span>
+<br><br>
+
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"> <h1>Spring MVC and the Web Layer</h1> </span>
 
 ### <span style="color: #99ff99;">1. MVC is an abbreviation for design pattern. What does it stand for and what is the idea behind it?</span>
 
@@ -2057,11 +2113,14 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 
 - Reactive types - allows to use Reactive types for streaming scenarios, handled by ReactiveAdapterRegistry
 
+<br><br>
 
-<span style="color: cornflowerblue;"> <h1>Spring Security</h1> </span>
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"> <h1>Spring Security</h1> </span>
 
 
-### <span style="color: #99ff99;">01. What are authentication and authorization? Which must come first?</span>
+### <span style="color: #99ff99;">1. What are authentication and authorization? Which must come first?</span>
 
 Authentication is a process of verifying that user, device or external system is who it claims to be. It involves validation that submitted proof of identity is true.
 
@@ -2285,7 +2344,11 @@ AccessDecisionVoter are called by AccessDecisionManager, which is called by Meth
 Main difference between @PreAuthorize / @PostAuthorize are used to create expression that will check if method can be executed, @PreFilter / @PostFilter are used to filter collections based on security rules
 
 
-<span style="color: cornflowerblue;"> <h1>Spring REST</h1> </span>
+<br><br>
+
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"> <h1>Spring REST</h1> </span>
 
 
 ### <span style="color: #99ff99;">1. What does RESt stand for?</span>
@@ -2575,8 +2638,12 @@ RestTemplate API can be categorized by HTTP request type, below is a list of com
      HTTP DELETE
      HTTP OPTIONS
 
+<br><br>
 
-<span style="color: cornflowerblue;"> <h1>Spring Testing</h1></span>
+
+<hr style="border:2px solid gray"> </hr>
+
+#### <span style="color: cornflowerblue;"> <h1>Spring Testing</h1></span>
 
 ### <span style="color: #99ff99;">1. Do you use Spring in a unit test?</span>
 
@@ -2744,4 +2811,4 @@ used in production code to indicate starting place for application
 
 @SpringBootTest interacts with @SpringBootApplication and @SpringBootConfiguration through SpringBootTestContextBootstrapper and SpringBootContextLoader
 
-Goal of SpringBootContextLoader is to transform initial ContextConfiguration to ApplicationContext. SpringBootContextLoader will get as input class annotated with @SpringBootConfiguration, which will be located by SpringBootTestContextstrapper
+Goal of SpringBootContextLoader is to transform initial ContextConfiguration to ApplicationContext. SpringBootContextLoader will get as input class annotated with @SpringBootConfiguration, which will be located by SpringBootTestContextStrapper
