@@ -1,7 +1,7 @@
 
 <span style="color: cornflowerblue;"> <h1>Container, Dependency, and IoC</h1></span>  
 
-### <font color="#99ff99"> 1. What is dependency injection and what are the advantages?</font>
+### <span style="color: #99ff99;"> 1. What is dependency injection and what are the advantages?</span>
 Dependency injection is a technique of creating software in which objects do not create
 their dependencies on itself, instead objects declare dependencies that they need and it is external object job or framework to provide concrete dependencies to objects
 
@@ -18,7 +18,7 @@ Advantages of using dependency injection is:
 - Reduces coupling
 - Increases cohesion
 
-### <font color="#99ff99"> 2. What is a pattern? What is an anti-pattern? Is dependency injection a pattern?</font>
+### <span style="color: #99ff99;"> 2. What is a pattern? What is an anti-pattern? Is dependency injection a pattern?</span>
 
 A software Design Pattern is a reusable solution to often, commonly occurring problem in
 software design. It is a high level description on how to solve the problem, that can be used in different situations. Design patterns often represent best practises that developers can use to solve common problems.
@@ -43,7 +43,7 @@ Examples of Anti-patterns in Object Oriented Programming:
 - Circular dependency
 - Constant interface
 
-### <font color="#99ff99"> 3. What is an interface and what are the advantages of making use of them in Java? Why are they recommended for Spring beans?</font>
+### <span style="color: #99ff99;"> 3. What is an interface and what are the advantages of making use of them in Java? Why are they recommended for Spring beans?</span>
 
 OOP Definition - An interface is a description of actions that object can do, it is a way to enforce actions on object that implements the interface.
 
@@ -58,7 +58,7 @@ Advantages of using interfaces in Spring:
 - Allows implementation hiding
 - Allows to easily switch beans
 
-### <font color="#99ff99"> 4. What is meant by "application-context"?</font>
+### <span style="color: #99ff99;"> 4. What is meant by "application-context"?</span>
 
 Application context is a central part of Spring application. It holds bean definitions and contains registry of application components. It allows you to retrieve assembled and configured beans.
 
@@ -79,7 +79,7 @@ Common Application Context types:
 - FileSystemXmlApplicationContext
 - XmlWebApplicationContext
 
-### <font color="#99ff99"> 5. What is concept of a "container" and what is its lifecycle?</font>
+### <span style="color: #99ff99;"> 5. What is concept of a "container" and what is its lifecycle?</span>
 
 Container is an execution environment which provides additional technical services for your code to use. Usually containers use IoC technique, that allows you to focus on creating buisness aspect of the code, while technical aspects like communication details (HTTP, REST, SOAP) are provided by execution environment.
 
@@ -99,7 +99,7 @@ Spring Container Lifecycle:
 11. Spring Context is closed.
 12. Destruction callbacks are invoked.
 
-### <font color="#99ff99"> 6. How are you going to create a new instance of an ApplicationContext?</font>
+### <span style="color: #99ff99;"> 6. How are you going to create a new instance of an ApplicationContext?</span>
 
 Non-Web Applications:
 - AnnotationConfigApplicationContext
@@ -115,7 +115,7 @@ Spring Boot:
 - SpringBootConsoleApplication - CommandLineRunner
 - SpringBootWebApplication - Embedded Tomcat
 
-### <font color="#99ff99"> 7. Can you describe the lifecycle of a Spring Bean in an ApplicationContext?</font>
+### <span style="color: #99ff99;"> 7. Can you describe the lifecycle of a Spring Bean in an ApplicationContext?</span>
 
 Context is Created:
 1. Beans Definitions are created based on Spring Bean Configuration.
@@ -137,7 +137,7 @@ Bean is destroyed:
 2. DisposableBean::destroy method gets called
 3. @Bean(destroyMethod) method gets called
 
-### <font color="#99ff99"> 8. How are you going to create an ApplicationContext in a standalone Java application?</font>
+### <span style="color: #99ff99;"> 8. How are you going to create an ApplicationContext in a standalone Java application?</span>
 
 ```java
 public class MyApp {
@@ -152,7 +152,7 @@ public class MyApp {
 You'll also need an applicationContext.xml file in your classpath to define your beans.
 
 
-### <font color="#99ff99"> 9. What is component-scanning and how does Spring use it?</font>
+### <span style="color: #99ff99;"> 9. What is component-scanning and how does Spring use it?</span>
 
 @ComponentScan is used with @Configuration classes to specify base packages to scan for Spring managed components.
 
@@ -161,7 +161,7 @@ It searches for Spring managed components annotated with @Component, @Service, @
 @Configuration classes that are annotated with @ComponentScan can specify a base package to restrict the component scanning to a specific package or set of packages.
 
 
-### <font color="#99ff99">9. What is the preferred way to close an application context? Does Spring Boot do this for you?</font>
+### <span style="color: #99ff99;">9. What is the preferred way to close an application context? Does Spring Boot do this for you?</span>
 
 Standalone Non-Web Applications
 - Register Shutdown hook by calling ConfigurableApplicationContext#registerShutdownHook - Recommended
@@ -173,7 +173,7 @@ Spring Boot
 - Shutdown hook will be automatically registered
 - ContextLoaderListener applies to Spring Boot Web Applications as well
 
-### <font color="#99ff99">10. Can you describe: Dependency injection using Java configuration? Dependency injection using annotations(@Component, @Autowired)? Component scanning, Stereotypes and Meta-Annotations? Scopes for Spring beans? What is the default scope?</font>
+### <span style="color: #99ff99;">10. Can you describe: Dependency injection using Java configuration? Dependency injection using annotations(@Component, @Autowired)? Component scanning, Stereotypes and Meta-Annotations? Scopes for Spring beans? What is the default scope?</span>
 
 DI Java configuration
 When using Dependency Injection using Java Configuration you need to explicitly define all your beans and you need to use @Autowired
@@ -200,7 +200,7 @@ Session - New instance per each HTTP Session
 Application - One instance per each ServletContext
 WebSocket - one instance per each WebSocket
 
-### <font color="#99ff99">11. Are beans lazily or eagerly instantiated by default? How do you alter this behavior?</font>
+### <span style="color: #99ff99;">11. Are beans lazily or eagerly instantiated by default? How do you alter this behavior?</span>
 
 Lazy and Eager instance Creation vs Scope Type:
 - Singleton Beans are eagerly instantiated by default
@@ -221,7 +221,7 @@ You can also change default behavior by using @Lazy annotation:
 - Classes annotated with @Configuration annotation - make all beans provided by configuration lazy or as specified by @Lazy parameter
 - Method annotated with @Bean annotation - makes bean created by method Lazy or as specified by parameter
 
-### <font color="#99ff99">12. What is a property source? How would you use @PropertySource?</font>
+### <span style="color: #99ff99;">12. What is a property source? How would you use @PropertySource?</span>
 
 PropertySource is Spring Abstraction on Environment Key-Value pairs, which can come from:
 - JVM Properties
@@ -234,7 +234,7 @@ PropertySource is Spring Abstraction on Environment Key-Value pairs, which can c
 You read properties with usage of @PropertySource or @PropertySources annotation.
 You access properties with usage of @Value annotation.
 
-### <font color="#99ff99">13. What is a BeanFactoryPostProcessor and what is it used for? When is it invoked? Why would you define a static @Bean method? What is a PropertysourcePlaceholderConfigurer used for?</font>
+### <span style="color: #99ff99;">13. What is a BeanFactoryPostProcessor and what is it used for? When is it invoked? Why would you define a static @Bean method? What is a PropertysourcePlaceholderConfigurer used for?</span>
 
 BeanFactoryPostProcessor is an interface that contains single method postProcessBeanFactory, implementing it allows you to create logic that will modify Spring Bean Metadata before any Bean is created. BeanFactoryPostProcessor does not create any bean, however it can access and alter Metadata that is used later to create Beans.
 
@@ -246,7 +246,7 @@ Spring needs to have ability to create it before any other beans. This is why Be
 PropertySourcesPlaceholderConfigurer is a BeanFactoryPostProcessor that is used to resolve properties placeholder in Spring Beans on fields annotated with
 @Value("${}").
 
-### <font color="#99ff99">14. What is a BeanPostProcessor and how is it different to a BeanFactoryPostProcessor? What do they do? When are they called?</font>
+### <span style="color: #99ff99;">14. What is a BeanPostProcessor and how is it different to a BeanFactoryPostProcessor? What do they do? When are they called?</span>
 
 BeanPostProcessor is an interface that allows you to create extensions to Spring Framework that will modify Spring Beans objects during initialization.
 This interface contains two methods:
@@ -269,7 +269,7 @@ BeanFactoryPostProcessor and BeanPostProcessor in Spring Container Lifecycle
 
 Recommended way to define BeanPostProcessor is through static @Bean method in Application Configuration. This is because BeanPostProcessor should be created early, before other Beans Objects are ready. It's also possible to create it through regular registration in Application Configuratiom or through Component Scanning, however becaouse in that case bean can be created late in processes, recommended way is options provided above.
 
-### <font color="#99ff99">What is an initialization method and how is it declared on a Spring bean?</font>
+### <span style="color: #99ff99;">What is an initialization method and how is it declared on a Spring bean?</span>
 
 Initialization model is a method that you can write for Spring Bean if you need to perform some initialization code that depends on properties and/or dependencies injected into Spring Bean.
 
@@ -278,7 +278,7 @@ You can declare Initialization method in three ways:
 2. Implement InitializingBean::afterPropertiesSet
 3. Create Bean In Configuration class with @Bean method and use @Bean(initMethod)
 
-### <font color="#99ff99">What is a destroy method, how is it declared?</font>
+### <span style="color: #99ff99;">What is a destroy method, how is it declared?</span>
 
 Destroy Method is a method in Spring Bean that you can use to implement any cleanup logic for resources used by the Bean. Method will be called when Spring Bean will be taken out of use, this usually happening when Spring Context is closed.
 
@@ -287,12 +287,12 @@ You can declare destroy method in following ways:
 2. Implement DisposableBean::destroy
 3. Create Bean in Configuration class with @Bean method and use @Bean(destroyMethod)
 
-### <font color="#99ff99">Consider how you enable JSR-250 annotations like @PostConstruct and @PreDestroy?</font>
+### <span style="color: #99ff99;">Consider how you enable JSR-250 annotations like @PostConstruct and @PreDestroy?</span>
 
 When using AnnotationConfigApplicationContext support for @PostConstruct and @PreDestroy is added automatically.
 Those annotations are handled by CommonAnnotationBeanPostProcessor which is automatically registered by AnnotationConfigApplicationContext.
 
-### <font color="#99ff99">When/how will they (initialization, destroy methods) get called?</font>
+### <span style="color: #99ff99;">When/how will they (initialization, destroy methods) get called?</span>
 
 Context is Created:
 1. Beans Definitions are created based on Spring Bean Configuration
@@ -314,7 +314,7 @@ Bean is Destroyed (usually when context is closed):
 2. DisposableBean::destroy method gets called.
 3. @Bean(destroyMethod) method gets called
 
-### <font color="#99ff99">What does component-scanning do?</font>
+### <span style="color: #99ff99;">What does component-scanning do?</span>
 
 Process in which Spring is scanning Classpath in search for classes annotated with stereotypes annotations
 (@Component, @Service, @Controller) and based on those creates beans definitions.
@@ -324,7 +324,7 @@ Simple component scanning within Configuration package and all subpackages. @Com
 Advanced Component Scanning Rules
 @ComponentScan(basePackages, includeFilters, excludeFilters)
 
-### <font color="#99ff99">16. What is the behavior of the annotation @Autowired with regards to field injection, constructor injection and method injection?</font>
+### <span style="color: #99ff99;">16. What is the behavior of the annotation @Autowired with regards to field injection, constructor injection and method injection?</span>
 
 @Autowired is an annotation that is processed by AutowiredAnnotationBeanPostProcessor, which can be put onto class constructor, field,
 setter method or config method. Using this annotation enables automatic Spring Dependency Resolution that is primary based on types.
@@ -359,7 +359,7 @@ Setter injection
 - same rules as former.
 
 
-### <font color="#99ff99">17. What do you have to do, if you would like to inject something into a private field? How does this impact testing?</font>
+### <span style="color: #99ff99;">17. What do you have to do, if you would like to inject something into a private field? How does this impact testing?</span>
 
 Injection of dependency into private field can be done with autowired annotation.
 Injection of property into private field can be done with value annotation.
@@ -370,7 +370,7 @@ Private Field cannot be accessed from outside of the class, to resolve this when
 - Use MockitoJUnitRunner to inject mocks
 - Use @TestPropertySource to inject test properties into private fields
 
-### <font color="#99ff99">18. How does the @Qualifier annotation complement the use of @Autowired?</font>
+### <span style="color: #99ff99;">18. How does the @Qualifier annotation complement the use of @Autowired?</span>
 
 @Qualified annotation gives you additional control on which bean will be injected, when multiple beans of the same type are found.
 By adding additional information on which bean you want to inject, @Qualifier resolves issues with NoUniqueDefExc.
@@ -380,7 +380,7 @@ Usage of Qualifier in three ways:
 - At injection and bean definition point
 - Custom Qualifier Annotation Definition
 
-### <font color="#99ff99">19. What is a proxy object and what are the two different types of proxies Spring can create? What are the limitations of these proxies (per type)? What is the power of a proxy object and where are the disadvantages?</font>
+### <span style="color: #99ff99;">19. What is a proxy object and what are the two different types of proxies Spring can create? What are the limitations of these proxies (per type)? What is the power of a proxy object and where are the disadvantages?</span>
 
 Proxy object is an object that adds additional logic on top of object that is being proxies without having to modify code of proxied object.
 Proxy object has the same public methods as object that is being proxied and it should be as much as possible indistinguishable from proxied object.
@@ -410,7 +410,7 @@ Proxy Disadvantages:
 - My cause performance issues if before/after section in proxy code is using IO (Network Disk)
 - May cause unexpected equals operator (==) results since Proxy Object and Proxied Object are two different objects
 
-### <font color="#99ff99">20. What are the advantages of Java Config? What are the limitations?</font>
+### <span style="color: #99ff99;">20. What are the advantages of Java Config? What are the limitations?</span>
 
 Advantages of Java Config over XML Config:
 - Compile-Time Feedback due to Type-checking
@@ -427,7 +427,7 @@ Limitations of Java Config:
 - Configuration class methods cannot be final
 - All Beans have to be listed, for big applications, it might be a challenge compared to Component Scanning
 
-### <font color="#99ff99">21. What does the @Bean annotation do?</font>
+### <span style="color: #99ff99;">21. What does the @Bean annotation do?</span>
 
 Bean annotation is used in @Configuration class to inform Spring that instance of class returned by method annotated with Bean will return bean that will be manageded by Spring
 
@@ -439,13 +439,13 @@ Bean allows you to:
 - Specify if Bean should be used as candidate for injection into other beans - default true
 - Configure Autowiring mode - by name or type (deprecated)
 
-### <font color="#99ff99">22. What is the default bean id if you only use @Bean? How can you override this?</font>
+### <span style="color: #99ff99;">22. What is the default bean id if you only use @Bean? How can you override this?</span>
 
 When using @Bean without specifying name or alias, default bean id will be created based on name of the method which was annotated with @Bean
 
 It can be overridden by specifying name or aliases for the bean
 
-### <font color="#99ff99">23. Why are you not allowed to annotate a final class with @Configuration? How do @Configuration annotated classes support singleton beans? Why can't @Bean methods be final either?</font>
+### <span style="color: #99ff99;">23. Why are you not allowed to annotate a final class with @Configuration? How do @Configuration annotated classes support singleton beans? Why can't @Bean methods be final either?</span>
 
 Class annotated with Configuration cannot be final because Spring will use CGLIB to create a proxy for @Configuration class. CGLIB creates subclasses
 for each class that is supposed to be proxied, however since final class cannot have subclass CGLIB will fail. This is also a reason why methods cannot
@@ -460,7 +460,7 @@ existing instance is returned, if instance does not exists, then call is allowed
 To make method call interception CGLIB proxy needs to create subclass and also needs to override methods.
 
 
-### <font color="#99ff99">24. How do you configure profiles? What are possible use cases where they might be useful?</font>
+### <span style="color: #99ff99;">24. How do you configure profiles? What are possible use cases where they might be useful?</span>
 
 Spring Profiles are configured by:
 - Specifying which beans are part of which profile
@@ -489,27 +489,27 @@ Spring Profiles are useful in following cases:
 - Development and Testing environments
 - Additional debugging
 
-### <font color="#99ff99">25. Can you use @Bean together with @Profile?</font>
+### <span style="color: #99ff99;">25. Can you use @Bean together with @Profile?</span>
 
 Yes, @Bean can be used together with @Profile inside class annotated with @Configuration on top of method that
 returns instance of the bean
 
 If method annotated with @Bean does not have @Profile, that means that this bean will exists in all profiles.
 
-### <font color="#99ff99">26. Can you use @Component together with @Profile?</font>
+### <span style="color: #99ff99;">26. Can you use @Component together with @Profile?</span>
 
 Yes, @Profile can be used together with @Component on top of class representing spring bean.
 
 If class annotated with @Component does not have @Profile, that means that this bean will exists in all profiles.
 
-### <font color="#99ff99">27. How many profiles can you have?</font>
+### <span style="color: #99ff99;">27. How many profiles can you have?</span>
 
 Spring Framework does not specify any explicit limit on number of profiles, however since some of the classes in framework,
 like ActiveProfilesUtils used by default implementation of ActiveProfilesResolver are using array to iterate over profiles, this
 enforces inexplicit limit that is equal to maximum number of elements in array that you can have in Java, which is
 Integer.MAX_VALUE.
 
-### <font color="#99ff99">28. How do you inject scalar/literal values into Spring beans?</font>
+### <span style="color: #99ff99;">28. How do you inject scalar/literal values into Spring beans?</span>
 
 To inject scalar/literal values into Spring Beans, you need to use @Value.
 
@@ -525,7 +525,7 @@ To inject scalar/literal values into Spring Beans, you need to use @Value.
 - Method parameter - Injection will not be performer automatically if @Value is not present on method level or if @Autowired is not present
 - Annotation type
 
-### <font color="#99ff99">29. What is @Value used for?</font>
+### <span style="color: #99ff99;">29. What is @Value used for?</span>
 
 Value is used for:
 - Setting simple values of Spring Bean Fields, method Parameters, Constructor Parameters
@@ -535,7 +535,7 @@ Value is used for:
 - Injecting values into collections from literals
 - Setting default values of Spring Bean
 
-### <font color="#99ff99">30. What is Spring Expression Language (SpEL)?</font>
+### <span style="color: #99ff99;">30. What is Spring Expression Language (SpEL)?</span>
 
 Spring Expression Language is an expression language that allows you to query and manipulate objects graphs during the runtime. SpEL is used
 in different products across Spring portfolio.
@@ -553,7 +553,7 @@ Compiler is turned of by default, you can turn it on by:
 - System Property - spring.expression.compiler.mode
 - modes - immediate, mixed
 
-### <font color="#99ff99">31. What is the Environment abstraction in Spring?</font>
+### <span style="color: #99ff99;">31. What is the Environment abstraction in Spring?</span>
 
 Environment Abstraction is part of Spring Container that models two key aspect of application environment:
 - Profiles
@@ -573,7 +573,7 @@ to configure property sources. Properties may come from following sources:
 
 To add additional properties files as property sources you can use @PropertySource annotation.
 
-### <font color="#99ff99">32. Where can properties in the environment come from - there are many sources for properties.</font>
+### <span style="color: #99ff99;">32. Where can properties in the environment come from - there are many sources for properties.</span>
 
 Property sources in Spring Application vary based on type of applications that is being executed:
 - Standalone Application
@@ -611,7 +611,7 @@ Spring Boot application:
 - Default properties - SpringApplication.setDefaultProperties
 
 
-### <font color="#99ff99">33. What can you reference using SpEL?</font>
+### <span style="color: #99ff99;">33. What can you reference using SpEL?</span>
 
 You can reference the following using SpEL:
 - Static Fields from a class: `T(com.example.Person).DEFAULT_NAME`
@@ -625,7 +625,7 @@ You can reference the following using SpEL:
 - System Properties: `systemProperties['app.vm.property']`
 - System Environment Properties: `systemEnvironment['JAVA_HOME']`
 
-### <font color="#99ff99">34. What is the difference between $ and # in @Value expression?</font>
+### <span style="color: #99ff99;">34. What is the difference between $ and # in @Value expression?</span>
 
 @Value supports two types of expressions:
 - $: Used to reference a property in Spring Environment Abstraction.
@@ -634,7 +634,7 @@ You can reference the following using SpEL:
 <span style="color: cornflowerblue;"> <h1>Aspect Oriented Programming</h1></span>
 
 
-### <font color="#99ff99">1. What is the concept of AOP?</font>
+### <span style="color: #99ff99;">1. What is the concept of AOP?</span>
 
 AOP, or Aspect Oriented Programming, is a programming paradigm that complements Object-oriented Programming by separating cross-cutting concerns from business logic. It allows developers to add additional behavior to the code without modifying the code itself. This is achieved by specifying:
 - Pointcut: The location in the code where the behavior should be altered, matched with a join point.
@@ -645,7 +645,7 @@ Typical cross-cutting concerns include logging, performance logging, caching, se
 
 If cross-cutting concerns are not solved via AOP, problems such as code duplication and mixing of concerns arise, leading to less maintainable and harder to understand code.
 
-### <font color="#99ff99">2. What is a pointcut, a join point, an advice, an aspect, weaving?</font>
+### <span style="color: #99ff99;">2. What is a pointcut, a join point, an advice, an aspect, weaving?</span>
 
 - **Join Point**: A point in the execution of a program where additional behavior can be inserted. In Spring AOP, join points are always method invocations.
 - **Pointcut**: A predicate used to match join points. It specifies the locations in the code where advice should be applied. Spring AOP uses AspectJ pointcut expressions.
@@ -653,11 +653,11 @@ If cross-cutting concerns are not solved via AOP, problems such as code duplicat
 - **Aspect**: The combination of a pointcut and advice. It represents a single cross-cutting concern.
 - **Weaving**: The process of applying aspects to the code, modifying its behavior at join points matched by pointcuts. It can be done at compile time, load time, or runtime.
 
-### <font color="#99ff99">3. How does Spring solve (implement) a cross-cutting concern?</font>
+### <span style="color: #99ff99;">3. How does Spring solve (implement) a cross-cutting concern?</span>
 
 Spring implements cross-cutting concerns using Spring AOP module. Spring AOP uses AspectJ expression syntax for defining pointcuts, which match join points in the code. Advices, which contain the additional behavior, are applied at these join points. Spring AOP uses runtime weaving to intercept method calls and apply the advices. It creates proxy objects for beans subject to aspects, allowing the interception of method invocations.
 
-### <font color="#99ff99">4. Which are the limitations of the two proxy-types? What visibility must Spring bean methods have to be proxied using Spring AOP?</font>
+### <span style="color: #99ff99;">4. Which are the limitations of the two proxy-types? What visibility must Spring bean methods have to be proxied using Spring AOP?</span>
 
 - **JDK Dynamic Proxy**:
     - Does not support self-invocation.
@@ -671,7 +671,7 @@ Spring implements cross-cutting concerns using Spring AOP module. Spring AOP use
 
 Spring bean methods must have at least public visibility to be proxied using Spring AOP.
 
-### <font color="#99ff99">5. How many advice types does Spring support? Can you name each one? What are they used for? Which two advices can you use if you would like to try and catch an exception?</font>
+### <span style="color: #99ff99;">5. How many advice types does Spring support? Can you name each one? What are they used for? Which two advices can you use if you would like to try and catch an exception?</span>
 
 Spring supports five advice types:
 - **@Before**: Executed before a join point.
@@ -682,7 +682,7 @@ Spring supports five advice types:
 
 **@AfterThrowing** and **@Around** are typically used to try and catch exceptions.
 
-### <font color="#99ff99">6. What do you have to do to enable the detection of the @Aspect annotation? What does @EnableAspectJAutoProxy do?</font>
+### <span style="color: #99ff99;">6. What do you have to do to enable the detection of the @Aspect annotation? What does @EnableAspectJAutoProxy do?</span>
 
 To enable the detection of the @Aspect annotation, you need to:
 - Include a @Configuration class with @EnableAspectJAutoProxy.
@@ -691,7 +691,7 @@ To enable the detection of the @Aspect annotation, you need to:
 
 **@EnableAspectJAutoProxy** enables the detection of @Aspect classes and creates proxy objects for beans subject to aspects. It allows Spring to intercept method calls and apply the advices. Without @EnableAspectJAutoProxy, Spring will not scan for @Aspect annotations.
 
-### <font color="#99ff99">7. If shown pointcut expressions, would you understand them?</font>
+### <span style="color: #99ff99;">7. If shown pointcut expressions, would you understand them?</span>
 
 Pointcut designator types supported by Spring AOP:
 - execution
@@ -765,7 +765,7 @@ What would be the correct pointcut expression to match both getter and setter me
 Expression that will match getters and setter can look like this:
 execution(* com.beans.EmployeeBean.get*()) || execution(* com.beans.EmployeeBean.set*(*))
 
-### <font color="#99ff99">8. What is the JoinPoint argument used for?</font>
+### <span style="color: #99ff99;">8. What is the JoinPoint argument used for?</span>
 
 JoinPoint argument is an object that can be used to retrieve additional information about join point during execution.
 JoinPoint needs to be the first parameter of Advice, only in that case Spring Framework will inject JoinPoint into advice method.
@@ -784,7 +784,7 @@ Examples of information that you can retrieve from JoinPoint:
 - Target / This object being proxied
 
 
-### <font color="#99ff99">9. What is a ProceedingJoinPoint? When is it used?</font>
+### <span style="color: #99ff99;">9. What is a ProceedingJoinPoint? When is it used?</span>
 
 ProceedingJoinPoint is an object that can be provided to @Around advice as first argument, it is a type of JoinPoint which can be used to change method arguments during method execution in runtime or block execution of original method entirely.
 
@@ -801,7 +801,7 @@ ProceedingJoinPoint can be used in following use cases:
 <span style="color: cornflowerblue;"> <h1>Data Management: JDBC, Transactions, Spring Data JPA</h1> </span>
 
 
-### <font color="#99ff99">1. What is the difference between checked and unchecked exceptions? Why does Spring prefer unchecked exceptions? What is the data access exception hierarchy?</font>
+### <span style="color: #99ff99;">1. What is the difference between checked and unchecked exceptions? Why does Spring prefer unchecked exceptions? What is the data access exception hierarchy?</span>
 
 Checked exceptions are exceptions that extend java.lang.Exception and must be explicitly declared in the throws clause of a method signature or handled by the calling code. Unchecked exceptions, on the other hand, extend java.lang.RuntimeException and do not need to be explicitly declared or handled.
 
@@ -813,19 +813,19 @@ The data access exception hierarchy in Spring includes the following classes:
     - CannotCreateRecordException
     - DataIntegrityViolationException
 
-### <font color="#99ff99">2. How do you configure a DataSource in Spring? Which bean is very useful for development/test databases?</font>
+### <span style="color: #99ff99;">2. How do you configure a DataSource in Spring? Which bean is very useful for development/test databases?</span>
 
 Configuration of a DataSource in Spring depends on the type of application being executed. For standalone applications, the DataSource can be configured in a @Configuration class and created as a bean of one of the supported DataSource types. In Spring Boot applications, the DataSource is typically configured via application.properties. For applications deployed on an application server, the DataSource can be fetched from JNDI.
 
 When working with development/test databases, the EmbeddedDatabaseBuilder bean is very useful. It allows for easy configuration of H2/HSQLDB embedded databases with schema and data initialization scripts.
 
-### <font color="#99ff99">3. What is the Template design pattern and what is the JdbcTemplate?</font>
+### <span style="color: #99ff99;">3. What is the Template design pattern and what is the JdbcTemplate?</span>
 
 The Template design pattern is a behavioral design pattern that encapsulates an algorithm's structure in a template method, allowing subclasses to redefine certain steps of the algorithm without changing its structure. In Java, this pattern is often implemented using abstract classes with template methods.
 
 JdbcTemplate is a class provided by Spring in the org.springframework.jdbc.core package. It simplifies JDBC usage by providing a higher-level abstraction for common JDBC operations. JdbcTemplate handles aspects such as executing SQL queries or updates, iterating over ResultSet, and exception handling.
 
-### <font color="#99ff99">4. What is a callback? What are the three JdbcTemplate callback interfaces that can be used with queries? What is each used for?</font>
+### <span style="color: #99ff99;">4. What is a callback? What are the three JdbcTemplate callback interfaces that can be used with queries? What is each used for?</span>
 
 A callback is a reference to executable code that is passed as an argument to another function. In Java, callbacks are often implemented using interfaces or lambda expressions.
 
@@ -835,7 +835,7 @@ JdbcTemplate provides three callback interfaces for working with queries:
 - ResultSetExtractor: Used to process the entire ResultSet and return a result. It is suitable for cases where the entire ResultSet needs to be processed, such as aggregate queries or custom result handling.
 
 
-### <font color="#99ff99">5. Can you execute a plain SQL statement with the JdbcTemplate?</font>
+### <span style="color: #99ff99;">5. Can you execute a plain SQL statement with the JdbcTemplate?</span>
 
 Yes, the JdbcTemplate allows the execution of plain SQL statements using methods such as:
 - query
@@ -847,11 +847,11 @@ Yes, the JdbcTemplate allows the execution of plain SQL statements using methods
 - update
 - batchUpdate
 
-### <font color="#99ff99">6. When does the JdbcTemplate acquire (and release) a connection, for every method called or once per template? Why?</font>
+### <span style="color: #99ff99;">6. When does the JdbcTemplate acquire (and release) a connection, for every method called or once per template? Why?</span>
 
 The JdbcTemplate acquires and releases a connection based on whether a transaction is involved or not. If the JdbcTemplate is used without a transaction, then a connection is acquired and released for every method call to minimize the time a resource (connection) is held. If the JdbcTemplate is used within a transaction, the connection is reused between method calls as long as the transaction is not committed or rolled back. This strategy optimizes resource usage and ensures that connections are not closed prematurely.
 
-### <font color="#99ff99">7. How does the JdbcTemplate support generic queries? How does it return objects and lists/maps of objects?</font>
+### <span style="color: #99ff99;">7. How does the JdbcTemplate support generic queries? How does it return objects and lists/maps of objects?</span>
 
 The JdbcTemplate supports generic queries through methods such as:
 - queryForObject: Returns a single object.
@@ -860,20 +860,20 @@ The JdbcTemplate supports generic queries through methods such as:
 
 These methods use callback interfaces such as RowMapper to map rows of a ResultSet to objects. The JdbcTemplate internally handles the processing of the ResultSet and the mapping of data to objects based on the provided callback interface.
 
-### <font color="#99ff99">8. What is a transaction? What is the difference between a local and global transaction?</font>
+### <span style="color: #99ff99;">8. What is a transaction? What is the difference between a local and global transaction?</span>
 
 A transaction is a unit of work that consists of a series of tasks, all of which must either succeed or fail together. Transactions follow the ACID principles (Atomicity, Consistency, Isolation, Durability).
 
 - Local Transaction: A transaction that is specific to a single resource, such as a database. It does not span multiple transactional resources.
 - Global Transaction: A transaction that spans multiple transactional resources, such as databases or message queues. It coordinates updates across multiple resources and ensures that either all updates succeed or none of them do.
 
-### <font color="#99ff99">9. Is a transaction a cross-cutting concern? How is it implemented by Spring?</font>
+### <span style="color: #99ff99;">9. Is a transaction a cross-cutting concern? How is it implemented by Spring?</span>
 
 Yes, a transaction is a cross-cutting concern because it affects multiple layers of an application and cuts across the business logic.
 
 Spring implements transactions using the @Transactional annotation. When this annotation is used, Spring proxies the annotated class or method and applies transactional behavior, such as starting and committing transactions, around the method calls. This is achieved using AOP (Aspect-Oriented Programming) and Spring's declarative transaction management.
 
-### <font color="#99ff99">10. How do you define a transaction in Spring? What does @Transactional do? What is the PlatformTransactionManager?</font>
+### <span style="color: #99ff99;">10. How do you define a transaction in Spring? What does @Transactional do? What is the PlatformTransactionManager?</span>
 
 To define a transaction in Spring, you need to:
 - Enable transaction management using @EnableTransactionManagement in your configuration class.
@@ -884,7 +884,7 @@ The @Transactional annotation enables declarative transaction management in Spri
 
 The PlatformTransactionManager is an interface used by Spring's transaction management to manage transactions. It provides methods for starting, committing, and rolling back transactions, and it is responsible for coordinating transactional behavior across different transactional resources.
 
-### <font color="#99ff99">11. Is the Jdbc template able to participate in an existing transaction?</font>
+### <span style="color: #99ff99;">11. Is the Jdbc template able to participate in an existing transaction?</span>
 
 Yes, Jdbc template is able to participate in existing transaction. It will support both, transaction created with @transactional and also programmatically created transaction.
 
@@ -892,7 +892,7 @@ Jdbc template is able to participate in existing transaction by usage of DataSou
 TransactionInterceptor and TransactionAspectSupport are also using PlatformTransactionManager together with DataSourceTransactionManager which will set transaction in TransactionSynchronizationManager for Jdbc Template to reuse.
 
 
-### <font color="#99ff99">12. What is a transaction isolation level? How many do we have and how are they ordered?</font>
+### <span style="color: #99ff99;">12. What is a transaction isolation level? How many do we have and how are they ordered?</span>
 
 Transaction isolation determines how changes made under one transaction are visible in other transactions and other users of the system. Higher isolation level means that changes from one transaction are not visible and lower isolation level means that changes from one transaction may slip into selects executed under other transaction.
 
@@ -962,7 +962,7 @@ Most relational databases support 4 transaction levels:
     - not possible -
     - concurrency: very good
 
-### <font color="#99ff99">13. What is @EnableTransactionManagement for?</font>
+### <span style="color: #99ff99;">13. What is @EnableTransactionManagement for?</span>
 
 Annotation is used on top of @Configuration class to enable annotation-driven transaction management by @Transactional annotation in Spring framework.
 
@@ -975,7 +975,7 @@ method, which will use PlatformTransactionManager to manage transaction.
 - proxyTargetClass - indicates whether CGLIB Proxy classes should be created or if JDK Proxies should be created, this field is used only when Mode is set to Proxy
 
 
-### <font color="#99ff99">14. What does transaction propagation mean?</font>
+### <span style="color: #99ff99;">14. What does transaction propagation mean?</span>
 
 Transaction propagation defines how existing transaction is re-used when calling @Transactional method with transaction already running.
 
@@ -989,7 +989,7 @@ Transaction propagation can be defined in annotation in propagation field as one
 - NESTED - execute within a nested transaction if a current transaction exists, behave lik required else
 
 
-### <font color="#99ff99">15. What happens if one @Transactional annotated method is calling another @Transactional method on the same object instance?</font>
+### <span style="color: #99ff99;">15. What happens if one @Transactional annotated method is calling another @Transactional method on the same object instance?</span>
 
 Jdk proxy and cglib proxy in spring beans AOP do not support self invocation, so when one method with @Transactional calls different method with @Transactional from the same class, nothing happens, transaction interceptor will not be called.
 
@@ -999,7 +999,7 @@ To enable self invocation support, you need to configure Spring Aspects with Asp
 - configure transaction support with: @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 
 
-### <font color="#99ff99">16. Where can the @Transactional be used? What is a typical usage if you put it at class level?</font>
+### <span style="color: #99ff99;">16. Where can the @Transactional be used? What is a typical usage if you put it at class level?</span>
 
 @Transactional can be used on top of class or method, in classes or interfaces.
 
@@ -1007,25 +1007,25 @@ If used on top of class, it applies to all public methods in this class.
 
 If used on top of method, it needs to have public access modifier, otherwise transaction management will not be applied
 
-### <font color="#99ff99">17. What does declarative transaction management mean?</font>
+### <span style="color: #99ff99;">17. What does declarative transaction management mean?</span>
 
 Declarative transaction management means that instead of handling transactions manually through the code, methods which should be executed in transactions are declared with @Transactional annotation.
 
 
-### <font color="#99ff99">18. What is the default rollback policy? How can you override it?</font>
+### <span style="color: #99ff99;">18. What is the default rollback policy? How can you override it?</span>
 
 Default rollback policy in Spring Framework is set to automatic rollback, but only when unchecked exception is being thrown from the method annotated with @Transactional. When checked exception is being thrown from the method, transaction is not being rolled back.
 
 You can override this policy by setting rollbackFor | rollbackForClassName or noRollbackFor | noRollbackForClassName field in @Transactional.
 
-### <font color="#99ff99">19. What is default rollback policy in a JUnit test, when you use the @RunWith(SpringJUnit4ClassRunner.class) in JUnit 4 or @ExtendWith(SpringExtension.class) in JUnit 5, and annotate your @Test method with @Transactional?</font>
+### <span style="color: #99ff99;">19. What is default rollback policy in a JUnit test, when you use the @RunWith(SpringJUnit4ClassRunner.class) in JUnit 4 or @ExtendWith(SpringExtension.class) in JUnit 5, and annotate your @Test method with @Transactional?</span>
 
 Default rollback policy in @Test methods with @Transactional is always rollback. This means that after test execution transaction will always be rolled back. The reason for this is that each test method should be able to change state of database or call other classes that will change state of the database, however for the tests to be repeatable, changes should be reverted after @Test method execution.
 
 You can change this behavior by using @Rollback set to false.
 
 
-### <font color="#99ff99">20. Why is the term "unit of work" so important and why does JDBC AutoCommit violate this pattern?</font>
+### <span style="color: #99ff99;">20. Why is the term "unit of work" so important and why does JDBC AutoCommit violate this pattern?</span>
 
 Unit of work is a generic term to describe, set of tasks that are performing some changes needs to be performed, or no changes should be performed at all.
 
@@ -1036,7 +1036,7 @@ In context of JPa|Hibernate, Unit of work tracks all changes made to the data Ob
 Jdbc AutoCommit violates Unit of Work, because it makes every SQL statement being invoked in a separate transaction that is committed after SQL is executed, this makes impossible to implement Unit of Work consisting of multiple SQL operations.
 
 
-### <font color="#99ff99">21. What do you need to do in Spring if you would like to work with JPA?</font>
+### <span style="color: #99ff99;">21. What do you need to do in Spring if you would like to work with JPA?</span>
 
 Following steps are required to work with JPA in Spring Framework:
 - Declare maven dependencies:
@@ -1055,14 +1055,14 @@ Following steps are required to work with JPA in Spring Framework:
 - Define DAO classes, or use Spring Data JPA repositories
 
 
-### <font color="#99ff99">22. Are you able to participate in a given transaction in Spring while working with JPA?</font>
+### <span style="color: #99ff99;">22. Are you able to participate in a given transaction in Spring while working with JPA?</span>
 
 Yes, JPA in Spring uses JpaTransactionManager, which supports cases when DataSource is used directly, so it allows mixing JPA and JDBC code under one transaction.
 
 When using Spring Framework on Java EE platform, it is possible to reuse existing transaction as well by using JtaTransactionManager, which will delegate transaction management to Java EE container.
 
 
-### <font color="#99ff99">23. Which PlatformTransactionManager can you use with JPA?</font>
+### <span style="color: #99ff99;">23. Which PlatformTransactionManager can you use with JPA?</span>
 
 JPA can work with following transaction managers:
 - JpaTransactionManager - recommend when working with one database and one Entity Manager
@@ -1073,7 +1073,7 @@ Usage of JpaTransactionManager in case of multiple Databases / Transaction Resou
 Multiple Databases / Entity Managers Scenario with incorrectly used JpaTransactionManager for this case use JtaTransactionManager
 
 
-### <font color="#99ff99">24. What do you have to configure to use JPA with Spring? How does Spring Boot make this easier?</font>
+### <span style="color: #99ff99;">24. What do you have to configure to use JPA with Spring? How does Spring Boot make this easier?</span>
 
 Following steps are required to work with JPA in Spring Framework:
 - Declare maven dependencies:
@@ -1100,7 +1100,7 @@ Spring Boot simplifies JPA setup by:
 - Automatically creates DAO beans for Repositories.
 
 
-### <font color="#99ff99">25. What is a Repository interface?</font>
+### <span style="color: #99ff99;">25. What is a Repository interface?</span>
 
 Repository interface is a Java interface that describes Dao with expected behaviors, based on which Spring Data will automatically generate Dao logic. Repository interface takes Domain class and ID type to manage.
 
@@ -1111,7 +1111,7 @@ Custom repository interface needs to extend one of following interface:
 - JpaRepository - JPA specific extension of Repository
 
 
-### <font color="#99ff99">26. How do you define Repository interface? Why is it an interface not a class?</font>
+### <span style="color: #99ff99;">26. How do you define Repository interface? Why is it an interface not a class?</span>
 
 To define Repository interface, you need to follow those steps:
 - Create Java interface that extend one of: Repository, CrudRepository, PagingAndSortingRepository, JpaRepository
@@ -1122,7 +1122,7 @@ To define Repository interface, you need to follow those steps:
 Repositories interface is an interface, not a class for Spring DAta to be able to use JDK Dynamic Proxy to intercept all calls to repository and also to allow creation of custom base repositories for every Dao based on SimpleJpaRepository configured at @EnableJpaRepositories level
 
 
-### <font color="#99ff99">27. What is the naming convention for finder methods in a Repository interface?</font>
+### <span style="color: #99ff99;">27. What is the naming convention for finder methods in a Repository interface?</span>
 
 find[limit]By[property/properties expression][comparison][ordering operator]
 
@@ -1139,7 +1139,7 @@ ordering operator - optionally you can specify ordering operator at the end of m
 - findByLastNameOrderByFirstnameDesc
 
 
-### <font color="#99ff99">28. How are Spring Data repositories implemented by Spring at runtime?</font>
+### <span style="color: #99ff99;">28. How are Spring Data repositories implemented by Spring at runtime?</span>
 
 Spring Repositories are implemented at runtime by SimpleJpaRepository by default.
 
@@ -1151,7 +1151,7 @@ Class used implementation of Repository interface can be customized on:
 - Single Dao/Repository by creating separate interface and Impl class for behavior that you want to customize
 
 
-### <font color="#99ff99">29. What is @Query used for?</font>
+### <span style="color: #99ff99;">29. What is @Query used for?</span>
 
 @Query can be used on top of Repository method and with it you can specify query that should be used by JPA. When declaring one on top of finder method, specified query will be used, instead of generating one automatically based on finder method name.
 
@@ -1161,7 +1161,7 @@ Using @Query allows you to achieve more control and flexibility of the JPA query
 <span style="color: cornflowerblue;"> <h1>Spring Boot, Spring Boot Auto Configuration, Spring Boot Actuator, Spring Boot Testing</h1> </span>
 
 
-### <font color="#99ff99">1. What is Spring boot?</font>
+### <span style="color: #99ff99;">1. What is Spring boot?</span>
 
 Spring boot is a Java Framework that allows you to easily create stand alone, production grade Spring based Java applications. It is often used in microservice architecture because of simplicity that it allows.
 
@@ -1187,14 +1187,14 @@ On top of it, you can use all spring framework technologies, like:
 - Spring Data MongoDb - nosql database client
 
 
-### <font color="#99ff99">2. What are advantages of using Spring Boot?</font>
+### <span style="color: #99ff99;">2. What are advantages of using Spring Boot?</span>
 
 - Maximizes productivity
 - Simplifies deployment, by allowing to create executable jar and also supports traditional deployment on top of application server
 - provides automatic configuration which reduces boilerplate configuration, and allows easy customization when defaults are not sufficient
 
 
-### <font color="#99ff99">3. Why is it opinionated?</font>
+### <span style="color: #99ff99;">3. Why is it opinionated?</span>
 
 Spring boot is opinionated framework because it comes with general idea on how application should be organized, provides default configurations and modules setups for technology related aspect of application.
 
@@ -1210,7 +1210,7 @@ Opinionated has following advantages:
 The main disadvantage of opinionated framework is that if your application does not fall into most use cases supported by framework, you will have to override most of default setup, configurations and project organization, which might harm your productivity
 
 
-### <font color="#99ff99">4. What things affect what spring boot sets up?</font>
+### <span style="color: #99ff99;">4. What things affect what spring boot sets up?</span>
 
 Spring boot uses autoconfiguration to detect dependencies on the class path, based on detected dependencies, spring beans are configured to allow integration with technologies, like JPA, Data sources, embedded databases, template rendering engines etc.
 
@@ -1228,14 +1228,14 @@ Spring boot supports following conditional annotations for AutoConfiguration cla
 - ConditionalOnResource
 
 
-### <font color="#99ff99">5. What is a Spring boot starter POM? Why is it useful?</font>
+### <span style="color: #99ff99;">5. What is a Spring boot starter POM? Why is it useful?</span>
 
 Spring starter POM is a maven module that represents empty jar with set of dependencies required to work with specified technology. Spring starter may also provide autoconfiguration to create beans required to integrate project with technologies that you intend to use.
 
 Spring starters are useful, because they simplify project setup by assuring that all dependencies in correct versions are set. If starter provides autoconfiguration as well, it integrates technology with Spring framework.
 
 
-### <font color="#99ff99">6. Spring boot supports both properties and yml files. Would you recognize and understand them if you saw them?</font>
+### <span style="color: #99ff99;">6. Spring boot supports both properties and yml files. Would you recognize and understand them if you saw them?</span>
 
 Spring boot allows you to externalize configuration for the application by using properties stored in properties files that can be in format:
 - yaml
@@ -1247,7 +1247,7 @@ You can transform application properties between YAML and Java properties format
 
 
 
-### <font color="#99ff99">7. Can you control logging with Spring boot? How?</font>
+### <span style="color: #99ff99;">7. Can you control logging with Spring boot? How?</span>
 
 Spring boot allows you to configure following aspects of logging:
 - levels
@@ -1262,7 +1262,7 @@ Spring boot allows you to configure following aspects of logging:
 Logging level can be set via application.properties or by using logging system specific configuration (logback-spring.xml).
 
 
-### <font color="#99ff99">8. Where does Spring boot look for property file by default?</font>
+### <span style="color: #99ff99;">8. Where does Spring boot look for property file by default?</span>
 
 Spring boot looks for properties in following locations:
 - Profile Specific
@@ -1289,7 +1289,7 @@ You can also explicitly point location of configuration file with usage of sprin
 $ java -jar myproject.jar --spring.location=classpath:/default.properties
 
 
-### <font color="#99ff99">9. How do you define profile specific property files?</font>
+### <span style="color: #99ff99;">9. How do you define profile specific property files?</span>
 
 Spring boot allows you to define profile specific property files in two ways:
 - Dedicated property file per profile:
@@ -1312,7 +1312,7 @@ server:
 url: http://prod.service.com/
 
 
-### <font color="#99ff99">10. How do you access the properties defined in the property files?</font>
+### <span style="color: #99ff99;">10. How do you access the properties defined in the property files?</span>
 
 Spring boot allows you to access properties defined in property files in following ways:
 - @Value("${property_name}") - inject properties into fields
@@ -1323,7 +1323,7 @@ Spring boot allows you to access properties defined in property files in followi
 - Environment property resolver - inject and use Environment object
 
 
-### <font color="#99ff99">11. What properties do you have to define in order to configure external MySQL?</font>
+### <span style="color: #99ff99;">11. What properties do you have to define in order to configure external MySQL?</span>
 
 To configure external MySql in Spring Boot you need to specify URL, Username, Password for Data Source by defining properties
 spring.datasource.uri , .username, .password
@@ -1338,7 +1338,7 @@ Need to specify connector dependency: mysql-connector-java
 Access to database, simplest approach is to use JDBC: spring-boot-starter-data-jdbc
 
 
-### <font color="#99ff99">12. How do you configure default schema and initial data?</font>
+### <span style="color: #99ff99;">12. How do you configure default schema and initial data?</span>
 
 Spring boot uses following scripts to configure default schema and initial data:
 - schema.sql - contains DDL for db objects creation
@@ -1355,7 +1355,7 @@ spring.datasource.initialization-mode=always
 If change name of schema.sql or/and data.sql script names you can use spring.datasource.schema and .data properties
 
 
-### <font color="#99ff99">13. What is a fat jar? How is it different from the original jar?</font>
+### <span style="color: #99ff99;">13. What is a fat jar? How is it different from the original jar?</span>
 
 Fat jar, also called "executable jar" is a jar that contains compiled code for your application and also all dependencies. Spring boot uses nested jars approach, that mean that fat jar contains all dependencies as nested jars. This differs from other approach, which is uber jar that packs all dependencies into single jar archive. Uber jar approach is problematic because it is hard to see application dependencies and also causes issues when same filename in the same context is used in different jars.
 
@@ -1370,7 +1370,7 @@ The differences in comparison to original jar are following:
 - original jar is not executable by default
 
 
-### <font color="#99ff99">14. What is the difference between an embedded container and a WAR?</font>
+### <span style="color: #99ff99;">14. What is the difference between an embedded container and a WAR?</span>
 
 WAR (Web application archive) is a file that represents web module. WAR cannot be executed in standalone mode, it needs to be deployed to Application Server like Tomcat or WildFly.
 
@@ -1416,7 +1416,7 @@ To create Executable JAR file with embedded container in Spring Boot, you need t
     - <goal>repackage</goal>
 
 
-### <font color="#99ff99">15. What embedded containers does Spring boot support?</font>
+### <span style="color: #99ff99;">15. What embedded containers does Spring boot support?</span>
 
 Spring boot supports following embedded containers:
 - Tomcat
@@ -1430,7 +1430,7 @@ To use Jetty embedded container you need to exclude spring-boot-starter-tomcat a
 To use Undertow embedded container you need to exclude spring-boot-starter-tomcat and include spring-boot-starter-undertow
 
 
-### <font color="#99ff99">16. How does Spring boot know what to configure?</font>
+### <span style="color: #99ff99;">16. How does Spring boot know what to configure?</span>
 
 Spring boot knows what to configure by usage of Auto Configuration classes defined in starter modules. Spring boot searches for META-INF/spring.factories on classpath, whenever entry org.springframework.boot.autoconfigure.EnableAutoConfiguration is encountered in this file, Auto Configuration Class pointer by this property is loaded.
 
@@ -1441,7 +1441,7 @@ When conditions from @ConditionalOn are matched, @Configuration class is loaded 
 Auto Configuration is often used with starter modules. Starter module provides set of dependencies, and optionally may provide Auto configuration classes.
 
 
-### <font color="#99ff99">17. What does @EnableAutoConfiguration do?</font>
+### <span style="color: #99ff99;">17. What does @EnableAutoConfiguration do?</span>
 
 @EnableAutoConf turns auto configuration of spring context. Auto configuration tries to guess Spring beans that should be created for your application based on configured dependencies and configurations with @ConditionalOn.
 
@@ -1450,7 +1450,7 @@ When auto-configuration is turned on, Spring will search for META-INF/spring.fac
 When using Spring Boot with @SpringBootApplication, @EnableAutoConfiguration is not required because auto-configuration is turned on by default.
 
 
-### <font color="#99ff99">18. What does @SpringBootApplication do?</font>
+### <span style="color: #99ff99;">18. What does @SpringBootApplication do?</span>
 
 Its used on top of the class and  it was introduced for convenience. Usage of @springBootApplication is equivalent to usage of following three annotations:
 - @Configuration - allows additional bean registration
@@ -1458,7 +1458,7 @@ Its used on top of the class and  it was introduced for convenience. Usage of @s
 - @ComponentScan - turns on scanning for @Component classes
 
 
-### <font color="#99ff99">19. Does Spring boot do component scanning? Where does it look by default?</font>
+### <span style="color: #99ff99;">19. Does Spring boot do component scanning? Where does it look by default?</span>
 
 Yes, spring boot is performing component scan, because @SpringBootApplication is enabling component scanning with usage of @ComponentScan.
 
@@ -1467,7 +1467,7 @@ By default, spring boot will search for @Component classes within the same root 
 You can change this behavior by adding additional packages to scan with scanBasePackages or type-safe version of it scanBasePackageClasses within @springBootApplication.
 
 
-### <font color="#99ff99">20. How are DataSource and JDBCTemplate auto-configured?</font>
+### <span style="color: #99ff99;">20. How are DataSource and JDBCTemplate auto-configured?</span>
 
 DataSource and JdbcTemplate are configured by Auto Configuration classes defined in spring-boot-autoconfigure module.
 
@@ -1478,7 +1478,7 @@ DataSourceAutoConf required some properties to be defined, example below shows M
 Above properties will be injected into DataSourceProperties by the prefix spring.datasource and used by DataSourceAutoConfiguration.
 
 
-### <font color="#99ff99">21. What is spring.factories file for?</font>
+### <span style="color: #99ff99;">21. What is spring.factories file for?</span>
 
 spring.factories file, located in META-INF/spring.factories location on the classpath, is used by Auto Configuration mechanism to locate Auto Configuration Classes. Each module that provides Auto Configuration class needs to have META-INF/spring.factories file with EnableAutoConfiguration
 entry that will point Auto configuration classes.
@@ -1488,7 +1488,7 @@ META-INF/spring.factories file is consumed by SpringFactoriesLoader class, which
 Auto configuration use case for spring.factories file is probably most popular one, it also allows you to define other entries and achieve context customization with following classes: ApplicationContextInitializer, ApplicationListener...
 
 
-### <font color="#99ff99">22. How do you customize Spring auto configuration?</font>
+### <span style="color: #99ff99;">22. How do you customize Spring auto configuration?</span>
 
 You can customize Spring auto configuration by creating your own auto-configuration module with auto configuration class.
 
@@ -1497,7 +1497,7 @@ To do that you need to create java jar module which wil contain META-INF/spring.
 Auto configuration class is a class with @Configuration, usually used together with ConditionalOnClass. Additionally you can use @PropertySource annotation with EnableConfigurationProperties and ConfigurationProperties to introduce custom properties for your auto-configuration module.
 
 
-### <font color="#99ff99">23. What are the examples of @Conditional annotations? How are they used?</font>
+### <span style="color: #99ff99;">23. What are the examples of @Conditional annotations? How are they used?</span>
 
 Spring boot support following conditional annotations for auto configuration classes:
 - conditionalOnBean
@@ -1512,7 +1512,7 @@ Spring boot support following conditional annotations for auto configuration cla
 @Conditional annotations are used together with Auto configuration classes, to indicate under which conditions specific @Configuration class should apply.
 
 
-### <font color="#99ff99">24. What value does Spring boot actuator provide?</font>
+### <span style="color: #99ff99;">24. What value does Spring boot actuator provide?</span>
 
 Spring boot actuator provides features tat are required for your application to be viewed as production read product:
 - monitoring
@@ -1525,7 +1525,7 @@ Advantage of using spring boot actuator is that you can use those features in yo
 - -||-/info
 
 
-### <font color="#99ff99">25. What are the two protocols you can use to access actuator endpoints?</font>
+### <span style="color: #99ff99;">25. What are the two protocols you can use to access actuator endpoints?</span>
 
 Spring boot actuator supports two protocols:
 - http
@@ -1543,7 +1543,7 @@ JMX allows you to access actuator Mbeans under org.springframework.boot group. Y
     - Dcom.sun.management.jmxremote.ssl=false
 
 
-### <font color="#99ff99">26. What are the actuator endpoints that are provided out of the box?</font>
+### <span style="color: #99ff99;">26. What are the actuator endpoints that are provided out of the box?</span>
 
 Every one of the endpoint is enabled on by default except the shutdown. On JMX are all enabled by default except those who runs on web application (promethous, heapdump, jolokia, logfile). Default exposure via web are info and health endpoint.
 
@@ -1564,7 +1564,7 @@ Navigation through actuator endpoints can be enabled by usage of HATEOAS
 - to enable navigation, add dependency to project
 
 
-### <font color="#99ff99">27. What is info endpoint for? How do you supply data?</font>
+### <span style="color: #99ff99;">27. What is info endpoint for? How do you supply data?</span>
 
 Spring boot actuator info endpoint is used to provide arbitrary non sensitive custom defined data available at runtime that can provide additional information about started application.
 
@@ -1577,7 +1577,7 @@ It can be supplied data to spring boot by using following methods:
 - by implementing InfoContributor bean
 
 
-### <font color="#99ff99">28. How do you change logging level of a package using loggers endpoint?</font>
+### <span style="color: #99ff99;">28. How do you change logging level of a package using loggers endpoint?</span>
 
 Spring actuator allows you to list currently configured loggers with their levels in following ways:
 - via http by visiting /actuator/loggers endpoint
@@ -1595,7 +1595,7 @@ You can change logging level by:
 - jmx /Endpoint/Loggers/Operations/loggerLevels with provided parameter
 
 
-### <font color="#99ff99">29. How do you access an endpoint using a tag?</font>
+### <span style="color: #99ff99;">29. How do you access an endpoint using a tag?</span>
 
 Access an endpoint using a tag by defining it as part of the request in following way: tag=KEY:VALUE
 
@@ -1606,7 +1606,7 @@ Multiple tag in one query with usage of &:
 tag=KEY1:VALUE1&tag=KEY2:VALUE2
 
 
-### <font color="#99ff99">30. What is metrics for?</font>
+### <span style="color: #99ff99;">30. What is metrics for?</span>
 
 Spring actuator provides metrics endpoint which can be used to examine metrics collected by the application during runtime.
 
@@ -1623,7 +1623,7 @@ metrics endpoint:
 metric is not exposed by default via web, need to add following properties: management.endpoints.web.exposure.include=metrics
 
 
-### <font color="#99ff99">31. How do you create a custom metric with or without tags?</font>
+### <span style="color: #99ff99;">31. How do you create a custom metric with or without tags?</span>
 
 Spring boot actuator allows you to create custom metrics with usage of MeterRegistry from Micrometer Application Metrics Facade.
 Micrometer used by spring boot actuator allows you to register meter primitives that can be exposed via actuator/metrics endpoint
@@ -1634,7 +1634,7 @@ Registration of metric can be done via method inside MeterRegistry
 - Counter.builder("storage.object.count").tag().register()
 
 
-### <font color="#99ff99">32. What is health indicator?</font>
+### <span style="color: #99ff99;">32. What is health indicator?</span>
 
 Health indicator is a component used by /actuator/health endpoint to check if system is in a state which can be used to successfully handle requests.
 
@@ -1653,7 +1653,7 @@ To change level of details exposed by /actuator/health endpoint, following prope
 To create custom Health Indicator, spring bean has to be created that implements HealthIndicator interface
 
 
-### <font color="#99ff99">33. What are the health indicators that are provided out of the box?</font>
+### <span style="color: #99ff99;">33. What are the health indicators that are provided out of the box?</span>
 
 Spring actuator provides following health indicators that are configured when proper dependencies are found:
 - applicationHealthIndicator - default implementation, always up
@@ -1666,7 +1666,7 @@ Spring actuator also provides Reactive health indicators for reactive applicatio
 - mongoReactiveHealthIndicator
 
 
-### <font color="#99ff99">34. What is the health indicator status?</font>
+### <span style="color: #99ff99;">34. What is the health indicator status?</span>
 
 Health indicator status is used by health indicators to inform spring actuator if system component checked by them is working correctly or not.
 
@@ -1676,7 +1676,7 @@ Each health indicator is expected to return status that represents guarded compo
 Spring actuator is also using HealthAggregator, especially OrderedHealthAggregator to aggregate statuses from all health indicators and decide on final status. Ordering status from worst to best.
 
 
-### <font color="#99ff99">35. What are the health indicator statuses that are provided out of the box?</font>
+### <span style="color: #99ff99;">35. What are the health indicator statuses that are provided out of the box?</span>
 
 Spring actuator provides following health indicator statuses out of the box:
 - up, down, out of service, unknown
@@ -1691,7 +1691,7 @@ Based on health indicator statuses from above, spring will also perform default 
 Default mapping can be changed with usage of management.health.status.http-mapping=501 property
 
 
-### <font color="#99ff99">36. How do you change the Health indicator status severity order?</font>
+### <span style="color: #99ff99;">36. How do you change the Health indicator status severity order?</span>
 
 Spring actuator allows you to change health indicator status severity order with usage of property management.health.status.order:
 management.health.status.order=system-halted, DOWN, OUT OF SERVICE, UP...
@@ -1699,7 +1699,7 @@ management.health.status.order=system-halted, DOWN, OUT OF SERVICE, UP...
 This property will be injected into HealthIndicatorProperties and used by OrderedHealthAggregator to resolve final status for application.
 
 
-### <font color="#99ff99">37. Why do you want to leverage 3rd party external monitoring system?</font>
+### <span style="color: #99ff99;">37. Why do you want to leverage 3rd party external monitoring system?</span>
 
 It is a good idea to use external monitoring system, because this way you can use monitoring functionalities without having to spend time coding them.
 
@@ -1707,7 +1707,7 @@ Configuring external monitoring system is as easy as adding dependency:
 micrometer-registry-${monitoring-system-name}
 
 
-### <font color="#99ff99">38. When do you want to use @SpringBootTest annotation?</font>
+### <span style="color: #99ff99;">38. When do you want to use @SpringBootTest annotation?</span>
 
 You should use @SpringBootTest whenever writing JUnit integration test for product that is using spring boot.
 
@@ -1716,7 +1716,7 @@ Spring boot approach to integration testing simplifies it by eliminating require
 To use @SpringBootTest, need to add @RunWith(SpringRunner.class) on top of test class, this is required only for JUNIT 4, for JUnit 5 @ExtendWith(SpringExtension.class) is already contained in SpringBootTest.
 
 
-### <font color="#99ff99">39. What does @SpringBootTest auto-configure?</font>
+### <span style="color: #99ff99;">39. What does @SpringBootTest auto-configure?</span>
 
 SpringBootTest will auto configure:
 - applicationContext for testing
@@ -1732,7 +1732,7 @@ It is possible to test only slice of the application with usage one of following
 @Auto configure allows you to configure specific environment and tools for testing, for example @AutoConfigureMockMvc will configure Mock Mvc that can be used for Controllers testing
 
 
-### <font color="#99ff99">40. What dependencies does spring-boot-starter-test brings to the classpath?</font>
+### <span style="color: #99ff99;">40. What dependencies does spring-boot-starter-test brings to the classpath?</span>
 
 - JUnit - unit testing
 - spring test - spring framework support for testing
@@ -1747,14 +1747,14 @@ It is possible to test only slice of the application with usage one of following
 To see all dependencies with versions for maven module by running: mvn dependency:tree
 
 
-### <font color="#99ff99">41. How do you perform integration testing with @SpringBootTest for a web application?</font>
+### <span style="color: #99ff99;">41. How do you perform integration testing with @SpringBootTest for a web application?</span>
 
 Integration Test by definition, should check interactions between few components of the system to check if those components are delivering expected functionalities when working together. In each case when writing integration test you should decide how many components should interact in the test for it to be meaningful. Usually you should decide on smallest possible amount of components that are enaugh to test specific functionality. Components that are not meaningful can be omitted or mocked with usage of @MockBean.
 
 Web components tests if tested in integration way, should be written in a way for test to make a http request and check http response. This kind of approach results in meaningful test, which delivers feedback that actually checks if component works correctly.
 
 
-### <font color="#99ff99">42. When do you want to use @WebMvcTest? What does it auto-configure?</font>
+### <span style="color: #99ff99;">42. When do you want to use @WebMvcTest? What does it auto-configure?</span>
 
 You should use @WebMvcTest when you want to write Integration test that is focused on web layer of your application. @WebMvcTest approach will create ApplicationContext that contains only web components and omits any other components that are not part of web layer. Other components, if required for the test, can be mocked with usage of @MockBean or delivered by @Configuration class importef with usage of @Import.
 
@@ -1773,7 +1773,7 @@ You should use @WebMvcTest when you want to write Integration test that is focus
 - @HandlerMethodArgumentResolver
 
 
-### <font color="#99ff99">43. What are the differences between @MockBean and @Mock?</font>
+### <span style="color: #99ff99;">43. What are the differences between @MockBean and @Mock?</span>
 
 @Mock comes from Mockito Framework which allows for easy Mock creation. This annotation is used by MockitoJUnitRunner, each field annotated with it will have Mock for specified class created. This annotation does not inject mocks into tested class on itself, to use injection you need to have target class annotated with @InjectMocks.
 
@@ -1782,7 +1782,7 @@ You should use @WebMvcTest when you want to write Integration test that is focus
 Main difference between @MockBean and @Mock is that @MockBean creates mock and injects it into ApplicationContext, while @Mock annotation only creates it.
 
 
-### <font color="#99ff99">44. When do you want use @DataJpaTest for? What does it auto-configure?</font>
+### <span style="color: #99ff99;">44. When do you want use @DataJpaTest for? What does it auto-configure?</span>
 
 You want to use @DataJpaTest whenever writing an integration test for jpa related components of your application like Entities and Repositories.
 
@@ -1799,7 +1799,7 @@ When using @DataJpaTest you can access TestEntityManager, which contains subset 
 
 <span style="color: cornflowerblue;"> <h1>Spring MVC and the Web Layer</h1> </span>
 
-### <font color="#99ff99">1. MVC is an abbreviation for design pattern. What does it stand for and what is the idea behind it?</font>
+### <span style="color: #99ff99;">1. MVC is an abbreviation for design pattern. What does it stand for and what is the idea behind it?</span>
 
 MVC stand for Model view controller it is design pattern which divides application into three main interconnected component types.
 
@@ -1840,7 +1840,7 @@ Controller
 - restcontroller classes
 
 
-### <font color="#99ff99">2. What is the DispatcherServlet and what is it used for?</font>
+### <span style="color: #99ff99;">2. What is the DispatcherServlet and what is it used for?</span>
 
 DispatcherServlet is an internal Spring MVC component that implements HttpServlet from Java servlet api and Front Controller design pattern. It is used to handle all requests to the application, based on servlet mapping, delegate those requests to the application, based on servlet mapping, delegate those requests to controllers and produce response based on identified view.
 
@@ -1859,7 +1859,7 @@ Application Server
 User (Requests)-> /app-a/ - > Servlet 1 -> (Response) User
 
 
-### <font color="#99ff99">3. What is a web application context? What extra scopes does it offer?</font>
+### <span style="color: #99ff99;">3. What is a web application context? What extra scopes does it offer?</span>
 
 Web application context is a spring application context for web application that runs under Embedded or standalone application server that supports servlet api and acts as servlet container.
 
@@ -1895,7 +1895,7 @@ Websocket scope
 - bean lifecycle is coupled with lifecycle of webSocket session, however bean usually lives longer then webSocket session
 
 
-### <font color="#99ff99">4. What is the @Controller used for?</font>
+### <span style="color: #99ff99;">4. What is the @Controller used for?</span>
 
 @Controller is used to indicate that annotated class is a Controller from Model-View-Controller design pattern, and should be considered a candidate for request handling when DispatcherServlet searches for component to which work can be delegated.
 
@@ -1904,7 +1904,7 @@ Websocket scope
 Controllers in Spring do not have to implement any interface or extend any base class, spring uses annotation-based programming model with @controller being part of it. Controllers have flexible methods signatures with mapping expressed via annotations like @RequestMapping, @GetMapping.
 
 
-### <font color="#99ff99">5. How is an incoming request mapped to a controller and mapped to a method?</font>
+### <span style="color: #99ff99;">5. How is an incoming request mapped to a controller and mapped to a method?</span>
 
 Incoming request is mapped to a controller and a method by DispatcherServlet, which uses HandlerMapping and HandlerAdapter components for this purpose.
 
@@ -1927,12 +1927,12 @@ Spring MVC also supports composed annotations for request mapping:
 Each of those annotations allows you to specify same conditions as @RequestMapping except for Http method field, following fields in @Mapping are aliases to @RequestMapping: path, params, headers, consumes, produces.
 
 
-### <font color="#99ff99">6. What is the difference between @RequestMapping and @GetMapping?</font>
+### <span style="color: #99ff99;">6. What is the difference between @RequestMapping and @GetMapping?</span>
 
 The main difference between @RequestMapping and @GetMapping is that first one can be used to map any HTTP method requests and second one can be used to map only http get method request. getMapping is less flexible but easier to use.
 
 
-### <font color="#99ff99">7. What is @RequestParam used for?</font>
+### <span style="color: #99ff99;">7. What is @RequestParam used for?</span>
 
 @RequestParam is used to bind web request parameters to controller method parameter.
 
@@ -1947,7 +1947,7 @@ The main difference between @RequestMapping and @GetMapping is that first one ca
 - mapping all request parameters to map or list is available
 
 
-### <font color="#99ff99">8. What are the differences between @RequestParam and @PathVariable?</font>
+### <span style="color: #99ff99;">8. What are the differences between @RequestParam and @PathVariable?</span>
 
 PathVariable is responsible for mapping parts of URI, marked with usage of URI templates variables to controller method parameters. URI templates are identifiers surrounded with curly brackets.
 
@@ -1962,7 +1962,7 @@ RequestParam allows you to specify defaultValue property, @PathVariable doesn't.
 - map list of values for parameter to collection
 
 
-### <font color="#99ff99">9. What are some of the parameter types for a controller method?</font>
+### <span style="color: #99ff99;">9. What are some of the parameter types for a controller method?</span>
 
 WebRequest, NativeWebRequest - Access to HTTP request details, parameters, also request and session attributes, without direct use of the Servlet API
 
@@ -2001,7 +2001,7 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 - any other argument - if a method argument is not matched against types defined before, and it is a simply type, it is treated as @RequestParam, if it is complex type, it is treated as @ModelAttribute
 
 
-### <font color="#99ff99">10. What other annotations might you use on a controller method parameter?</font>
+### <span style="color: #99ff99;">10. What other annotations might you use on a controller method parameter?</span>
 
 - @RequestParam - access to the servlet request parameters, including multipart files, parameters will be automatically converted to declared method argument types, parameters can be made optional with usage of required attribute or optional, for optional request parameters defaultValue can be set as well
 
@@ -2027,7 +2027,7 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 - @SessionAttributes - used to store model attributes in the http servlet session between requests, useful for multi step from processing
 
 
-### <font color="#99ff99">11. What are some of the valid return types of a controller method?</font>
+### <span style="color: #99ff99;">11. What are some of the valid return types of a controller method?</span>
 
 - @ResponseBody - binds method return value to web response body, complex types will be converted with usage of HttpMessageConverter
 
@@ -2061,7 +2061,7 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 <span style="color: cornflowerblue;"> <h1>Spring Security</h1> </span>
 
 
-### <font color="#99ff99">01. What are authentication and authorization? Which must come first?</font>
+### <span style="color: #99ff99;">01. What are authentication and authorization? Which must come first?</span>
 
 Authentication is a process of verifying that user, device or external system is who it claims to be. It involves validation that submitted proof of identity is true.
 
@@ -2107,7 +2107,7 @@ Spring security allows you to implement authorization within your application on
 Authentication needs to be executed first, before authorization, because for authorization process to know which roles can be granted for particular user, system needs to be sure that user is who it claims to be.
 
 
-### <font color="#99ff99">2. Is security a cross cutting concern? How is it implemented internally?</font>
+### <span style="color: #99ff99;">2. Is security a cross cutting concern? How is it implemented internally?</span>
 
 Yes, security is a cross cutting concern.
 
@@ -2144,7 +2144,7 @@ AccessDecisionManager - called by SecurityInterceptors before executing method/a
 AfterInvocationManager - called after executing method, used for authorization to ensure the principal is permitted to access the domain object instance returned by a service layer bean
 
 
-### <font color="#99ff99">3. What is the delegating filter proxy?</font>
+### <span style="color: #99ff99;">3. What is the delegating filter proxy?</span>
 
 DelegatingFilterProxy is an internal Spring Framework class located in package org.springframework.web.filter of spring-web module.
 
@@ -2164,7 +2164,7 @@ DelegatingFilterProxy can be registered in following ways:
 Role of DFP is to delegate all calls to FilterChainPRoxy, which contains SecurityFilterChain responsible for Web level authentication and authorization
 
 
-### <font color="#99ff99">4. What is security filter chain?</font>
+### <span style="color: #99ff99;">4. What is security filter chain?</span>
 
 Security filter chain is a collection of spring managed filters that are responsible for authentication and authorization. Usually they include functionalities like username and password authentication, logout management, session management, security interceptors.
 
@@ -2175,7 +2175,7 @@ Upon request being matched, SecurityFilterChain is picked up and list of Filters
 Spring provides API to customize list of used Security Filters, by extending WebSecurityConfigurerAdapter and overriding configure method.
 
 
-### <font color="#99ff99">5. What is a security context?</font>
+### <span style="color: #99ff99;">5. What is a security context?</span>
 
 SecurityContext is an interface, allowing you to access security information associated with the current thread of execution. Interface provides two methods:
 - getAuthentication - provides currently authenticated principal or an authentication request token
@@ -2195,7 +2195,7 @@ mode of SecurityContextHolder can be changed by:
 - programmatically
 
 
-### <font color="#99ff99">6. ** pattern in antMatcher and mvcMatcher matches zero or more path segments until the end of path</font>
+### <span style="color: #99ff99;">6. ** pattern in antMatcher and mvcMatcher matches zero or more path segments until the end of path</span>
 
 antMatcher and mvcMatcher support following rules:
 - ? - matches one character
@@ -2212,7 +2212,7 @@ Example, url - /departments/delete/5
 - /departments/dele??/* matches
 
 
-### <font color="#99ff99">7. Why is the usage of mvcMatcher recommended over antMatcher?</font>
+### <span style="color: #99ff99;">7. Why is the usage of mvcMatcher recommended over antMatcher?</span>
 
 mvcMatcher is more flexible and forgiving when writing down rules for Spring Security configuration, thus making mistakes when securing application harder.
 
@@ -2226,7 +2226,7 @@ They look very similar, they will work differently when executed against URI /em
   - antMatchers - not matching
 
 
-### <font color="#99ff99">8. Does Spring security support password hashing? What is salting?</font>
+### <span style="color: #99ff99;">8. Does Spring security support password hashing? What is salting?</span>
 
 Yes, Spring security supports password hashing through PasswordEncoder interface and has built in support for following encoders:
 - bcrypt
@@ -2245,12 +2245,12 @@ DelegatingPasswordEncoder is usefully as it provides flexibility and ability to 
 Password salting is a security mechanism invented to protect against reversing cryptographic hash functions, with usage of a precomputed tables like rainbow tables.
 
 
-### <font color="#99ff99">9. Why do we need method security? What type of object is typically secured at the method level?</font>
+### <span style="color: #99ff99;">9. Why do we need method security? What type of object is typically secured at the method level?</span>
 
 Method level security is needed whenever more granular security rules needs to be expressed for the application. In some cases having web based rules, written based on URI patterns, might not be detail enough, and additional set of rules needs to be applied to the application service layer.
 
 
-### <font color="#99ff99">10. What @PreAuthorized and @RolesAllowed annotations do? What is the difference between them?</font>
+### <span style="color: #99ff99;">10. What @PreAuthorized and @RolesAllowed annotations do? What is the difference between them?</span>
 
 @RolesAllowed is very similar to @Secured, and both of those allows to specify list of roles that currently authenticated user needs to have assigned to be allowed to execute guarded method. @RolesAllowed is part of jsr250 standard.
 
@@ -2266,7 +2266,7 @@ SpEL expressions that can be used with @PreAuthorized
 - isRememberMe
 
 
-### <font color="#99ff99">11. How are @PreAuthorized and @RolesAllowed are implemented with usage of Spring AOP and AccessDecisionVoter.</font>
+### <span style="color: #99ff99;">11. How are @PreAuthorized and @RolesAllowed are implemented with usage of Spring AOP and AccessDecisionVoter.</span>
 
 AccessDecisionVoter are called by AccessDecisionManager, which is called by MethodSecurityInterceptor, which are registered by one of AdvisorAutoProxyCreator. PointCut and Advices for AOP are pointed by MethodSecurityMetadataSourceAdvisor. Currently used MethodSecurityInterceptor is pointed by GlobalMethodSecurityConfiguration#methodSecurityInterceptor.
 
@@ -2275,7 +2275,7 @@ AccessDecisionVoter are called by AccessDecisionManager, which is called by Meth
 @PreAuthorized is implemented by PReInvocationAuthorizationAdviceVoter
 
 
-### <font color="#99ff99">12. In which security annotation are you allowed to use SpEL=</font>
+### <span style="color: #99ff99;">12. In which security annotation are you allowed to use SpEL=</span>
 
 - @PreAuthorize
 - @PostAuthorize
@@ -2288,7 +2288,7 @@ Main difference between @PreAuthorize / @PostAuthorize are used to create expres
 <span style="color: cornflowerblue;"> <h1>Spring REST</h1> </span>
 
 
-### <font color="#99ff99">1. What does RESt stand for?</font>
+### <span style="color: #99ff99;">1. What does RESt stand for?</span>
 
 REST stands for Representational State Transfer
 
@@ -2306,14 +2306,14 @@ URI versioning
   Header - Accept: application/vnd.my-app.v1+json
 
 
-### <font color="#99ff99">2. What is resource?</font>
+### <span style="color: #99ff99;">2. What is resource?</span>
 
 Resource is a named information available via URI. It can be a document, image, video, text file, etc. Rest uses different form of presentation of resources, and client can specify format in which Resource should be made available, for example JSON, XML, Text, Html..
 
 Rest usually provides set of methods that can be used to manipulate resources like http get, post, put, delete
 
 
-### <font color="#99ff99">3. What does CRUD mean?</font>
+### <span style="color: #99ff99;">3. What does CRUD mean?</span>
 
 Create, read, update, delete.
 
@@ -2323,7 +2323,7 @@ update - put, patch
 delete - delete
 
 
-### <font color="#99ff99">4. Is RESt secure? What can you do to secure it?</font>
+### <span style="color: #99ff99;">4. Is RESt secure? What can you do to secure it?</span>
 
 Rest as an architectural style of developing distributed applications, does not enforce any security rules or solutions on its own, so by default rest is not secured.
 
@@ -2334,7 +2334,7 @@ To secure RESt api you can do following:
 - use some form of authorization (spring roles)
 
 
-### <font color="#99ff99">5. Is rest scalable and or interoperable?</font>
+### <span style="color: #99ff99;">5. Is rest scalable and or interoperable?</span>
 
 Scalability of Restful service is a result of developing software with following characteristics in mind:
 
@@ -2348,7 +2348,7 @@ rest service is interoperable because:
 - all crud operations can be handled with standardized approach, in case of restful service implemented with http protocol, standardized http methods get, put, patch, post, delete are used
 
 
-### <font color="#99ff99">6. Which Http methods does rest use?</font>
+### <span style="color: #99ff99;">6. Which Http methods does rest use?</span>
 
 HTTP Get - used to implement read operations - fetch existing resource or list of resources
 HTTP Post - used to implement Create operations - adding new element
@@ -2357,7 +2357,7 @@ HTTP patch - partial update of existing resource of the system, for example, whe
 HTTP delete - delete existing resource
 
 
-### <font color="#99ff99">7. What is an HttpMessageConverter?</font>
+### <span style="color: #99ff99;">7. What is an HttpMessageConverter?</span>
 
 Its a interface used by Spring to convert data between different formats.
 
@@ -2366,14 +2366,14 @@ Rest client can specify expected format in which data should be retrieved by usa
 Request mapping contains produces and consumes fields which can be used to specify MediaType which method can handle.
 
 
-### <font color="#99ff99">8. Yes, Rest is normally stateless.</font>
+### <span style="color: #99ff99;">8. Yes, Rest is normally stateless.</span>
 
 Stateless basic constraint for RESTful architecture.
 
 If some kind of state is required for the request, client should send this state with each request, however this state should not be kept on server side, not be kept in HTTP session.
 
 
-### <font color="#99ff99">9. What does @RequestMapping do?</font>
+### <span style="color: #99ff99;">9. What does @RequestMapping do?</span>
 
 Allows to specify conditions that request has to match for a method to be used as request handler. @RequestMapping can be used at class or method level, when used at the class level, all method level mappings inherit this primary mapping, narrowing it to a specific handler method.
 
@@ -2386,7 +2386,7 @@ Allows to specify conditions that request has to match for a method to be used a
 - produces
 
 
-### <font color="#99ff99">10. IS @Controller a stereotype? Is @RestController a stereotype? What is a stereotype annotation? What does that mean?</font>
+### <span style="color: #99ff99;">10. IS @Controller a stereotype? Is @RestController a stereotype? What is a stereotype annotation? What does that mean?</span>
 
 @Controller annotation and @RestController are stereotypes.
 
@@ -2400,7 +2400,7 @@ Types of stereotypes:
 - @RestController - class is a controller that will implement REST service Endpoints, usually consuming and producing json
 
 
-### <font color="#99ff99">11. What is the difference between @Controller and @RestController</font>
+### <span style="color: #99ff99;">11. What is the difference between @Controller and @RestController</span>
 
 @Controller indicates that class will be assigned with Controller role of MVC pattern and usually it is expected from it to return Model and View that will be used to render response, with usage of configured template engine (thymeleaf)
 
@@ -2411,12 +2411,12 @@ Types of stereotypes:
 @ResponseBody indicated that method return value should be bound to the web response body, it's return value will be serialized into response in requested format.
 
 
-### <font color="#99ff99">12. When do you need @ResponseBody?</font>
+### <span style="color: #99ff99;">12. When do you need @ResponseBody?</span>
 
 @ResponseBody is needed whenever you want spring to return serialized response of controller method return value, instead of returning model and view that will be used by template engine to produce response. @ResponseBody bounds method return value to the web response body, produced by HttpMessageConverter
 
 
-### <font color="#99ff99">13. What are the HTTP status return codes for a successful GET, POST, PUT Or DELETE operation?</font>
+### <span style="color: #99ff99;">13. What are the HTTP status return codes for a successful GET, POST, PUT Or DELETE operation?</span>
 
 GET
 - 200 OK - when asked about existing resource for which content is returned
@@ -2434,7 +2434,7 @@ GET
 In case of asynchronous operations, 202 (Accepted) may be returned with Location header indicating URI that can be used for pooling.
 
 
-### <font color="#99ff99">14. When do you need @ResponseStatus?</font>
+### <span style="color: #99ff99;">14. When do you need @ResponseStatus?</span>
 
 @ResponseStatus is required whenever you want to override default HTTP status returned from controller handler method.
 
@@ -2448,7 +2448,7 @@ This can be achieved by applying @ResponseStatus to:
 - Reason message to be used in response in case of error
 
 
-### <font color="#99ff99">15. Where do you need @ResponseBody? What about @RequestBody?</font>
+### <span style="color: #99ff99;">15. Where do you need @ResponseBody? What about @RequestBody?</span>
 
 @ResponseBody is needed whenever you want to return serialized response of controller handler method, instead of returning model and view that will be used by template engine to produce response. @ResponseBody will bind method return value to web response body and will use HttpMessageConverter.
 
@@ -2463,7 +2463,7 @@ This can be achieved by applying @ResponseStatus to:
 - on top of controller method parameter
 
 
-### <font color="#99ff99">16. If you saw example controller code, would you understand what it is doing? Could you tell if it was annotated correctly?</font>
+### <span style="color: #99ff99;">16. If you saw example controller code, would you understand what it is doing? Could you tell if it was annotated correctly?</span>
 
 Controller can be defined in one of following ways:
 - @controller
@@ -2498,7 +2498,7 @@ Calls to controller can be intercepted and custom exception handling can be impl
 - @ControllerAdvice - used together with @ExceptionHandler - global exception handler for all controllers, acts as global annotation driven call interceptor
 
 
-### <font color="#99ff99">17. Do you need Spring MVC in your classpath?</font>
+### <span style="color: #99ff99;">17. Do you need Spring MVC in your classpath?</span>
 
 Yes, you need Spring MVC on classpath for REST API to work correctly.
 
@@ -2515,7 +2515,7 @@ All of those are available in spring-web module which is not dependent on spring
 However for request to be mapped to RestController, DispatcherServlet has to be initialized which is part of spring-webmvc module.
 
 
-### <font color="#99ff99">18. What Spring boot starter would you use for a Spring REST application?</font>
+### <span style="color: #99ff99;">18. What Spring boot starter would you use for a Spring REST application?</span>
 
 To create Spring REST application, use Spring Boot Web Starter.
 
@@ -2526,7 +2526,7 @@ Spring boot web starter will automatically include:
 - spring-boot-starter-tomcat
 
 
-### <font color="#99ff99">19. What are the advantages of the RestTemplate?</font>
+### <span style="color: #99ff99;">19. What are the advantages of the RestTemplate?</span>
 
 RestTemplate is a synchronous HTTP client wrapper to perform HTTP requests. It exposes simple API over underlying HTTP client libraries:
 - JDK HttpURLConnection
@@ -2545,7 +2545,7 @@ RestTemplate has following advantages:
 Because of it's simplicity, REST Template is often used in testing code, however it can be used as general purpose HTTP Client.
 
 
-### <font color="#99ff99">20. If you saw an example using RestTemplate would you understand what it is doing?</font>
+### <span style="color: #99ff99;">20. If you saw an example using RestTemplate would you understand what it is doing?</span>
 
 RestTemplate API allows you to receive answer from Service being called by returning:
 - Object that represents transferred data
@@ -2578,7 +2578,7 @@ RestTemplate API can be categorized by HTTP request type, below is a list of com
 
 <span style="color: cornflowerblue;"> <h1>Spring Testing</h1></span>
 
-### <font color="#99ff99">1. Do you use Spring in a unit test?</font>
+### <span style="color: #99ff99;">1. Do you use Spring in a unit test?</span>
 
 Spring framework is usually not used in unit tests, however Spring contains some support for unit testing within following packages:
 - org.springframework.test.util
@@ -2609,7 +2609,7 @@ System tests
 - fast, cheap, impossible to test integration system case, easy to test detailed case
 
 
-### <font color="#99ff99">2. What type of tests typically use Spring?</font>
+### <span style="color: #99ff99;">2. What type of tests typically use Spring?</span>
 
 Integration tests are type of tests that typically use Spring. Reason for it because we want to test multiple components that are combined together.
 
@@ -2637,7 +2637,7 @@ Annotations for integration testing:
 - even if @Rollback is not explicitly defined, all transactions under tests will be rolled back by default
 
 
-### <font color="#99ff99">3. How can you create a shared application context in a JUnit integration test?</font>
+### <span style="color: #99ff99;">3. How can you create a shared application context in a JUnit integration test?</span>
 
 Shared application context can be considered as:
 - Sharing context Definition
@@ -2654,7 +2654,7 @@ Context will be reused as long as @ContextConfiguration (locations, classes, ini
 You can use @DirtiesContext to force Spring to create new instance of context for test
 
 
-### <font color="#99ff99">4. When and where do you use @Transactional in testing?</font>
+### <span style="color: #99ff99;">4. When and where do you use @Transactional in testing?</span>
 
 When - use @Transactional in testing whenever you want to run some part of the code that can alter state of transactional resource, for example database. Usage of this annotation allows you to mark code that should execute under transaction and allows to rollback all changes made by test, allowing other tests to pick from clear state.
 
@@ -2665,14 +2665,14 @@ Where - it can be used:
 - on top of the method - test method will be executed
 
 
-### <font color="#99ff99">5. How are mock frameworks such as Mockito or EasyMock used?</font>
+### <span style="color: #99ff99;">5. How are mock frameworks such as Mockito or EasyMock used?</span>
 
 Mock Framework like Mockito or EasyMock are used mainly during Unit Testing to mock collaborators of classes under test. Mockito or EasyMock can be also used during Integration testing when goal is to check cooperation between objects.
 
 Mock created with Mockito or EasyMock is a dynamic object, which can "pretend" real object and return predefined results when invoking method on it.
 
 
-### <font color="#99ff99">6. How is @ContextConfiguration used?</font>
+### <span style="color: #99ff99;">6. How is @ContextConfiguration used?</span>
 
 @ContextConfiguration is used on top of the class that represents Integration test, and it's purpose is to specify how to load and configure Application Context for integration test
 
@@ -2686,7 +2686,7 @@ Additionally @ContextConfiguration also allows you to specify:
 - name . name of the context hierarchy level represented by this configuration, only applicable when used within a test class hierarchy configured using @ContextHierarchy
 
 
-### <font color="#99ff99">7. How does Spring Boot simplify writing tests?</font>
+### <span style="color: #99ff99;">7. How does Spring Boot simplify writing tests?</span>
 
 Spring boot simplifies writing tests in following way:
 - provides @SpringBootTest - alternative to @ContextConfiguration, creates ApplicationContext through SpringApplication, Enables tests Auto-configuration, enables spring boot test features
@@ -2716,7 +2716,7 @@ Provides spring-boot-starter-test module:
 - JsonPath - Xpath for JSON
 
 
-### <font color="#99ff99">8. What does @SpringBootTest do? How does it interact with @SpringBootApplication and @SpringBootConfiguration?</font>
+### <span style="color: #99ff99;">8. What does @SpringBootTest do? How does it interact with @SpringBootApplication and @SpringBootConfiguration?</span>
 
 @SpringBootTest provides following features over regular Spring Test context:
 - automatically searches for @SpringBootConfiguration
