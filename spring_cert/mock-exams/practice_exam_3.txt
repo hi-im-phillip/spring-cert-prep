@@ -37,7 +37,7 @@ Around advice, Before advice
 Isolation
 
 
-8. _____ is the base interface for all transaction managers that can be used in the SPring framework transaction infrastracture
+8. _____ is the base interface for all transaction managers that can be used in the Spring framework transaction infrastructure
 
 PlatformTransactionManager
 

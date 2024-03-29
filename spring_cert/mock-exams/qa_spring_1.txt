@@ -18,7 +18,7 @@ Auto-configuration is applied before user-defined beans have been registered.
 
 5. Which two statements are true regarding bean creation?
 
-A Spring beqan can be explicitly created by annotating the class with @Autowired
+A Spring bean can be explicitly created by annotating the class with @Autowired
 
 A Spring bean can be implicitly created by annotating the class with @Component and using the component-scanner to scan its package.
 
@@ -35,14 +35,14 @@ An easy way to include multiple coordinated dependencies related to a specific t
 
 8. Which following statements are true about Spring Data?
 
-Spring data is specifically desgined for JPA, JDBC and relational database access only.
+Spring data is specifically designed for JPA, JDBC and relational database access only.
 
 Spring Data can greatly reduce the amount of "boilerplate" code typically needed for data access.
 
 
 9. Which strategy is correct for configuring Spring Security to intercept particular URLs?
 
-The URLs can be specified via configuration (using authorizeRequest() and requst matchers), with the most specific rule first and the least specific last. 
+The URLs can be specified via configuration (using authorizeRequest() and request matchers), with the most specific rule first and the least specific last.
 
 
 10. Given an ApplicationContext containing three bean definitions of type Foo with bean ids foo1, foo2, foo3, which three @Autowired scenarios are valid and will allow the ApplicationContext to initiliaze successfully?
@@ -67,7 +67,7 @@ RESTful application use HTTP headers and status codes as a contract with the cli
 
 Custom status values can be created.
 
-The built-in status values are DOWN, OUT_OF_SERVICE, UNKNOWN, and UP in decresing order of severity
+The built-in status values are DOWN, OUT_OF_SERVICE, UNKNOWN, and UP in decreasing order of severity
 
 
 13. Which three types of objects can be returned from a JDBCTemplate query?
@@ -104,7 +104,7 @@ It can be used to display arbitrary application information.
 
 17. Which two options will inject the value of the daily.limit system property?
 
-@Value("#{systeProperties[daily.limit]}")
+@Value("#{systemProperties[daily.limit]}")
 
 @Value("$(systemProperties.daily.limit)")
 
@@ -113,7 +113,7 @@ It can be used to display arbitrary application information.
 
 Custom BeanPostProcessors can be implemented for Spring applications.
 
-BeanPostProcessors are called during the initilization phase of bean life cycle.
+BeanPostProcessors are called during the initialization phase of bean life cycle.
 
 
 19. Which two statements are true about Spring Boot and Spring data JPA?
@@ -127,14 +127,14 @@ Spring Data JPA is the only implementation for relational databases.
 
 An external monitoring system must be used with Actuator.
 
-The metrics endpoinoint/actuator/metrics is exposed over HTTP by default
+The metrics endpoint/actuator/metrics is exposed over HTTP by default
 
 
 21. Which two statements are true regarding Spring boot-based Spring MVC application?
 
 Spring boot starts up an embedded servlet container by default.
 
-Jety is the default servlet container.
+Jetty is the default servlet container.
 
 
 22. Which two statements are true concerning constructor injection?
@@ -155,7 +155,7 @@ The @Controller is a stereotype annotation like @Component
 
 It causes Spring Boot to enable auto-configuration by default.
 
-A seperate ApplicationContext will be created for each class annotated with
+A separate ApplicationContext will be created for each class annotated with
 
 
 25. Which two statements are true about REST?
@@ -165,7 +165,7 @@ REST is a Protocol
 REST is interoperable
 
 
-26. Which tow annotations indicate that the transaction for a transcational test method should be committed after the test method has completed?
+26. Which tow annotations indicate that the transaction for a transactional test method should be committed after the test method has completed?
 
 @Commit
 
@@ -183,7 +183,7 @@ Configuration can be externalized and centralized in a small set of files.
 
 28. Which two statements about the @Autowired are true?
 
-Mulptiple arguments can be injected into a single method using @Autowired
+Multiple arguments can be injected into a single method using @Autowired
 
 @Autowired can be used to inject references into BeanPostProcessor
 
@@ -205,7 +205,7 @@ Multiple arguments can be injected into a single method using @Autowired
 @Autowired can be used to inject references into BeanPostProcessor
 
 
-31. Whar are the main advantages for using Spring when writing integration tests?
+31. What are the main advantages for using Spring when writing integration tests?
 
 Reuse Spring configuration files of the application
 
@@ -285,7 +285,7 @@ JDBC, Hibernate, JPA
 
 39. What is the transaction behavior of the PROPAGATION_REQUIRES_NEW mode? Select a unique answer.
 
-The current method must start a new transaction and run within its own transcation. If there is an existing transaction in progress, it is suspended.
+The current method must start a new transaction and run within its own transaction. If there is an existing transaction in progress, it is suspended.
 
 
 40. What is not provided by the JdbcTemplate?
@@ -380,7 +380,7 @@ A pointcut could select methods that have custom annotation
 
 48. What statement is not correct in live environment? Select a unique answer.
 
-Constuctor and properties autowiring in the same bean are not compatible
+Constructor and properties autowiring in the same bean are not compatible
 
 A bean should have a default or a no-args constructor
 
@@ -488,7 +488,7 @@ Into the web.xml file of the web application
 Into the JSP pages
 
 
-58. Using the Spring AOP framework, what are the joinpoint methods of the following pointcut expressions?
+58. Using the Spring AOP framework, what are the join point methods of the following pointcut expressions?
 
 execution(public * *(..))
 
@@ -580,7 +580,7 @@ String displayAccount(@RequestParam("accountId") int id, Model model)
 
 69. What is a pointcut?
 
-An expression to identify joinpoints
+An expression to identify join points
 
 
 70. What Spring Cloud provides in a microservice architecture?

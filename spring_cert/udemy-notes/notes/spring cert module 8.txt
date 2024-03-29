@@ -1,13 +1,13 @@
 1. Do you use Spring in a unit test?
 
-Spring framework is usally not used in unit tests, however Spring contains some support for unit testing within following packages:
+Spring framework is usually not used in unit tests, however Spring contains some support for unit testing within following packages:
 - org.springframework.test.util
-	- RelfectionTestUtils
-		- ORM Entitites related testing - set value for private field, normally handled by ORM
+	- ReflectionTestUtils
+		- ORM Entities related testing - set value for private field, normally handled by ORM
 		- Manual dependency injection into private field, normally handled by @Autowired, @Inject
 		- @PostConstruct and @PreDestroy lifecycle callback methods testing
 	- AopTestUtils - Aspect Oriented Programming related testing
-- org.psringframework.test.web
+- org.springframework.test.web
  	- ModelAndViewAssert - Unit Testing for Spring MVC Controllers
  		- mock implementations of the Environment and PropertySource
  		- MockEnvironment, MockPropertySource
@@ -17,7 +17,7 @@ Spring framework is usally not used in unit tests, however Spring contains some 
  	- Servlet API mock objects
 
 Unit Tests should test one unit of functionality in isolation. This unit of functionality can be defined as single method, class, module, component. In OOP unit of functionality is usually defined as single class. 
-All class collaboratoes should be mocked as well. Testing should be performed outside of container, that means that IoC/DI should not be required to create instances of objects under test.
+All class collaborates should be mocked as well. Testing should be performed outside of container, that means that IoC/DI should not be required to create instances of objects under test.
 
 Integration tests should test multiple modules or components that are combined together. Ioc/Di Container is used for this kind of testing, with some simplification upon deployment.
 
@@ -31,7 +31,7 @@ Unit tests
 
 2. What type of tests typically use Spring?
 
-Integration tests are type of tests that typically use Spring. Reason for it because we want to test mulitple components that are combined together.
+Integration tests are type of tests that typically use Spring. Reason for it because we want to test multiple components that are combined together.
 
 Annotations for integration testing:
 
@@ -50,10 +50,10 @@ Annotations for integration testing:
 @WebAppConfiguration
 	- class-level annotation triggers creation of MockServletContext, which serves as the ServletContext for the test's WebApplicationContext
 	- indicates that ApplicationContext loaded for an integration test should be a WebApplicationContext
-@ContextHieararchy
-	- used when hiearchy of application contexts has to be used for integration test
+@ContextHierarchy
+	- used when hierarchy of application contexts has to be used for integration test
 @Rollback
-	- class or method annotation that indicates that transaction should be rolled back after test executin
+	- class or method annotation that indicates that transaction should be rolled back after test executing
 	- even if @Rollback is not explicitly defined, all transactions under tests will be rolled back by default
 
 
@@ -63,14 +63,14 @@ Shared application context can be considered as:
 - Sharing context Definition
 - Sharing context Instance
 
-Context definion can be shared between tests in following way:
+Context definition can be shared between tests in following way:
 - use base class for all tests which will contain @ContextConfiguration and other annotations, like for example @ActiveProfiles etc.
 - use Custom Annotation that will contain context configuration
 - use test configuration that inherits application configuration
 - use base interface for all tests that will contain context configuration
 
-Context Instance is shared by default between all tests, as long as requested context matches one that is already chached.
-Context will be reused as long as @ContextConfiguration (locations, classes, initializers, ...) @ActivePRofiles, @TestPropertySource attributes are matched. To see full list of attributes that needs to be matches you can look at MergedContextConfiguration class that is used as key to ContextCache.
+Context Instance is shared by default between all tests, as long as requested context matches one that is already cached.
+Context will be reused as long as @ContextConfiguration (locations, classes, initializers, ...) @ActiveProfiles, @TestPropertySource attributes are matched. To see full list of attributes that needs to be matches you can look at MergedContextConfiguration class that is used as key to ContextCache.
 You can use @DirtiesContext to force Spring to create new instance of context for test
 
 
@@ -103,13 +103,13 @@ Mock created with Mockito or EasyMock is a dynamic object, which can "pretend" r
 Additionally @ContextConfiguration also allows you to specify:
 - initializers: list of ApplicationContextInitializer, used within cases that require some programmatic initialization of the application context
 - loader - usually not used and default DelegatingSmartContextLoader is used, if required, this field allows you to specify custom context loader
-- name . name of the context hierarchy level represented by this configuration, only applicable when used within a test class hieararchy configured using @ContextHierarchy
+- name . name of the context hierarchy level represented by this configuration, only applicable when used within a test class hierarchy configured using @ContextHierarchy
 
 
 7. How does Spring Boot simplify writing tests?
 
 Spring boot simplifies writing tests in following way:
-- provides @SpringBootTest - alternitive to @ContextConfiguration, creates ApplicationContext through SpringApplication, Enables tests Auto-configuration, enables spring boot test features
+- provides @SpringBootTest - alternative to @ContextConfiguration, creates ApplicationContext through SpringApplication, Enables tests Auto-configuration, enables spring boot test features
 - provides @MockBean - easy creation and injection of Mockito mock
 - provides @SpyBean - easy creation and injection of Mockito spy
 - provides @WebMvcTest - useful when test focuses only on Spring MVC components, disables full auto-configuration and applies only configuration relevant to MVC tests
@@ -132,11 +132,11 @@ Provides spring-boot-starter-test module:
 - AssertJ - fluent assertion library
 - Hamcrest - library of matcher object
 - Mockito - mocking framework
-- JSONassert - an assertion lib for JSON
+- JSONAssert - an assertion lib for JSON
 - JsonPath - Xpath for JSON
 
 
-8. What does @SpringBootTest do? How does it interact with @SpringBootApplication and @SpringBootConfiguraiton?
+8. What does @SpringBootTest do? How does it interact with @SpringBootApplication and @SpringBootConfiguration?
 
 @SpringBootTest provides following features over regular Spring Test context:
 	- automatically searches for @SpringBootConfiguration
@@ -146,7 +146,7 @@ Provides spring-boot-starter-test module:
 	- sets default ContextLoader to SpringBootContextLoader
 		- unless one is explicitly specified in @ContextConfiguration(loader=...)
 		- SpringBootContextLoader is specific ContextLoader that starts tests using SpringApplication
-	- provides Web environmets
+	- provides Web environments
 		- MOCK
 		- RANDOM_PORT
 		- DEFINED_PORT

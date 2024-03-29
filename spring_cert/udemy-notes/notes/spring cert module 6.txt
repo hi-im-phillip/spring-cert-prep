@@ -1,6 +1,6 @@
 01. What are authentication and authorization? Which must come first?
 
-Authentication is a process of verifying that user, device or external system is who it claims to be. It involves vaidation that submitted proof of identity is true.
+Authentication is a process of verifying that user, device or external system is who it claims to be. It involves validation that submitted proof of identity is true.
 
 Authentication may take different forms, simplest one uses username as identity and password as credential.
 
@@ -18,7 +18,7 @@ Spring security provides following support for auth:
 
 storage mechanism
 - simple storage with in memory auth
-- relational databeses with jdbc auth
+- relational databases with jdbc auth
 - ldap storage with ldap auth
 
 password encoders:
@@ -28,7 +28,7 @@ password encoders:
 - argon2
 - sha256
 
-Authorization is a process of determing whether an authenticated user is allowed to access certain resources within the system or allowed to perform a certain action within the application
+Authorization is a process of determine whether an authenticated user is allowed to access certain resources within the system or allowed to perform a certain action within the application
 
 Spring security allows you to implement authorization within your application on two levels:
 - web security level with usage of expression
@@ -48,7 +48,7 @@ Authentication needs to be executed first, before authorization, because for aut
 
 Yes, security is a cross cutting concern.
 
-Cross cutting concern - functionality of a program not immediately associated with the buisness logic, applicable throughout the application and affecting multiple parts of the system?
+Cross cutting concern - functionality of a program not immediately associated with the business logic, applicable throughout the application and affecting multiple parts of the system?
 
 Security spring on two levels:
 - web level - based on servlet filters
@@ -85,7 +85,7 @@ AfterInvocationManager - called after executing method, used for authorization t
 
 DelegatingFilterProxy is an internal Spring Framework class located in package org.springframework.web.filter of spring-web module.
 
-This class acts as a Proxy between standard Servlet Filter and Spring-managed Bean that implements Servlet Filter. DelegatingFilterProxy is registered within application continer and delegates all calls to Bean registered within Spring application context.
+This class acts as a Proxy between standard Servlet Filter and Spring-managed Bean that implements Servlet Filter. DelegatingFilterProxy is registered within application container and delegates all calls to Bean registered within Spring application context.
 
 DelegatingFilterProxy can be registered in following ways:
 - Servlet 3 - via AbstractSecurityWebApplicationInitializer
@@ -95,10 +95,10 @@ DelegatingFilterProxy can be registered in following ways:
 	- springSecurityFilterChain is a default name for filter chain proxy
 
 - spring boot
-	- uses delgatingFilterProxyRegistrationBean instead of regular DelegatingFilterProxy to create specialized version of DFP
-	- registed by SecurityFilterAutoConfiguration
+	- uses delegatingFilterProxyRegistrationBean instead of regular DelegatingFilterProxy to create specialized version of DFP
+	- register by SecurityFilterAutoConfiguration
 
-Role of DFP is to delegate all calls to FilterChainPRoxy, which contains SecurityFilterChain responsible for Web level authenticaiton and authorization
+Role of DFP is to delegate all calls to FilterChainPRoxy, which contains SecurityFilterChain responsible for Web level authentication and authorization
 
 
 4. What is security filter chain?
@@ -114,7 +114,7 @@ Spring provides API to customize list of used Security Filters, by extending Web
 
 5. What is a security context?
 
-SecurityContext is an interface, allowing you to access security information associated with the ucrrent thread of execution. Interface provides two methods:
+SecurityContext is an interface, allowing you to access security information associated with the current thread of execution. Interface provides two methods:
 - getAuthentication - provides currently authenticated principal or an authentication request token
 - setAuthentication - sets currently authenticated principal, or removes the authentication
 
@@ -151,12 +151,12 @@ Example, url - /departments/delete/5
 
 7. Why is the usage of mvcMatcher recommended over antMatcher?
 
-mvcMatcher is more flexible and forgiving when writing down rules for Spring Security configuration, thus makin mistakes when securing application harder.
+mvcMatcher is more flexible and forgiving when writing down rules for Spring Security configuration, thus making mistakes when securing application harder.
 
 - mvcMatchers("/employees")
 - antMatchers("/employees")
 
-They look very similiar, they will work differently when executed against URI /employees
+They look very similar, they will work differently when executed against URI /employees
 
 - /employees/
 	- mvcMatcher - matches
@@ -175,37 +175,37 @@ Yes, Spring security supports password hashing through PasswordEncoder interface
 Upon registration password is encoded (hashed) and never stored in cleartext.
 Upon login, provided password is encoded again and compared with one stored in database.
 
-Spring security also provides DelegatingPasswordEncoder, which uses one of the selected PasswordEnvoder to encode password and list of provided passwords decoders to verify password upon login.
+Spring security also provides DelegatingPasswordEncoder, which uses one of the selected PasswordEncoder to encode password and list of provided passwords decoders to verify password upon login.
 
-DelegatingPasswordEncoder is usefull as it provides flexibility and ability to easily switch between PasswordEncoders while keeping backward compatibility, for alreday stored hash values of passwords.
+DelegatingPasswordEncoder is usefully as it provides flexibility and ability to easily switch between PasswordEncoders while keeping backward compatibility, for already stored hash values of passwords.
 
 Password salting is a security mechanism invented to protect against reversing cryptographic hash functions, with usage of a precomputed tables like rainbow tables.
 
 
 9. Why do we need method security? What type of object is typically secured at the method level?
 
-Method level security is needed whenever more granular security rules needs to be expressed for the application. In some cases having web based rules, written based on URI patterns, might not be detaul enough, and additional set of rules needs to be applied to the application service layer.
+Method level security is needed whenever more granular security rules needs to be expressed for the application. In some cases having web based rules, written based on URI patterns, might not be detail enough, and additional set of rules needs to be applied to the application service layer.
 
 
 10. What @PreAuthorized and @RolesAllowed annotations do? What is the difference between them?
 
-@RolesAllowed is very similiar to @Secured, and both of those allows to specify list of roles that currently authenticated user needs to have assigned to be allowed to execute guarded method. @RolesAllowed is part of jsr250 standard.
+@RolesAllowed is very similar to @Secured, and both of those allows to specify list of roles that currently authenticated user needs to have assigned to be allowed to execute guarded method. @RolesAllowed is part of jsr250 standard.
 
 @PreAuthorized allows you to specify conditions under which user is allowed to execute method, with usage of SpEL expressions. Expression is evaluated before method is executed.
 
-Difference between those annotation is that @rolesAllowed allows you to specify list of required roles, and @PreAuthorized allows to specify rule wtih usage of SpEL expression
+Difference between those annotation is that @rolesAllowed allows you to specify list of required roles, and @PreAuthorized allows to specify rule with usage of SpEL expression
 
 SpEL expressions that can be used with @PreAuthorized
 - hasRole
 - hasAnyRole
 - hasAuthority
 - isAnonymous
-- isRembemberMe
+- isRememberMe
 
 
 11. How are @PreAuthorized and @RolesAllowed are implemented with usage of Spring AOP and AccessDecisionVoter.
 
-AccessDecisionVoter are called by AccessDecisionManager, which is called by MethodSEcurityInterceptor, which are registered by one of AdvisorAutoProxyCreator. PointCut and Advices for AOP are pointed by MethodSecurityMetadataSourceAdvisor. Currently used MethodSecurityInterceptor is pointed by GlobalMethodSecurityConfiguration#methodSecurityInterceptor.
+AccessDecisionVoter are called by AccessDecisionManager, which is called by MethodSecurityInterceptor, which are registered by one of AdvisorAutoProxyCreator. PointCut and Advices for AOP are pointed by MethodSecurityMetadataSourceAdvisor. Currently used MethodSecurityInterceptor is pointed by GlobalMethodSecurityConfiguration#methodSecurityInterceptor.
 
 @rolesAllowed is implemented by Jsr250Voter.
 

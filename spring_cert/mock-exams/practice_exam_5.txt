@@ -37,14 +37,14 @@ The MyRepoImpl will be created as a Spring bean, when the "uat" profile is activ
 
 The static modifier allows a method to be called without creating its containing configuration class as an instance
 
-It is necessary when beans will get initilized erly in the container lifecycle
+It is necessary when beans will get initialized early in the container lifecycle
 
 It avoids triggering other parts of the configuration at that point of definition
 
 They will never get intercepted by the container, not even within @Configuration classes
 
 
-6. During which phase can Beanpostprocessor modify the bean initialization?
+6. During which phase can BeanPostprocessor modify the bean initialization?
 
 postProcessBeforeInitialization
 
@@ -67,7 +67,7 @@ The 'authorize' tag can be used in a JSP
 
 9. Which of these is the one being described below?
 
-IT is a PlatformTranscationManager implementation for single JDBC datasources
+It is a PlatformTransactionManager implementation for single JDBC datasources
 
 DataSourceTransactionManager
 

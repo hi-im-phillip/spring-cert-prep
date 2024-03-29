@@ -11,9 +11,9 @@ Query string versioning
 Header versioning
 - /api/products
 - Header - accepts-version 1.0
-Media type content negoation version
+Media type content negation version
 - /api/products
-Header - Accept: aplication/vnd.my-app.v1+json
+Header - Accept: application/vnd.my-app.v1+json
 
 
 2. What is resource?
@@ -54,7 +54,7 @@ Scalability of Restful service is a result of developing software with following
 
 rest service is interoperable because: 
 - access to rest service and resources available by uris is standardized and not coupled with any specific technology, allowing you to consume rest service in any technology of choice, like JavaScript, Python, Java, C++
-- data for the requested resource can be sent to client in different formats specified by the client, in case of http protocol this can be done with usage of accept header, for example accept: application/json or accept: applicaton/xml
+- data for the requested resource can be sent to client in different formats specified by the client, in case of http protocol this can be done with usage of accept header, for example accept: application/json or accept: application/xml
 - all crud operations can be handled with standardized approach, in case of restful service implemented with http protocol, standardized http methods get, put, patch, post, delete are used
 
 
@@ -73,21 +73,21 @@ Its a interface used by Spring to convert data between different formats.
 
 Rest client can specify expected format in which data should be retrieved by usage of Accept Header (application/json). Client can also specify format in which data will be send by usage of Content-Type Header, for example Content-Type: application/xml
 
-Request mapping contains produces and consumes fields which can be used to specify MediaType which method can hanlde.
+Request mapping contains produces and consumes fields which can be used to specify MediaType which method can handle.
 
 
 8. Yes, Rest is normally stateless.
 
 Stateless basic constraint for RESTful architecture.
 
-If some kinf ostate is required for the request, client should send this state with each request, however this state should not be kept on server side, not be kept in HTTP session.
+If some kind of state is required for the request, client should send this state with each request, however this state should not be kept on server side, not be kept in HTTP session.
 
 
 9. What does @RequestMapping do?
 
 Allows to specify conditions that request has to match for a method to be used as request handler. @RequestMapping can be used at class or method level, when used at the class level, all method level mappings inherit this primary mapping, narrowing it to a specific handler method.
 
-- crietia for request:
+- criteria for request:
 - path
 - method
 - params
@@ -103,16 +103,16 @@ Allows to specify conditions that request has to match for a method to be used a
 Stereotypes are annotations applied to classes to describe role which will be performed by this class.
 
 Types of stereotypes:
-- @Component - generic component in the system, root stereotype, candidate for autoscanning
-- @Service - class will contain buisness logic
-- @Repository - class is a data repository (used for data access objects, persistance)
+- @Component - generic component in the system, root stereotype, candidate for auto scanning
+- @Service - class will contain business logic
+- @Repository - class is a data repository (used for data access objects, persistence)
 - @Controller - class is a controller, usually a web controller
 - @RestController - class is a controller that will implement REST service Endpoints, usually consuming and producing json
 
 
 11. What is the difference between @Controller and @RestController
 
-@Controller indicates that class will be assigned with Controller role of MVC pattern and usually it is expected from it to return Model and View that will be used to render response, with usage of configured template enginge (thymeleaf)
+@Controller indicates that class will be assigned with Controller role of MVC pattern and usually it is expected from it to return Model and View that will be used to render response, with usage of configured template engine (thymeleaf)
 
 @RestController indicates that class will be used to handle REST service endpoint request, it is expected from it to correctly handle requests input and produce outputs in acceptable format like JSON/XML etc. Serialized output is sent directly to the client.
 
@@ -139,7 +139,7 @@ PUT
 - 200 OK - when resources was updated, and updated content is returned
 - 204 No content - when resource was updated and no content is returned
 DELETE
-- 204 No content - when resource was sucessfully deleted
+- 204 No content - when resource was successfully deleted
 
 In case of asynchronous operations, 202 (Accepted) may be returned with Location header indicating URI that can be used for pooling.
 
@@ -162,12 +162,12 @@ This can be achieved by applying @ResponseStatus to:
 
 @ResponseBody is needed whenever you want to return serialized response of controller handler method, instead of returning model and view that will be used by template engine to produce response. @ResponseBody will bind method return value to web response body and will use HttpMessageConverter.
 
-@RequestBody is needed whenever you want to bind web request body to controller parameter. HttpMessageConverter is used to convert of request body. Optionally can be used with @Valid to ivoke automatic bean validation.
+@RequestBody is needed whenever you want to bind web request body to controller parameter. HttpMessageConverter is used to convert of request body. Optionally can be used with @Valid to invoke automatic bean validation.
 
 @ResponseBody can be used:
 - on top of class
 - on top of method
-- on top of other annotaitions
+- on top of other annotations
 
 @RequestBody can be used:
 - on top of controller method parameter
@@ -188,7 +188,7 @@ Controller mapping can be defined with usage of one of following annotations:
 
 Request parameter body can be mapped with usage of:
 - @RequestBody
- - additionaly @Valid can be added
+ - additionally @Valid can be added
 
 Response can be bound to web response by:
 - usage of @ResponseBody on top of @Controller or controller method
@@ -243,13 +243,13 @@ RestTemplate is a synchronous HTTP client wrapper to perform HTTP requests. It e
 - Apache HttpComponents
 - OkHttp
 
-RestTemplate has following adantages:
+RestTemplate has following advantages:
 - Simplicity
 - Automatic Object Serialization/Deserialization
 - High-level API allows you to focus on business side of operations
 - provides support for common HTTP get,post,put, patch, head, options, delete operations
 - Flexibility - allows custom error management
-- Extendibility - allows to register custom HttpMessageConverter and to register custom ClientHttpRequestFactory
+- Extensibility - allows to register custom HttpMessageConverter and to register custom ClientHttpRequestFactory
 - URI Templates support
 
 Because of it's simplicity, REST Template is often used in testing code, however it can be used as general purpose HTTP Client.

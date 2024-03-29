@@ -46,11 +46,11 @@ Caching, Transaction, Security, Monitoring, Logging, Statistics
 
 9. Which of these are true regarding Spring transactions?
 
-Instances of the TranscactionTemplate class are threadsafe
+Instances of the TransactionTemplate class are threadsafe
 
-You can call the commit method of PlatformTranscationManager to issue a commit.
+You can call the commit method of PlatformTransactionManager to issue a commit.
 
-The transaction name can be explicitly set only programmaticaly
+The transaction name can be explicitly set only programmatically
 
 You can call the rollback method of PlatformTransactionManager to issue a rollback
 

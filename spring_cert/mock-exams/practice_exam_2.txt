@@ -5,7 +5,7 @@
 Not correct: @RolesAllowed
 
 
-2. Whicj of these is true about the annotation @PropertyResource in Spring Framework?
+2. Which of these is true about the annotation @PropertyResource in Spring Framework?
 
 It is used to provide system properties of JVM
 
@@ -25,7 +25,7 @@ It follows ACID properties
 GrantedAuthority
 
 
-5. In Spring Security, for a given username ____ retrives the information from a database for performing authentication.
+5. In Spring Security, for a given username ____ retries the information from a database for performing authentication.
 
 UserDetailsService
 
@@ -43,7 +43,7 @@ IT configures a method to be called during bean initialization (init method)
 It configures a method to be called on bean before it is destroyed (destroy method)
 
 
-8. In SPring MVC, some of the values returned by ____ are: a String, a View or a ModelAndView
+8. In Spring MVC, some of the values returned by ____ are: a String, a View or a ModelAndView
 
 Controller handler methods
 

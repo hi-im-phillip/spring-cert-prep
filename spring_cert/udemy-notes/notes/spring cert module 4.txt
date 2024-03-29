@@ -3,7 +3,7 @@
 Spring boot is a Java Framework that allows you to easily create stand alone, production grade Spring based Java applications. It is often used in microservice architecture because of simplicity that it allows.
 
 Applications created with spring boot can be executed with simple java -jar command and also allows traditional war deployment. Spring boot supports following embedded containers:
-- Tomact
+- Tomcat
 - Jetty
 - Undertow
 
@@ -35,7 +35,7 @@ On top of it, you can use all spring framework technologies, like:
 
 Spring boot is opinionated framework because it comes with general idea on how application should be organized, provides default configurations and modules setups for technology related aspect of application.
 
-In comparison with Spring framework, spring boot provides starters and autoconfigurations which intelligently fits default configuration based on defined dependencies.
+In comparison with Spring framework, spring boot provides starters and autoconfiguration which intelligently fits default configuration based on defined dependencies.
 
 Main advantages on how spring boot approaches "opinionated" style is that you can always override default configuration if it does not fit your use case.
 
@@ -51,12 +51,12 @@ The main disadvantage of opinionated framework is that if your application does 
 
 Spring boot uses autoconfiguration to detect dependencies on the class path, based on detected dependencies, spring beans are configured to allow integration with technologies, like JPA, Data sources, embedded databases, template rendering engines etc.
 
-Spring boot searches for META-INF/spring.factories on classpath that should contain entry EnableAutoConfiguration that lists all autoconfiguration classses provided by the autoconfiguration module.
+Spring boot searches for META-INF/spring.factories on classpath that should contain entry EnableAutoConfiguration that lists all autoconfiguration classes provided by the autoconfiguration module.
 
-Autoconfiguration class is using @ConditionalOn annotations to specify under which conditions, certanin AutoConfiguration should be applied
+Autoconfiguration class is using @ConditionalOn annotations to specify under which conditions, certain AutoConfiguration should be applied
 
 Spring boot supports following conditional annotations for AutoConfiguration classes:
-- conditonalOnBean - presence of spring bean
+- conditionalOnBean - presence of spring bean
 - conditionalOnMissingBean - absence of spring bean
 - conditionalOnClass - presence of class on classpath
 - conditionalOnMissingClass - absence of class on classpath
@@ -78,7 +78,7 @@ Spring boot allows you to externalize configuration for the application by using
 - yaml
 - java properties file
 
-YAML is a superset of JSON and it is convenience for specifying hierarchical data. Spring boot supports YAML properties wtih usage of SnakeYAML lib, which is included by default by spring-boot-starter.
+YAML is a superset of JSON and it is convenience for specifying hierarchical data. Spring boot supports YAML properties with usage of SnakeYAML lib, which is included by default by spring-boot-starter.
 
 You can transform application properties between YAML and Java properties format.
 
@@ -162,12 +162,12 @@ Spring boot allows you to access properties defined in property files in followi
 
 11. What properties do you have to define in order to configure external MySQL?
 
-To configure external MySql in Spring Boot you need to specify URL, Username, Password for Data Source by definining properties
+To configure external MySql in Spring Boot you need to specify URL, Username, Password for Data Source by defining properties
 spring.datasource.uri , .username, .password
 
 Optionally, you can also explicitly specify JDBC driver - spring.datasource.driver-class-name=
 
-To initiliaze Database during application startup via data.sql and schema.sql you need to specify property:
+To initialize Database during application startup via data.sql and schema.sql you need to specify property:
 - spring.datasource.initialization-mode=always
 
 Need to specify connector dependency: mysql-connector-java
@@ -187,19 +187,19 @@ Spring boot will also load:
 platform value of spring.datasource.platform property, this allows you to switch between database vendor specific scripts.
 
 Spring boot will automatically initialize only embedded databases, if you want to initialize regular database as well, you need to set property:
-spring.datasource.initializaiton-mode=always
+spring.datasource.initialization-mode=always
 
 If change name of schema.sql or/and data.sql script names you can use spring.datasource.schema and .data properties
 
 
 13. What is a fat jar? How is it different from the original jar?
 
-Fat jar, also called "executable jar" is a jar that contains compiled code for your application and also all dependencies. Spring boot uses nested jars approach, that mean that fat jar contains all depenendecies as nested jars. This differs from other approach, which is uber jar that packs all dependencies into single jar archive. Uber jar approach is problematic because it is hard to see application dependencies and also causes issues when same filename in the same context is used in different jars.
+Fat jar, also called "executable jar" is a jar that contains compiled code for your application and also all dependencies. Spring boot uses nested jars approach, that mean that fat jar contains all dependencies as nested jars. This differs from other approach, which is uber jar that packs all dependencies into single jar archive. Uber jar approach is problematic because it is hard to see application dependencies and also causes issues when same filename in the same context is used in different jars.
 
 In fat jar Spring boot will generate MANIFEST.MF file which contains Main-class and Start-class entries together with JarLauncher code. This manifest together with launcher code will be used to execute standalone jar.
 
 To create fat jar in your project, you need to use spring-boot-maven-plugin.
-Executing application is as simple as executing one commad:
+Executing application is as simple as executing one command:
 java -jar spring-boot-application-1.0-SNAPSHOT.jar
 
 The differences in comparison to original jar are following:
@@ -229,7 +229,7 @@ Spring boot Executable JAR has following structure:
 	- BOOT-INF
 		- classes
 		- lib
-			- tomact-embeded-core-9...jar
+			- tomcat-embedded-core-9...jar
 	- META-INF
 		- MANIFEST.MF
 	- org.springframework.boot.loader
@@ -245,8 +245,8 @@ To create WAR file with Spring boot, you need to:
 - use war plugin
 	- maven-war-plugin
 
-To create Executable JAR file with embeded container in Spring Boot, you need to:
-- specify required dependecies
+To create Executable JAR file with embedded container in Spring Boot, you need to:
+- specify required dependencies
 	- spring-boot-starter-web
 - use spring boot maven plugin
 	- spring-boot-maven-plugin
@@ -255,7 +255,7 @@ To create Executable JAR file with embeded container in Spring Boot, you need to
 
 15. What embedded containers does Spring boot support?
 
-Spring boot supports follwoing embedded containers:
+Spring boot supports following embedded containers:
 - Tomcat
 - Jetty
 - Undertow
@@ -269,7 +269,7 @@ To use Undertow embedded container you need to exclude spring-boot-starter-tomca
 
 16. How does Spring boot know what to configure?
 
-Spring boot knows what to configure by usage of Auto Configuration classes defined in starter modules. Spring boot searches for META-INF/spring.factories on classpath, whenever entry org.springframework.boot.autoconfigure.EnableAutoConfiguration is encountered in this file, Auto Configuration Class pointerd by this property is loaded.
+Spring boot knows what to configure by usage of Auto Configuration classes defined in starter modules. Spring boot searches for META-INF/spring.factories on classpath, whenever entry org.springframework.boot.autoconfigure.EnableAutoConfiguration is encountered in this file, Auto Configuration Class pointer by this property is loaded.
 
 Auto Configuration class is a regular @Configuration class annotated with @ConditionalOn which specifies under which conditions @Configuration class should be loaded.
 
@@ -289,7 +289,7 @@ When using Spring Boot with @SpringBootApplication, @EnableAutoConfiguration is 
 
 18. What does @SpringBootApplication do?
 
-Its used on top of the class and  it was introduced for convenience. Usage of @springBootApplication is equivalent to usage of following three anotations:
+Its used on top of the class and  it was introduced for convenience. Usage of @springBootApplication is equivalent to usage of following three annotations:
 - @Configuration - allows additional bean registration
 - @EnableAutoConfiguration - enables context auto-configuration
 - @ComponentScan - turns on scanning for @Component classes
@@ -301,7 +301,7 @@ Yes, spring boot is performing component scan, because @SpringBootApplication is
 
 By default, spring boot will search for @Component classes within the same root package as @SpringBootApplication class.
 
-You can change this behavior by adding additional packages to scan with scanBasePackages or type-safe version of it scanBasePackageClassses within @springBootApplication.
+You can change this behavior by adding additional packages to scan with scanBasePackages or type-safe version of it scanBasePackageClasses within @springBootApplication.
 
 
 20. How are DataSource and JDBCTemplate auto-configured?
@@ -320,7 +320,7 @@ Above properties will be injected into DataSourceProperties by the prefix spring
 spring.factories file, located in META-INF/spring.factories location on the classpath, is used by Auto Configuration mechanism to locate Auto Configuration Classes. Each module that provides Auto Configuration class needs to have META-INF/spring.factories file with EnableAutoConfiguration
 entry that will point Auto configuration classes.
 
-META-INF/spring.factories file is consumed by SpringFactoriesLoader class, which is usedby AutoConfigurationImportSelector enabled by @EnableAutoConfiguration used by default in SpringBootApplication.
+META-INF/spring.factories file is consumed by SpringFactoriesLoader class, which is used by AutoConfigurationImportSelector enabled by @EnableAutoConfiguration used by default in SpringBootApplication.
 
 Auto configuration use case for spring.factories file is probably most popular one, it also allows you to define other entries and achieve context customization with following classes: ApplicationContextInitializer, ApplicationListener...
 
@@ -331,7 +331,7 @@ You can customize Spring auto configuration by creating your own auto-configurat
 
 To do that you need to create java jar module which wil contain META-INF/spring.factories file that contains EnableAutoConfiguration entry, which points to your auto configuration class.
 
-Auto configuration class is a class with @Configuration, usually used together with ConditionalOnClass. Additionaly you can use @PropertySource annotation with EnableConfigurationProperties and ConfigurationProperties to introduce custom properties for your auto-configuration module.
+Auto configuration class is a class with @Configuration, usually used together with ConditionalOnClass. Additionally you can use @PropertySource annotation with EnableConfigurationProperties and ConfigurationProperties to introduce custom properties for your auto-configuration module.
 
 
 23. What are the examples of @Conditional annotations? How are they used?
@@ -357,7 +357,7 @@ Spring boot actuator provides features tat are required for your application to 
 - metrics
 - audit events
 
-Advantage of using spring boot acutator is that you can use those features in your product without having to code them on your own and enabling it is as simple as putting dependency in your project
+Advantage of using spring boot actuator is that you can use those features in your product without having to code them on your own and enabling it is as simple as putting dependency in your project
 - /actuator/health
 - -||-/info
 
@@ -369,11 +369,11 @@ Spring boot actuator supports two protocols:
 - jmx
 
 Http endpoints can be accessed by any HTTP client like CURL or web browser by default following are enabled:
-- acuator/info and /health
+- actuator/info and /health
 
 JMX allows you to access actuator Mbeans under org.springframework.boot group. You can access it with any tool that supports JMX protocol. One of the tool that you can use is JConsole which come with JDK. You can access JMX:
 - locally by PID
-- remotly via socket after enabling it with following Java VM flags
+- remotely via socket after enabling it with following Java VM flags
 	- Dcom.sun.management.jmxremote.local.only=false
 	- Dcom.sun.management.jmxremote.port= 9010
 	- Dcom.sun.management.jmxremote.authenticate=false
@@ -395,7 +395,7 @@ management.endpoints.enabled-by-default=false
 
 Endpoints exposure with usage of properties
 management.endpoints.jmx.exposure.exclude/include=*
-management.endpoints.web.exposure.exclude/inlcude=info,health,env
+management.endpoints.web.exposure.exclude/include=info,health,env
 
 Navigation through actuator endpoints can be enabled by usage of HATEOAS
 - to enable navigation, add dependency to project
@@ -409,7 +409,7 @@ info endpoint is exposed by default via protocols:
 - http at actuator/info
 - jmx at org.springframework.boot/Endpoint/Info
 
-It can be supllied data to spring boot by using following methods:
+It can be supplied data to spring boot by using following methods:
 - with usage of property files by defining info.* properties
 - by implementing InfoContributor bean
 
@@ -508,7 +508,7 @@ Spring actuator also provides Reactive health indicators for reactive applicatio
 Health indicator status is used by health indicators to inform spring actuator if system component checked by them is working correctly or not.
 
 Each health indicator is expected to return status that represents guarded component state, status can be one of following
-- up, down, out of service, uknown, custom defined
+- up, down, out of service, unknown, custom defined
 
 Spring actuator is also using HealthAggregator, especially OrderedHealthAggregator to aggregate statuses from all health indicators and decide on final status. Ordering status from worst to best.
 
@@ -533,14 +533,14 @@ Default mapping can be changed with usage of management.health.status.http-mappi
 Spring actuator allows you to change health indicator status severity order with usage of property management.health.status.order:
 management.health.status.order=system-halted, DOWN, OUT OF SERVICE, UP...
 
-This property will be injected into HealthIndicatorProperties and used by OrderedHealthAggragetor to resolve final status for application.
+This property will be injected into HealthIndicatorProperties and used by OrderedHealthAggregator to resolve final status for application.
 
 
 37. Why do you want to leverage 3rd party external monitoring system?
 
 It is a good idea to use external monitoring system, because this way you can use monitoring functionalities without having to spend time coding them.
 
-Configuring external monitoring system is as easy as adding dependendency:
+Configuring external monitoring system is as easy as adding dependency:
 micrometer-registry-${monitoring-system-name}
 
 
@@ -561,10 +561,10 @@ SpringBootTest will auto configure:
 
 ApplicationContext is configured by searching for @SpringBootApplication or SpringBootConfiguration classes, based od those bean definition will be created
 
-It is possible to testo only slice of the application with usage one of following:
+It is possible to test only slice of the application with usage one of following:
 - @SpringBootTest#classes
 - @ContextConfiguration#classes
-- @AutoConfigure annoations
+- @AutoConfigure annotations
 
 @Auto configure allows you to configure specific environment and tools for testing, for example @AutoConfigureMockMvc will configure Mock Mvc that can be used for Controllers testing
 
@@ -577,7 +577,7 @@ It is possible to testo only slice of the application with usage one of followin
 - assesrtJ - fluent assertion library
 - hamcrest - matchers library
 - mockito - mocking framework
-- JSONassert - JSON assertion library
+- JSONAssert - JSON assertion library
 - JsonPath - XPath for JSON
 - XMLUnit - Tools for xml verification
 
@@ -586,7 +586,7 @@ To see all dependencies with versions for maven module by running: mvn dependenc
 
 41. How do you perform integration testing with @SpringBootTest for a web application?
 
-Integration Test by definition, should check interactions between few components of the system to check if those components are delivering expected functionalities when working together. In each case when writing integratin test you should decide how many components should interact in the test for it to be meaningful. Usually you should decide on smallest possible amount of components that are enaugh to test specific functionality. Components that are not meaningful can be omitted or mocked with usage of @MockBean.
+Integration Test by definition, should check interactions between few components of the system to check if those components are delivering expected functionalities when working together. In each case when writing integration test you should decide how many components should interact in the test for it to be meaningful. Usually you should decide on smallest possible amount of components that are enaugh to test specific functionality. Components that are not meaningful can be omitted or mocked with usage of @MockBean.
 
 Web components tests if tested in integration way, should be written in a way for test to make a http request and check http response. This kind of approach results in meaningful test, which delivers feedback that actually checks if component works correctly.
 
@@ -612,7 +612,7 @@ You should use @WebMvcTest when you want to write Integration test that is focus
 
 43. What are the differences between @MockBean and @Mock?
 
-@Mock comes from Mockito Framework which allows for easy Mock creation. This annotation is used by MockitoJUnitRUnner, each field annotated with it will have Mock for specified class created. This annotation does not inject mocks into tested class on itself, to use injection you need to have target class annotated with @InjectMocks.
+@Mock comes from Mockito Framework which allows for easy Mock creation. This annotation is used by MockitoJUnitRunner, each field annotated with it will have Mock for specified class created. This annotation does not inject mocks into tested class on itself, to use injection you need to have target class annotated with @InjectMocks.
 
 @MockBean comes from spring-boot-test, it creates Mockito Mock and also injects it into Application Context created by @SpringBootTest. All beans which refers to mocked class via @Autowired will get this mock injected instead of real class.
 
@@ -626,8 +626,8 @@ You want to use @DataJpaTest whenever writing an integration test for jpa relate
 @DataJpaTest configures:
 - in memory embedded database - can be disabled @AutoConfigureTestDatabase(replace = Replace.NONE)
 - Scans and configures @Entity beans
-- scans and cofigures spring data repositores
-- configure testEntitiyManager
+- scans and configures spring data repositories
+- configure testEntityManager
 - does not load @Components, @Service, @Controller
 
 Every @DataJpaTest is transactional by default after each test transaction is rolled back. You can use @Transactional to modify behavior.

@@ -1,4 +1,4 @@
-1. MVC is an abbrebation for design pattern. What does it stand for and what is the idea behind it?
+1. MVC is an abbreviation for design pattern. What does it stand for and what is the idea behind it?
 
 MVC stand for Model view controller it is design pattern which divides application into three main interconnected component types.
 
@@ -15,7 +15,7 @@ View
 Controller
 - accepts requests from the users
 - issues command to model
-- modifes the model
+- modifies the model
 - decides on view to use
 
 
@@ -44,23 +44,23 @@ Controller
 DispatcherServlet is an internal Spring MVC component that implements HttpServlet from Java servlet api and Front Controller design pattern. It is used to handle all requests to the application, based on servlet mapping, delegate those requests to the application, based on servlet mapping, delegate those requests to controllers and produce response based on identified view.
 
 DispatcherServlet has following responsibilities:
-- Delegate recieved requests to Controllers
+- Delegate received requests to Controllers
 - Uses view resolvers to resolve views pointed out by controllers
-- Producess response that is sent to user
+- Produces response that is sent to user
 - handles shared concerns, like exception mapping, error handling, security
 
 Front controller design pattern allows you to implement shared algorithm for entire application responsible for request processing and handling shared concerns.
 
 user (request) -> Front Controller (Delegate request)-> Controllers (Model - Delegate view rendering)-> Front Controller (Render view)-> View Rendering (Find view)-> Views (Get view)-> View rendering (Rendered view)-> Front controller (Response)-> User
 
-Servlet is a Java technology used to create Web applications on java platform with usage of application servers. It is a set of interfaces, classes, and documentation allowying you to extend capabilities of Application servers. Servlet is protocol independent, however usually it is used to process HTTP requests with usage of custom implementation of httpServlet class. Servlet can be reistered via web.xml, or programmatically via annotations since Servlet 3. Servlet registration requires url-patterns which informs application server which requests should be mapped to your servlet.
+Servlet is a Java technology used to create Web applications on java platform with usage of application servers. It is a set of interfaces, classes, and documentation allowing you to extend capabilities of Application servers. Servlet is protocol independent, however usually it is used to process HTTP requests with usage of custom implementation of httpServlet class. Servlet can be registered via web.xml, or programmatically via annotations since Servlet 3. Servlet registration requires url-patterns which informs application server which requests should be mapped to your servlet.
 					Application Server
 User (Requests)-> /app-a/ - > Servlet 1 -> (Response) User
 
 
 3. What is a web application context? What extra scopes does it offer?
 
-Web application context is a spring application context for web application that runs uder Embedded or standalone application server that supports servlet api and acts as servlet container.
+Web application context is a spring application context for web application that runs under Embedded or standalone application server that supports servlet api and acts as servlet container.
 
 Web application context is described by Web applicationContext interface and it allows you to access servletContext interface from servlet api.
 
@@ -91,12 +91,12 @@ Application scope
 Websocket scope
 - defined by @Scope with specified properties:
 	- scopeName, proxyMode
-- bean lifecylce is coupled with lifecycle of webSocket session, however bean usally lives longer then webSocket session
+- bean lifecycle is coupled with lifecycle of webSocket session, however bean usually lives longer then webSocket session
 
 
 4. What is the @Controller used for?
 
-@Controller is used to indicate that annotated class is a Controller from Model-View-Controller design pattern, and should be considered a candidate for request handling when DispatcherServlet searches for component to which work can be delagated.
+@Controller is used to indicate that annotated class is a Controller from Model-View-Controller design pattern, and should be considered a candidate for request handling when DispatcherServlet searches for component to which work can be delegated.
 
 @controller is a specialization of @Component, this allows spring to autodetect controllers during classpath scanning
 
@@ -105,7 +105,7 @@ Controllers in Spring do not have to implement any interface or extend any base 
 
 5. How is an incoming request mapped to a controller and mapped to a method?
 
-Incoming request is mapped to a controller and a method by DispatcherServlet, which uses HandlerMapping and HandlerAdatper components for this purpuse.
+Incoming request is mapped to a controller and a method by DispatcherServlet, which uses HandlerMapping and HandlerAdapter components for this purpose.
 
 When request is performed against the server following steps are executed:
 
@@ -114,9 +114,9 @@ When request is performed against the server following steps are executed:
 3. DispatcherServlet uses HandlerAdapter to execute controller method that will handle request.
 4. DispatcherServlet interprets results of method execution and renders View with help of ViewResolver classes.
 
-@RequstMapping allows you to specify conditions that request has to match for a method to be used as request handler. @RequestMapping can be used at class or method level, when used at the class level, all method level mapping inherit this primary mapping, narrowing it to a specific handler method.
+@RequestMapping allows you to specify conditions that request has to match for a method to be used as request handler. @RequestMapping can be used at class or method level, when used at the class level, all method level mapping inherit this primary mapping, narrowing it to a specific handler method.
 
-Spring MVC also supports composed annoptations for request mapping:
+Spring MVC also supports composed annotations for request mapping:
 - @GetMapping
 - @PostMapping
 - @PutMapping
@@ -140,10 +140,10 @@ The main difference between @RequestMapping and @GetMapping is that first one ca
 - name - the name of request parameter to bind
 - required - whether the parameter is required or not
 	- by default parameter is required
-- defaultValue - allows you to specify default value to use in case of abscence of optional parameter
+- defaultValue - allows you to specify default value to use in case of absence of optional parameter
 - RequestParam also supports Optional
 
-- mapping all request parameters to map or list is avaiable
+- mapping all request parameters to map or list is available
 
 
 8. What are the differences between @RequestParam and @PathVariable?
@@ -158,7 +158,7 @@ RequestParam allows you to specify defaultValue property, @PathVariable doesn't.
 - mark variables as required or optional
 - use optional
 - map parameters to map
-- map list of values for paremeter to collection
+- map list of values for parameter to collection
 
 
 9. What are some of the parameter types for a controller method?
@@ -191,18 +191,18 @@ java.util.Map, org.springframework.ui.Model, org.springframework.ui.ModelMap - u
 
 RedirectAttributes - specify attributes to use in case of redirect, regular attributes will be added to query string and flash attributes will be kept temporarily until end of request, flash attributes are kept typically in the session and are removed immediately after request is completed
 
-Errors, BindingResult - used to gain access to form validation and binding data results, can be used with @ModelAttribute, RequestBody, or RequestPart argument, errors and bindingResult argument must be delcared immediately after the validated method argument
+Errors, BindingResult - used to gain access to form validation and binding data results, can be used with @ModelAttribute, RequestBody, or RequestPart argument, errors and bindingResult argument must be declared immediately after the validated method argument
 
-SessionStatus + class level @SessionAttributes - useful for multistep form processing, @SessionAttributes allows to keep @ModelAttribute objects between request and SessionStatus allows to clean sessio nvariables when form processing is done
+SessionStatus + class level @SessionAttributes - useful for multistep form processing, @SessionAttributes allows to keep @ModelAttribute objects between request and SessionStatus allows to clean session variables when form processing is done
 
 UriComponentsBuilder - used to build URLs relative to current scheme, host, port, contextPath etc.
 
-- any other argument - if a method argument is not matched against types defined before, and it is a smiply type, it is treated as @RequestParam, if it is complex type, it is treated as @ModelAttribute
+- any other argument - if a method argument is not matched against types defined before, and it is a simply type, it is treated as @RequestParam, if it is complex type, it is treated as @ModelAttribute
 
 
 10. What other annotations might you use on a controller method parameter?
 
-- @RequestParam - access to the servlet request parameters, including multipart files, parameters will be automatically converted to declared method argument types, parametrs can be made optional with usage of required attribute or optional, for optional request parameters defaultValue can be set as well
+- @RequestParam - access to the servlet request parameters, including multipart files, parameters will be automatically converted to declared method argument types, parameters can be made optional with usage of required attribute or optional, for optional request parameters defaultValue can be set as well
 
 - PathVariable - access to URI template variables, parameters can be made optional with usage of required attribute or optional
 
@@ -230,28 +230,28 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 
 - @ResponseBody - binds method return value to web response body, complex types will be converted with usage of HttpMessageConverter
 
-- HttpEntity<B>, ResponseEntity<B> - allows to specify full response with headers and body, ResponseEntity<B> additonally allows to specify Http status code
+- HttpEntity<B>, ResponseEntity<B> - allows to specify full response with headers and body, ResponseEntity<B> additionally allows to specify Http status code
 
 - HttpHeaders - allows to return response only with headers, without body
 
-- String - allows to return logical name of view to use when rendering response, view will be resolved by ViewResolver, usally used with implicit model through @ModelAttribute parameters or explicit model by declaring Model method parameter
+- String - allows to return logical name of view to use when rendering response, view will be resolved by ViewResolver, usually used with implicit model through @ModelAttribute parameters or explicit model by declaring Model method parameter
 
-- View - allows to return instance of view, like JstlView, ThymeleafView, FreeMarketView, usally used with implicit model through @ModelAttribute parameters or explicit model by declaring Model method parameter
+- View - allows to return instance of view, like JstlView, ThymeleafView, FreeMarketView, usually used with implicit model through @ModelAttribute parameters or explicit model by declaring Model method parameter
 
 - Map, Model - allows you to specify attributes to be added to the implicit model, with the view name implicitly determined through a RequestToViewNameTranslator
 
 - @ModelAndView - view and model attributes to use and optionally a response status, view can be specified by logical name or instance of view can be passed, model can be specified as named object or Map
 
-- void - method that returns void can correctly handle request by using ServletResponse or OutputStream as parameter, or @ResponseStatus, if none of previous are used RequestToViewNameTranslator will identify view based on request, void return type can aslo indicate no response body
+- void - method that returns void can correctly handle request by using ServletResponse or OutputStream as parameter, or @ResponseStatus, if none of previous are used RequestToViewNameTranslator will identify view based on request, void return type can also indicate no response body
 
 - DeferredResult<V> - allows to specify result for controller asynchronously from different Thread or as result of some event callback, part of integration with servlet 3.0 asynchronous request
 
 - Callable<V> - allows to produce return value asynchronously in a Spring MVC-managed thread
 
-- ListenableFuture<V>, CompletableFuture<V>, CompletionStage<V> - allows to return set of chained asynchronous operations with callbacks and trasformations
+- ListenableFuture<V>, CompletableFuture<V>, CompletionStage<V> - allows to return set of chained asynchronous operations with callbacks and transformations
 
-- ResponseBodyEmitter, SseEmitter - allows to send objects in stream asynchronously, objects will be converted with usage of HttpMessageConverter, can be used with ResponseEntity, both classes have the same goal, however SseEmiter uses Server-Sent events standardized with W3C spec
+- ResponseBodyEmitter, SseEmitter - allows to send objects in stream asynchronously, objects will be converted with usage of HttpMessageConverter, can be used with ResponseEntity, both classes have the same goal, however SseEmitter uses Server-Sent events standardized with W3C spec
 
-- StreamingResponseBody - allows to write to the response OutputStram asynchronously
+- StreamingResponseBody - allows to write to the response OutputStream asynchronously
 
-- Reactive types - allows to use Reactive types for streaming scenarions, handled by ReactiveAdapterRegistry
+- Reactive types - allows to use Reactive types for streaming scenarios, handled by ReactiveAdapterRegistry

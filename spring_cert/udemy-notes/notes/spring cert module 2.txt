@@ -1,14 +1,14 @@
 1. What is the concept of AOP?
 
 AOP - Aspect Oriented Programming - A programming paradigm that complements Object-oriented Programming by providing a way to seperate groups of
-cross-cutting concerns from buisness logic code. This is achieved by ability to add additional behavior to the code without having to modify the code
+cross-cutting concerns from business logic code. This is achieved by ability to add additional behavior to the code without having to modify the code
 itself. This is achieved by specifying: 
 - Location of the code which behavior should be altered - Pointcut is matched with Join point
 - Code which should be executed that implements cross cutting concern - Advice
 
 Which problem does it solve?
 
-- Allows propert implementation of Cross-cutting concerns
+- Allows property implementation of Cross-cutting concerns
 - Solves code duplications by eliminating the need to repeat the code for functionalities across different layer, such functionalities may include logging,
 	performance logging, monitoring, transactions, cashing
 - Avoids mixing unrelated code, for example mixing transaction logic code (commit, rollback) with business code makes code harder to read, by separating
@@ -52,7 +52,7 @@ Example of Pointcut Expression:
 - bean - Match by spring bean name - bean(currency_service)
 - args - Match by method arguments - args(String, String, int)
 - @args - Match by runtime type of the method arguments that have annotations of the given type
-- this - Match by bean reference being an instanve of the given type(for CGLIB-based proxy)
+- this - Match by bean reference being an instance of the given type(for CGLIB-based proxy)
 - target - Match by target object being an instance of the given type
 - @target - Match by class of the executing object having an annotation of the given type
 
@@ -77,7 +77,7 @@ Spring AOP uses Runtime Weaving, and for each type subject to aspects, to interc
 Its possible to force Spring to use CGLIB Proxy with use of @EnableAspectJAutoProxy(proxyTargetClass = true) 
 
 
-4. Which are the limitations of the two proxy-types? What visibilty must Spring bean methods have to be proxied using Spring AOP?
+4. Which are the limitations of the two proxy-types? What visibility must Spring bean methods have to be proxied using Spring AOP?
 JDK Dynamic proxy limitations:
 - Does not support self-invocation
 - Class must implement interface
@@ -96,13 +96,13 @@ Spring bean methods needs to have following visibility level to be proxied:
 On top of requirement above, for call to be proxied, it needs to come from outside, both JDK Dynamic Proxy and CGLIB proxy does not support self-invocation
 
 
-5. How many advice types does Spring support. Can you name each one? What are they used for? Whichj two advices can you use if you would like to try and catch exception?
+5. How many advice types does Spring support. Can you name each one? What are they used for? Which two advices can you use if you would like to try and catch exception?
 
 Spring supports following advice types:
 - @Before - executed before joint point matched by pointcut is executed
 - @After - executed after join point matched by pointcut is executed
 - @AfterThrowing - executed when exception is thrown from joint point matched by pointcut
-- @AfterReturning - executed after joint point matched by pointcut is executed succesfully without any exception
+- @AfterReturning - executed after joint point matched by pointcut is executed successfully without any exception
 - @Around - allows you to take full control over joint point matched by pointcut, most powerful advice, allows you to implement all advices from above, you need to call ProceedingJoinPoint::proceed() to execute original code
 
 @Before
@@ -120,7 +120,7 @@ Spring supports following advice types:
 - Data Validation for method result
 @Around
 - Transaction
-- Distrubted Call Tracing
+- Distributed Call Tracing
 - Authorization, Security
 
 To catch exceptions you can use two advices:
@@ -135,18 +135,18 @@ To enable detection of @Aspect annotation you need to:
 - Have beans for @Aspect annotated classes created
 	- use @ComponentScan with @Component at class annotated with @Aspect
 	- use @Bean in Configuration class and create Spring Aspect Bean manually
-- Have aspectjweaver/spring-aop on classpath
-	- its easiest to use spring-aspects denepdency to have those included
+- Have aspectJweaver/spring-aop on classpath
+	- its easiest to use spring-aspects dependency to have those included
 	- without required dependencies on classpath spring will fail with ClassNotFoundException,
 	during creation of Proxy objects for Spring beans subjects to aspects
 
-Annotation @EnableAspetJAutoProxy enables detection of @Aspect classes and creates proxy object for beans subject to aspects. Internally process of creating
+Annotation @EnableAspectJAutoProxy enables detection of @Aspect classes and creates proxy object for beans subject to aspects. Internally process of creating
 proxies is done by AnnotationAwareAspectJAutoProxyCreator. By creating proxy for each bean subject to aspects, spring intercepts the calls and implements Before / After... advices. It is important to remember that @Aspect will not create Spring Beans on its own, you need to use Component Scanning or manually create beans for @Aspect classes.
 
 
 7. If shown pointcut expressions, would you understand them?
 
-Pointcut deignator types supported by Spring AOP:
+Pointcut designator types supported by Spring AOP:
 - execution
 - within
 - args
@@ -158,10 +158,10 @@ Pointcut deignator types supported by Spring AOP:
 - @within
 - @target
 
-Pointcut designator - exeuction - matches method execution
+Pointcut designator - execution - matches method execution
 
 General form
-- execution([visibility modifiers] [return type] [package].class.method([argumnets]) [throws exception])
+- execution([visibility modifiers] [return type] [package].class.method([arguments]) [throws exception])
 
 within - matches execution within specified class/classes, optionally you can specify class package
 
@@ -230,7 +230,7 @@ Join Point is supported in following advice types:
 - After Throwing
 
 Examples of information that you can retrieve from JoinPoint:
-- String represnation of Join Point
+- String representation of Join Point
 - Arguments of Join Point (method arguments)
 - Signature of Join Point (method signature)
 - Kind / Type of Join Point
@@ -242,7 +242,7 @@ ProceedingJoinPoint is an object that can be provided to @Around advice as first
 
 ProceedingJoinPoint is used in @Around advice, it contains all methods from JoinPoint and also adds:
 - proceed - executes original method
-- proceed(args) - executes orginial method with provided arguments
+- proceed(args) - executes original method with provided arguments
 
 ProceedingJoinPoint can be used in following use cases:
 - Conditionally block method execution
