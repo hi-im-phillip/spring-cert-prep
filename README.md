@@ -9,17 +9,17 @@
 
 <div><h2>Table of Contents</h2></div>
 
-####  1. [Container, Dependency, and IoC](#span-stylecolor-cornflowerblue-h1-container-dependency-and-ioc-h1-span)
-####  2. [Aspect Oriented Programming](#span-stylecolor-cornflowerblue-h1-aspect-oriented-programming-h1-span)
-####  3. [Data Management: JDBC, Transactions, Spring Data JPA](#span-stylecolor-cornflowerblue-h1-data-management--jdbc-transactions-spring-data-jpa-h1-span)
-####  4. [Spring Boot, Spring Boot Auto configuration, Spring Boot Actuator, Spring Boot Testing](#span-stylecolor-cornflowerblue-h1-spring-boot-spring-boot-auto-configuration-spring-boot-actuator-spring-boot-testing-h1-span)
-####  5. [Spring MVC and the Web Layer](#span-stylecolor-cornflowerblue-h1-spring-mvc-and-the-web-layer-h1-span)
-####  6. [Spring Security](#span-stylecolor-cornflowerblue-h1-spring-security-h1-span)
-####  7. [Spring REST](#span-stylecolor-cornflowerblue-h1-spring-rest-h1-span)
-####  8. [Spring Testing](#span-stylecolor-cornflowerblue-h1-spring-testing-h1-span)
+####  1. [Container, Dependency, and IoC](#Module-1)
+####  2. [Aspect Oriented Programming](#Module-2)
+####  3. [Data Management: JDBC, Transactions, Spring Data JPA](#Module-3)
+####  4. [Spring Boot, Spring Boot Auto configuration, Spring Boot Actuator, Spring Boot Testing](#Module-4)
+####  5. [Spring MVC and the Web Layer](#Module-5)
+####  6. [Spring Security](#Module-6)
+####  7. [Spring REST](#Module-7)
+####  8. [Spring Testing](#Module-8)
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"> <h1> Container, Dependency, and IoC</h1></span>  
+<h1 id="Module-1"> <span style="color: cornflowerblue;"> Container, Dependency, and IoC</span></h1>
 
 
 
@@ -657,7 +657,7 @@ You can reference the following using SpEL:
 
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"><h1>Aspect Oriented Programming</h1></span>
+<h1 id="Module-2"><span style="color: cornflowerblue;">Aspect Oriented Programming</span></h1>
 
 
 ### <span style="color: #99ff99;">1. What is the concept of AOP?</span>
@@ -827,7 +827,7 @@ ProceedingJoinPoint can be used in following use cases:
 
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"><h1>Data Management: JDBC, Transactions, Spring Data JPA</h1></span>
+<h1 id="Module-3"> <span style="color: cornflowerblue;">Data Management: JDBC, Transactions, Spring Data JPA</span></h1>
 
 
 ### <span style="color: #99ff99;">1. What is the difference between checked and unchecked exceptions? Why does Spring prefer unchecked exceptions? What is the data access exception hierarchy?</span>
@@ -1190,7 +1190,7 @@ Using @Query allows you to achieve more control and flexibility of the JPA query
 
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"> <h1>Spring Boot, Spring Boot Auto Configuration, Spring Boot Actuator, Spring Boot Testing</h1> </span>
+<h1 id="Module-4"><span style="color: cornflowerblue;"> Spring Boot, Spring Boot Auto Configuration, Spring Boot Actuator, Spring Boot Testing </span></h1>
 
 
 ### <span style="color: #99ff99;">1. What is Spring boot?</span>
@@ -1853,7 +1853,7 @@ When using @DataJpaTest you can access TestEntityManager, which contains subset 
 
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"> <h1>Spring MVC and the Web Layer</h1> </span>
+<h1 id="Module-5"><span style="color: cornflowerblue;"> Spring MVC and the Web Layer</span></h1>
 
 ### <span style="color: #99ff99;">1. MVC is an abbreviation for design pattern. What does it stand for and what is the idea behind it?</span>
 
@@ -2117,7 +2117,7 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"> <h1>Spring Security</h1> </span>
+<h1 id="Module-6"> <span style="color: cornflowerblue;"> Spring Security</span></h1>
 
 
 ### <span style="color: #99ff99;">1. What are authentication and authorization? Which must come first?</span>
@@ -2348,10 +2348,10 @@ Main difference between @PreAuthorize / @PostAuthorize are used to create expres
 
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"> <h1>Spring REST</h1> </span>
+<h1 id="Module-7"><span style="color: cornflowerblue;">Spring REST</span></h1>
 
 
-### <span style="color: #99ff99;">1. What does RESt stand for?</span>
+### <span style="color: #99ff99;">1. What does REST stand for?</span>
 
 REST stands for Representational State Transfer
 
@@ -2643,7 +2643,7 @@ RestTemplate API can be categorized by HTTP request type, below is a list of com
 
 <hr style="border:2px solid gray"> </hr>
 
-#### <span style="color: cornflowerblue;"> <h1>Spring Testing</h1></span>
+<h1 id="Module-8"><span style="color: cornflowerblue;"> Spring Testing</span></h1>
 
 ### <span style="color: #99ff99;">1. Do you use Spring in a unit test?</span>
 
