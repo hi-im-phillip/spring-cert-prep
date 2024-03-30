@@ -1,25 +1,48 @@
 
-<h1 style="align-content: center">Spring certification exam prep notes</h1>
-
-<br><br>
-
-#### This repository contains notes and questions to help you prepare for the Spring Professional Certification exam. The notes are based on the Spring Professional Certification Study Guide and the Spring Framework 5 documentation.
+<h1 style="color: cornflowerblue;
+    align-content: center">Spring certification exam prep stuff</h1>
 
 <hr style="border:2px solid gray"> </hr>
 
-<div><h2>Table of Contents</h2></div>
 
-####  1. [Container, Dependency, and IoC](#Module-1)
-####  2. [Aspect Oriented Programming](#Module-2)
-####  3. [Data Management: JDBC, Transactions, Spring Data JPA](#Module-3)
-####  4. [Spring Boot, Spring Boot Auto configuration, Spring Boot Actuator, Spring Boot Testing](#Module-4)
-####  5. [Spring MVC and the Web Layer](#Module-5)
-####  6. [Spring Security](#Module-6)
-####  7. [Spring REST](#Module-7)
-####  8. [Spring Testing](#Module-8)
+
+<h2 style="color: cornflowerblue;"> Table of Contents </h2>
+
+- [Basically about this repo](#intro)
+- [Exam Details](#exam-details)
+- [Container, Dependency, and IoC](#Module-1)
+- [Aspect Oriented Programming](#Module-2)
+- [Data Management: JDBC, Transactions, Spring Data JPA](#Module-3)
+- [Spring Boot, Spring Boot Auto configuration, Spring Boot Actuator, Spring Boot Testing](#Module-4)
+- [Spring MVC and the Web Layer](#Module-5)
+- [Spring Security](#Module-6)
+- [Spring REST](#Module-7)
+- [Spring Testing](#Module-8)
+
+
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-1"> <span style="color: cornflowerblue;"> Container, Dependency, and IoC</span></h1>
+<h2 id="intro" style="color: cornflowerblue;"> Basically about this repo </h2>
+
+
+
+#### This repository contains notes and questions designed to assist you in preparing for the [Spring Professional Certification exam](https://www.vmware.com/learning/certification/spring-pro-develop-exam.html). These resources are based on the instructional videos available on [Udemy by Dominik Cebula](https://www.udemy.com/user/dominik-cebula/). I highly recommend checking out his courses. Personally, I found that watching the videos and taking notes greatly enhanced my understanding of the concepts. I went through the series twice: first, by taking notes, and then by engaging more with the code examples. Please note that I am not affiliated with Dominik Cebula or Udemy; I am simply a programmer who found his courses to be very helpful.
+
+
+<hr style="border:2px solid gray"> </hr>
+
+<h2 id="exam-details" style="color: cornflowerblue;"> Exam details </h2>
+
+- **Exam Name**: Exam 2V0-72.22 : Spring Professional Develop
+- **Exam Duration**: 130 minutes
+- **Number of Questions**: 60
+- **Passing Score**: 300/500
+
+
+<hr style="border:2px solid gray"> </hr>
+
+
+<h1 id="Module-1" style="color: cornflowerblue;">Container, Dependency, and IoC</h1>
 
 
 
@@ -657,7 +680,7 @@ You can reference the following using SpEL:
 
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-2"><span style="color: cornflowerblue;">Aspect Oriented Programming</span></h1>
+<h1 id="Module-2" style="color: cornflowerblue;">Aspect Oriented Programming</h1>
 
 
 ### <span style="color: #99ff99;">1. What is the concept of AOP?</span>
@@ -827,7 +850,7 @@ ProceedingJoinPoint can be used in following use cases:
 
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-3"> <span style="color: cornflowerblue;">Data Management: JDBC, Transactions, Spring Data JPA</span></h1>
+<h1 id="Module-3" style="color: cornflowerblue;">Data Management: JDBC, Transactions, Spring Data JPA</h1>
 
 
 ### <span style="color: #99ff99;">1. What is the difference between checked and unchecked exceptions? Why does Spring prefer unchecked exceptions? What is the data access exception hierarchy?</span>
@@ -1190,7 +1213,7 @@ Using @Query allows you to achieve more control and flexibility of the JPA query
 
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-4"><span style="color: cornflowerblue;"> Spring Boot, Spring Boot Auto Configuration, Spring Boot Actuator, Spring Boot Testing </span></h1>
+<h1 id="Module-4" style="color: cornflowerblue;"> Spring Boot, Spring Boot Auto Configuration, Spring Boot Actuator, Spring Boot Testing </h1>
 
 
 ### <span style="color: #99ff99;">1. What is Spring boot?</span>
@@ -1853,7 +1876,7 @@ When using @DataJpaTest you can access TestEntityManager, which contains subset 
 
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-5"><span style="color: cornflowerblue;"> Spring MVC and the Web Layer</span></h1>
+<h1 id="Module-5" style="color: cornflowerblue;"> Spring MVC and the Web Layer </h1>
 
 ### <span style="color: #99ff99;">1. MVC is an abbreviation for design pattern. What does it stand for and what is the idea behind it?</span>
 
@@ -2117,7 +2140,7 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-6"> <span style="color: cornflowerblue;"> Spring Security</span></h1>
+<h1 id="Module-6" style="color: cornflowerblue;"> Spring Security</h1>
 
 
 ### <span style="color: #99ff99;">1. What are authentication and authorization? Which must come first?</span>
@@ -2348,7 +2371,7 @@ Main difference between @PreAuthorize / @PostAuthorize are used to create expres
 
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-7"><span style="color: cornflowerblue;">Spring REST</span></h1>
+<h1 id="Module-7" style="color: cornflowerblue;"> Spring REST </h1>
 
 
 ### <span style="color: #99ff99;">1. What does REST stand for?</span>
@@ -2373,7 +2396,7 @@ URI versioning
 
 Resource is a named information available via URI. It can be a document, image, video, text file, etc. Rest uses different form of presentation of resources, and client can specify format in which Resource should be made available, for example JSON, XML, Text, Html..
 
-Rest usually provides set of methods that can be used to manipulate resources like http get, post, put, delete
+REST usually provides set of methods that can be used to manipulate resources like http get, post, put, delete
 
 
 ### <span style="color: #99ff99;">3. What does CRUD mean?</span>
@@ -2386,9 +2409,9 @@ update - put, patch
 delete - delete
 
 
-### <span style="color: #99ff99;">4. Is RESt secure? What can you do to secure it?</span>
+### <span style="color: #99ff99;">4. Is REST secure? What can you do to secure it?</span>
 
-Rest as an architectural style of developing distributed applications, does not enforce any security rules or solutions on its own, so by default rest is not secured.
+REST as an architectural style of developing distributed applications, does not enforce any security rules or solutions on its own, so by default rest is not secured.
 
 To secure RESt api you can do following:
 
@@ -2397,7 +2420,7 @@ To secure RESt api you can do following:
 - use some form of authorization (spring roles)
 
 
-### <span style="color: #99ff99;">5. Is rest scalable and or interoperable?</span>
+### <span style="color: #99ff99;">5. Is REST scalable and or interoperable?</span>
 
 Scalability of Restful service is a result of developing software with following characteristics in mind:
 
@@ -2405,7 +2428,7 @@ Scalability of Restful service is a result of developing software with following
 - layered approach - layered approach to the system design means that we can introduce new parts of the system in a way for it to be transparent to the client, resulting in ability to change system without having to modify client, example of this can be introduction of application load balancer, api gateway, security layers, web application firewall without having to change client at all
 - cacheability - allows to create response for repeatable requests, without having to process them on service side, caching is introduced to improve response time and to reduce load on the service
 
-rest service is interoperable because:
+REST service is interoperable because:
 - access to rest service and resources available by uris is standardized and not coupled with any specific technology, allowing you to consume rest service in any technology of choice, like JavaScript, Python, Java, C++
 - data for the requested resource can be sent to client in different formats specified by the client, in case of http protocol this can be done with usage of accept header, for example accept: application/json or accept: application/xml
 - all crud operations can be handled with standardized approach, in case of restful service implemented with http protocol, standardized http methods get, put, patch, post, delete are used
@@ -2413,23 +2436,23 @@ rest service is interoperable because:
 
 ### <span style="color: #99ff99;">6. Which Http methods does rest use?</span>
 
-HTTP Get - used to implement read operations - fetch existing resource or list of resources
-HTTP Post - used to implement Create operations - adding new element
-HTTP put - used to implement create or update operations - bulk update or update existing resource
-HTTP patch - partial update of existing resource of the system, for example, when wanting to update only first name
-HTTP delete - delete existing resource
+HTTP GET - used to implement read operations - fetch existing resource or list of resources
+HTTP POST - used to implement Create operations - adding new element
+HTTP PUT - used to implement create or update operations - bulk update or update existing resource
+HTTP PATCH - partial update of existing resource of the system, for example, when wanting to update only first name
+HTTP DELETE - delete existing resource
 
 
 ### <span style="color: #99ff99;">7. What is an HttpMessageConverter?</span>
 
-Its a interface used by Spring to convert data between different formats.
+It's a interface used by Spring to convert data between different formats.
 
 Rest client can specify expected format in which data should be retrieved by usage of Accept Header (application/json). Client can also specify format in which data will be send by usage of Content-Type Header, for example Content-Type: application/xml
 
 Request mapping contains produces and consumes fields which can be used to specify MediaType which method can handle.
 
 
-### <span style="color: #99ff99;">8. Yes, Rest is normally stateless.</span>
+### <span style="color: #99ff99;">8. Yes, REST is normally stateless.</span>
 
 Stateless basic constraint for RESTful architecture.
 
@@ -2529,8 +2552,8 @@ This can be achieved by applying @ResponseStatus to:
 ### <span style="color: #99ff99;">16. If you saw example controller code, would you understand what it is doing? Could you tell if it was annotated correctly?</span>
 
 Controller can be defined in one of following ways:
-- @controller
-- @restController
+- @Controller
+- @RestController
 
 Controller mapping can be defined with usage of one of following annotations:
 - @GetMapping
@@ -2643,7 +2666,7 @@ RestTemplate API can be categorized by HTTP request type, below is a list of com
 
 <hr style="border:2px solid gray"> </hr>
 
-<h1 id="Module-8"><span style="color: cornflowerblue;"> Spring Testing</span></h1>
+<h1 id="Module-8" style="color: cornflowerblue;"> Spring Testing </h1>
 
 ### <span style="color: #99ff99;">1. Do you use Spring in a unit test?</span>
 
