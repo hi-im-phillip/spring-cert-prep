@@ -18,6 +18,7 @@
 - [Spring Security](#Module-6)
 - [Spring REST](#Module-7)
 - [Spring Testing](#Module-8)
+- [Spring Certified Professional - Badge](#spring-badge)
 
 
 <hr style="border:2px solid gray"> </hr>
@@ -2835,3 +2836,11 @@ used in production code to indicate starting place for application
 @SpringBootTest interacts with @SpringBootApplication and @SpringBootConfiguration through SpringBootTestContextBootstrapper and SpringBootContextLoader
 
 Goal of SpringBootContextLoader is to transform initial ContextConfiguration to ApplicationContext. SpringBootContextLoader will get as input class annotated with @SpringBootConfiguration, which will be located by SpringBootTestContextStrapper
+
+<hr style="border:2px solid gray"> </hr>
+
+<h2 id="spring-badge" style="color: cornflowerblue;"> Spring Certified Professional - Badge </h2>
+
+The Spring Certified Professional certification validates a candidate's expertise with major features of Spring and Spring Boot and the candidate’s ability to apply Spring’s features to quickly build and deliver production ready applications.
+
+[![Spring Certified Professional](/images/spring-certified-professional-2024.png)](https://www.credly.com/badges/4e19bf0c-5c72-4780-8227-e3af1cb6c6dd/public_url)
