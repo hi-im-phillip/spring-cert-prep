@@ -28,13 +28,20 @@
 This repository contains notes and questions designed to assist you in preparing 
 for the [Spring Professional Certification exam](https://www.vmware.com/learning/certification/spring-pro-develop-exam.html). 
 
-I prepared for about a month for this exam, based on the instructional videos available on [Udemy by Dominik Cebula](https://www.udemy.com/user/dominik-cebula/). These resources are highly valuable, and I recommend checking out his courses. Personally, I found that watching the videos and taking notes greatly enhanced my understanding of the concepts.
+I prepared for about a month for this exam, based on the instructional videos available on [Udemy by Dominik Cebula](https://www.udemy.com/user/dominik-cebula/). 
+These resources are highly valuable, and I recommend checking out his courses. 
+Personally, I found that watching the videos and taking notes greatly enhanced my understanding of the concepts.
 
-I went through the series twice: first, by taking notes, and then by engaging more with the code examples. 
+I went through the series twice: first, by taking notes (can be found in notes/modules), and then by engaging more with the code examples. 
 Please note that I am not affiliated with Dominik Cebula or Udemy; I am simply a programmer who found his courses to be very helpful.
 
-Additionally, I have prior experience working with Spring Boot, which gave me a good foundation and understanding of Spring technologies.
+Mock exams can be found in the mock-exams folder. Just to clarify, the mocks are designed to resemble
+the real exam in concept only, not in difficulty. I encountered maybe two questions similar to those in the mock exams
+during the actual test. The real exam was more challenging, so it's best not to rely too heavily on the mock
+exams. Last few days before the exam, I studied using the mock exams along with other resources to cover
+all basses.
 
+Additionally, I have prior experience working with Spring Boot, which gave me a good foundation and understanding of Spring technologies.
 
 <hr style="border:2px solid gray"> </hr>
 
