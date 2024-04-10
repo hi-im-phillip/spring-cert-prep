@@ -2,13 +2,12 @@
 <h1 style="color: cornflowerblue;
     align-content: center">Spring certification exam prep stuff</h1>
 
-<hr style="border:2px solid gray"> </hr>
 
 
 
-<h2 style="color: cornflowerblue;"> Table of Contents </h2>
+<h1 style="color: cornflowerblue;"> Table of Contents </h1>
 
-- [Basically about this repo](#intro)
+- [Basically about exam](#intro)
 - [Exam Details](#exam-details)
 - [Container, Dependency, and IoC](#Module-1)
 - [Aspect Oriented Programming](#Module-2)
@@ -23,16 +22,23 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-<h2 id="intro" style="color: cornflowerblue;"> Basically about this repo </h2>
 
+<h1 id="intro" style="color: cornflowerblue;"> Basically about exam </h1>
 
+This repository contains notes and questions designed to assist you in preparing 
+for the [Spring Professional Certification exam](https://www.vmware.com/learning/certification/spring-pro-develop-exam.html). 
 
-#### This repository contains notes and questions designed to assist you in preparing for the [Spring Professional Certification exam](https://www.vmware.com/learning/certification/spring-pro-develop-exam.html). These resources are based on the instructional videos available on [Udemy by Dominik Cebula](https://www.udemy.com/user/dominik-cebula/). I highly recommend checking out his courses. Personally, I found that watching the videos and taking notes greatly enhanced my understanding of the concepts. I went through the series twice: first, by taking notes, and then by engaging more with the code examples. Please note that I am not affiliated with Dominik Cebula or Udemy; I am simply a programmer who found his courses to be very helpful.
+I prepared for about a month for this exam, based on the instructional videos available on [Udemy by Dominik Cebula](https://www.udemy.com/user/dominik-cebula/). These resources are highly valuable, and I recommend checking out his courses. Personally, I found that watching the videos and taking notes greatly enhanced my understanding of the concepts.
+
+I went through the series twice: first, by taking notes, and then by engaging more with the code examples. 
+Please note that I am not affiliated with Dominik Cebula or Udemy; I am simply a programmer who found his courses to be very helpful.
+
+Additionally, I have prior experience working with Spring Boot, which gave me a good foundation and understanding of Spring technologies.
 
 
 <hr style="border:2px solid gray"> </hr>
 
-<h2 id="exam-details" style="color: cornflowerblue;"> Exam details </h2>
+<h1 id="exam-details" style="color: cornflowerblue;"> Exam details </h1>
 
 - **Exam Name**: Exam 2V0-72.22 : Spring Professional Develop
 - **Exam Duration**: 130 minutes
