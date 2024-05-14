@@ -1,29 +1,31 @@
 
 <h1 style="color: cornflowerblue;
-    align-content: center">Spring certification exam prep stuff</h1>
+    align-content: center">Spring certification know-how</h1>
 
 
 
 
 <h1 style="color: cornflowerblue;"> Table of Contents </h1>
 
-- [Basically about exam](#intro)
+- [Preparation](#intro)
 - [Exam Details](#exam-details)
-- [Container, Dependency, and IoC](#Module-1)
-- [Aspect Oriented Programming](#Module-2)
-- [Data Management: JDBC, Transactions, Spring Data JPA](#Module-3)
-- [Spring Boot, Spring Boot Auto configuration, Spring Boot Actuator, Spring Boot Testing](#Module-4)
-- [Spring MVC and the Web Layer](#Module-5)
-- [Spring Security](#Module-6)
-- [Spring REST](#Module-7)
-- [Spring Testing](#Module-8)
+- [Modules](#Modules)
+  - [Container, Dependency, and IoC](#Module-1)
+  - [Aspect Oriented Programming](#Module-2)
+  - [Data Management: JDBC, Transactions, Spring Data JPA](#Module-3)
+  - [Spring Boot, Spring Boot Auto configuration, Spring Boot Actuator, Spring Boot Testing](#Module-4)
+  - [Spring MVC and the Web Layer](#Module-5)
+  - [Spring Security](#Module-6)
+  - [Spring REST](#Module-7)
+  - [Spring Testing](#Module-8)
+- [Coding Examples](#coding-examples)
 - [Spring Certified Professional - Badge](#spring-badge)
 
 
 <hr style="border:2px solid gray"> </hr>
 
 
-<h1 id="intro" style="color: cornflowerblue;"> Basically about exam </h1>
+<h1 id="intro" style="color: cornflowerblue;"> Preparation </h1>
 
 This repository contains notes and questions designed to assist you in preparing 
 for the [Spring Professional Certification exam](https://www.vmware.com/learning/certification/spring-pro-develop-exam.html). 
@@ -43,6 +45,7 @@ all basses.
 
 Additionally, I have prior experience working with Spring Boot, which gave me a good foundation and understanding of Spring technologies.
 
+
 <hr style="border:2px solid gray"> </hr>
 
 <h1 id="exam-details" style="color: cornflowerblue;"> Exam details </h1>
@@ -55,6 +58,7 @@ Additionally, I have prior experience working with Spring Boot, which gave me a 
 
 <hr style="border:2px solid gray"> </hr>
 
+<h1 id="Modules" style="color: cornflowerblue;">Modules</h1>
 
 <h1 id="Module-1" style="color: cornflowerblue;">Container, Dependency, and IoC</h1>
 
@@ -2849,6 +2853,21 @@ used in production code to indicate starting place for application
 @SpringBootTest interacts with @SpringBootApplication and @SpringBootConfiguration through SpringBootTestContextBootstrapper and SpringBootContextLoader
 
 Goal of SpringBootContextLoader is to transform initial ContextConfiguration to ApplicationContext. SpringBootContextLoader will get as input class annotated with @SpringBootConfiguration, which will be located by SpringBootTestContextStrapper
+
+<hr style="border:2px solid gray"> </hr>
+
+<h2 id="coding-examples" style="color: cornflowerblue;"> Coding examples </h2>
+
+[Card-Creation-API Project](https://github.com/hi-im-phillip/Card-creation-API)
+
+The Card Management System is a Spring Boot project designed to manage credit card requests. 
+It consists of three modules: Card Management API, Card Management Listener, and Card Management Web UI. 
+
+The API module handles credit card requests and database operations, exposing REST endpoints for CRUD operations. 
+The Listener module processes credit card requests using a Kafka listener. The Web UI module provides a user interface for interaction with the system. 
+
+The system uses technologies such as Spring Boot, Spring Data JPA, PostgresSQL, Kafka, Thymeleaf, and others. The project also includes Swagger integration for API documentation. The system is designed to be scalable and robust, 
+suitable for managing credit card requests.
 
 <hr style="border:2px solid gray"> </hr>
 
