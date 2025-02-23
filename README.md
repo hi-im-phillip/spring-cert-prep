@@ -2083,7 +2083,7 @@ java.io.InputStream, java.io.Reader - allows access to raw request body as expos
 
 java.io.OutPutStream, java.io.Writer - allows to create raw response as exposed by the Servlet API
 
-HttpEntity<B> - container object that exposes request headers and body, body is converted with usage of HttpMessageConverter
+HttpEntity - container object that exposes request headers and body, body is converted with usage of HttpMessageConverter
 
 java.util.Map, org.springframework.ui.Model, org.springframework.ui.ModelMap - used to expose data to templates as part of view rendering
 
@@ -2128,7 +2128,7 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 
 - @ResponseBody - binds method return value to web response body, complex types will be converted with usage of HttpMessageConverter
 
-- HttpEntity<B>, ResponseEntity<B> - allows to specify full response with headers and body, ResponseEntity<B> additionally allows to specify Http status code
+- HttpEntity, ResponseEntity - allows to specify full response with headers and body, ResponseEntity<B> additionally allows to specify Http status code
 
 - HttpHeaders - allows to return response only with headers, without body
 
