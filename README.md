@@ -239,16 +239,15 @@ Spring Boot
 ### <span style="color: #99ff99;">10. Can you describe: Dependency injection using Java configuration? Dependency injection using annotations(@Component, @Autowired)? Component scanning, Stereotypes and Meta-Annotations? Scopes for Spring beans? What is the default scope?</span>
 
 DI Java configuration
-When using Dependency Injection using Java Configuration you need to explicitly define all your beans and you need to use @Autowired
+- When using Dependency Injection using Java Configuration you need to explicitly define all your beans and you need to use @Autowired
 on @Bean method level to inject dependencies.
 
 DI Annotations
-Create classes annotated with @Component annotations.
-Define dependencies when required.
-Create configuration with Component scanning enabled.
+- Create classes annotated with @Component annotations.
+Define dependencies when required. Create configuration with Component scanning enabled.
 
 Component Scanning
-Process in which Spring is scanning Classpath in search for classes annotated with stereotypes annotations (@Component, @Repository, @Service, @Controller)
+- Process in which Spring is scanning Classpath in search for classes annotated with stereotypes annotations (@Component, @Repository, @Service, @Controller)
 and based on those creates beans definitions.
 
 Meta-Annotations
