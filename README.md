@@ -252,16 +252,16 @@ Process in which Spring is scanning Classpath in search for classes annotated wi
 and based on those creates beans definitions.
 
 Meta-Annotations
-Meta-annotations are annotations that can be used to create new annotations.
+- Meta-annotations are annotations that can be used to create new annotations.
 Example @RestController annotation is using @Controller and @ResponseBody to define its behavior.
 
 Scopes of Spring Beans
-Singleton - Single Bean per Spring container - default
-Prototype - New instance each time Bean is requested
-Request - New instance per each HTTP Request
-Session - New instance per each HTTP Session
-Application - One instance per each ServletContext
-WebSocket - one instance per each WebSocket
+- Singleton - Single Bean per Spring container - default
+- Prototype - New instance each time Bean is requested
+- Request - New instance per each HTTP Request
+- Session - New instance per each HTTP Session
+- Application - One instance per each ServletContext
+- WebSocket - one instance per each WebSocket
 
 ### <span style="color: #99ff99;">11. Are beans lazily or eagerly instantiated by default? How do you alter this behavior?</span>
 
