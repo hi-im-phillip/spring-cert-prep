@@ -2127,7 +2127,7 @@ UriComponentsBuilder - used to build URLs relative to current scheme, host, port
 
 - @ResponseBody - binds method return value to web response body, complex types will be converted with usage of HttpMessageConverter
 
-- HttpEntity, ResponseEntity - allows to specify full response with headers and body, ResponseEntity<B> additionally allows to specify Http status code
+- HttpEntity, ResponseEntity - allows to specify full response with headers and body, ResponseEntity<T> additionally allows to specify Http status code
 
 - HttpHeaders - allows to return response only with headers, without body
 
